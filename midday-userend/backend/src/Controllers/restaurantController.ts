@@ -5,7 +5,7 @@ import '../Models/categoryModel';
 const restaurantController = () => {
   const getRestaurants = async (req:Request, res: Response) => {
     try {
-      const restaurants = await Restaurant.find({}).populate('category');
+      const restaurants = await Restaurant.find({});
       res.json(restaurants);
     } catch (error) {
       res.status(500);
@@ -18,4 +18,4 @@ const restaurantController = () => {
   };
 };
 
-export default restaurantController();
+module.exports = restaurantController();

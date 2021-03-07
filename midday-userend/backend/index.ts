@@ -4,7 +4,7 @@ import chalk from 'chalk';
 import debug from 'debug';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
-import restaurantRouter from './src/Routes/restaurantRouter';
+const restaurantRouter = require('./src/Routes/restaurantRouter');
 
 dotenv.config();
 const Debug = debug('app');

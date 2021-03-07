@@ -11,4 +11,4 @@ const restaurantRouter = ():Router => {
   return router;
 };
 
-export default restaurantRouter();
+module.exports = restaurantRouter();
