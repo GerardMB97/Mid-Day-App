@@ -7,4 +7,4 @@ const UserSchema = new Schema({
   allergies: [String]
 });
 
-module.exports = model('User', UserSchema);
+export default model('User', UserSchema);
