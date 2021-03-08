@@ -1,7 +1,8 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
+    jest: true
   },
   extends: [
     'plugin:react/recommended',
@@ -21,6 +22,7 @@ module.exports = {
   ],
   rules: {
     semi: [2, 'always'],
-    'comma-dangle': [2, 'never']
+    'comma-dangle': [2, 'never'],
+    'no-use-before-define': 'off'
   }
-}
+};

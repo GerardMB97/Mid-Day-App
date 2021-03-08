@@ -7,12 +7,16 @@
  */
 
 import React from 'react';
-import CategoriesList from './src/components/CategoriesList'
-
+import store from './src/redux/store/configureStore';
+import { Provider } from 'react-redux';
+import CategoriesList from './src/components/CategoriesList';
 
 const App: () => any = () => {
- return <CategoriesList></CategoriesList>
+  return (
+ <Provider store = {store}>
+  <CategoriesList/>
+ </Provider>
+  );
 };
 
-
-export default App;
+export { App };

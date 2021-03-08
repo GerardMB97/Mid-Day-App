@@ -1,23 +1,23 @@
-import React from 'react';
-import Icon from 'react-native-vector-icons/Ionicons'
-import {StyleSheet,
-
-        TextInput, 
-        Text,
-        FlatList,
-        View,
-        SafeAreaView
-         } from 'react-native';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import Icon from 'react-native-vector-icons/Ionicons';
+import {
+  StyleSheet,
+  TextInput,
+  Text,
+  FlatList,
+  View,
+  SafeAreaView
+} from 'react-native';
 import colors from '../../colors';
+import { loadCategories } from '../redux/actions/restaurantAction';
 
-
-export default function  CategoriesList(){
-
-  const categories: Array<{name:string}> = [
-    {name: 'Xino'},
-    {name: 'Catalana'},
-    {name: 'Basca'}
-  ]
+function CategoriesList ({ categories, actions }) {
+  useEffect(() => {
+    actions.loadCategories();
+  }, [categories]);
   return (
     <View style = {styles.container}>
       <TextInput style = {styles.input} placeholder="Tipo de menú o restaurante"></TextInput>
@@ -26,23 +26,40 @@ export default function  CategoriesList(){
       <SafeAreaView style = {styles.listContainer}>
       <FlatList
         style = {styles.list}
-        columnWrapperStyle={{ justifyContent: "space-between"}}
+        columnWrapperStyle={{ justifyContent: 'space-between' }}
         numColumns={2}
         data ={categories}
         keyExtractor = {(item => item.name)}
-        renderItem={({item}) => 
+        renderItem={({ item }) =>
       <View style = {styles.listElement}>
         <View style = {styles.nameContainer}><Text>{item.name}</Text></View>
       </View>}>
       </FlatList>
       </SafeAreaView>
-     
+
     </View>
-  )
+  );
 }
 
+CategoriesList.propTypes = {
+  categories: PropTypes.array.isRequired,
+  actions: PropTypes.shape({
+    loadCategories: PropTypes.func.isRequired
+  }).isRequired
+};
+
+function mapStateToProps ({ categories }) {
+  return { categories };
+}
+
+function mapDispatchToProps (dispatch) {
+  return { actions: bindActionCreators({ loadCategories }, dispatch) };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CategoriesList);
+
 const styles = StyleSheet.create({
-  container : {
+  container: {
     flex: 1,
     marginTop: 100,
     alignItems: 'center',
@@ -50,26 +67,26 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20
   },
-  input : {
+  input: {
     width: '100%',
     height: 60,
     backgroundColor: colors.green,
     justifyContent: 'center',
     paddingLeft: 60,
     marginBottom: 20,
-    borderRadius: 10 
+    borderRadius: 10
   },
-  title : {
+  title: {
     fontSize: 20,
     fontWeight: '700',
     marginBottom: 25
   },
   listContainer: {
     flex: 1,
-    width: '100%',
+    width: '100%'
   },
   list: {
-    flexDirection: 'column',
+    flexDirection: 'column'
   },
   listElement: {
     width: '48%',
@@ -78,7 +95,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     borderColor: 'black',
     borderWidth: 1,
-    overflow:'hidden',
+    overflow: 'hidden'
   },
   nameContainer: {
     backgroundColor: colors.transparentGray,

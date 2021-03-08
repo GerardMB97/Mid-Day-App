@@ -6,18 +6,28 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "test": "jest",
+    "test": "jest --watchAll --collectCoverage",
     "lint": "eslint .",
     "start:macos": "node node_modules/react-native-macos/local-cli/cli.js start --use-react-native-macos"
   },
   "dependencies": {
     "@ant-design/icons": "^4.5.0",
+    "@types/axios": "^0.14.0",
+    "@types/prop-types": "^15.7.3",
+    "@types/react-redux": "^7.1.16",
+    "@types/redux-immutable-state-invariant": "^2.1.1",
+    "@types/redux-thunk": "^2.1.0",
+    "axios": "^0.21.1",
     "native": "^0.3.3",
+    "prop-types": "^15.7.2",
     "react": "16.11.0",
     "react-icons": "^4.2.0",
     "react-native": "0.62.0",
     "react-native-macos": "^0.62.0-0",
-    "react-native-vector-icons": "^8.1.0"
+    "react-native-vector-icons": "^8.1.0",
+    "react-redux": "^7.2.2",
+    "redux-immutable-state-invariant": "^2.1.0",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.13.8",
