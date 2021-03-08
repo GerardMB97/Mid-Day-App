@@ -1,4 +1,4 @@
-import { model, Schema } from 'mongoose';
+const { model, Schema } = require('mongoose');
 
 const CategorySchema = new Schema({
   name: String,

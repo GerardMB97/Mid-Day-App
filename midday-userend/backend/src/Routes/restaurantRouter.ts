@@ -1,5 +1,6 @@
 import { Router } from 'express';
-import restaurantController from '../Controllers/restaurantController';
+export {};
+const restaurantController = require('../Controllers/restaurantController');
 
 const restaurantRouter = ():Router => {
   const router = Router();

@@ -1,4 +1,4 @@
-import { model, Schema } from 'mongoose';
+const { model, Schema } = require('mongoose');
 
 const RestaurantSchema = new Schema({
   name: String,
@@ -9,4 +9,4 @@ const RestaurantSchema = new Schema({
   address: String
 });
 
-export default model('Restaurant', RestaurantSchema);
+module.exports = model('Restaurant', RestaurantSchema);
