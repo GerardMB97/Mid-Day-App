@@ -1,12 +1,11 @@
-import { connect } from 'mongoose';
-import express from 'express';
-import chalk from 'chalk';
-import debug from 'debug';
-import morgan from 'morgan';
-import dotenv from 'dotenv';
+const { connect } = require('mongoose');
+const express = require('express');
+const chalk = require('chalk');
+const debug = require('debug');
+const morgan = require('morgan');
+require('dotenv').config();
 const restaurantRouter = require('./src/Routes/restaurantRouter');
 
-dotenv.config();
 const Debug = debug('app');
 
 const app = express();
@@ -17,6 +16,6 @@ app.use(express.json());
 
 app.use('/api/midday', restaurantRouter);
 
-connect(process.env.APIURL!, { useUnifiedTopology: true, useNewUrlParser: true });
+connect(process.env.CLUSTERURL!, { useUnifiedTopology: true, useNewUrlParser: true });
 
 app.listen(port, () => Debug(`Server running in port ${chalk.blue(`${port}`)}`));
