@@ -1,7 +1,8 @@
 import restaurantActionTypes from '../actions/restaurantActionTypes';
-import { RestaurantAction } from '../../models';
+import { RestaurantAction, Category } from '../../models';
+import initialState from '../store/initialState';
 
-const restaurantReducer = (state = [], action:RestaurantAction) => {
+const restaurantReducer = (state = initialState.categories, action:RestaurantAction):Category[] => {
   switch (action.type) {
     case restaurantActionTypes.LOAD_CATEGORIES:
       return action.categories;

@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
+import { Dispatch, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
+
 import Icon from 'react-native-vector-icons/Ionicons';
 import {
   StyleSheet,
@@ -9,17 +10,22 @@ import {
   Text,
   FlatList,
   View,
-  SafeAreaView
+  SafeAreaView,
+  ImageBackground,
+  Image
 } from 'react-native';
 import colors from '../../colors';
 import { loadCategories } from '../redux/actions/restaurantAction';
-
-function CategoriesList ({ categories, actions }) {
+import { Category } from '../models';
+function CategoriesList ({ categories, actions }:any) {
   useEffect(() => {
     actions.loadCategories();
-  }, [categories]);
+  }, []);
+  console.log(categories);
+
   return (
     <View style = {styles.container}>
+      <Image source={require('../models/avatar.jpg')} style= {{ width: 200, height: 200 }}></Image>
       <TextInput style = {styles.input} placeholder="Tipo de menú o restaurante"></TextInput>
       <Icon style={styles.search} name= "search-outline"></Icon>
       <Text style = {styles.title}>¿Qué Menú te apetece hoy?</Text>
@@ -31,13 +37,16 @@ function CategoriesList ({ categories, actions }) {
         data ={categories}
         keyExtractor = {(item => item.name)}
         renderItem={({ item }) =>
-      <View style = {styles.listElement}>
-        <View style = {styles.nameContainer}><Text>{item.name}</Text></View>
-      </View>}>
+          <View style = {styles.listElement} >
+            <ImageBackground source= {{ uri: item.image }} style = {styles.image}>
+              <View style = {styles.nameContainer}><Text>{item.name}</Text></View>
+            </ImageBackground>
+          </View>}
+      >
       </FlatList>
       </SafeAreaView>
-
     </View>
+
   );
 }
 
@@ -47,12 +56,14 @@ CategoriesList.propTypes = {
     loadCategories: PropTypes.func.isRequired
   }).isRequired
 };
-
-function mapStateToProps ({ categories }) {
+interface destructuredSate{
+  categories: Category[]
+}
+function mapStateToProps ({ categories }: destructuredSate) {
   return { categories };
 }
 
-function mapDispatchToProps (dispatch) {
+function mapDispatchToProps (dispatch: Dispatch) {
   return { actions: bindActionCreators({ loadCategories }, dispatch) };
 }
 
@@ -112,5 +123,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: '8%',
     top: '2%'
+  },
+  image: {
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+    top: 0
   }
 });

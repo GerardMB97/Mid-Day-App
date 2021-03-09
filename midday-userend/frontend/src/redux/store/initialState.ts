@@ -1,6 +1,8 @@
-import {Category} from '../../models'
-const initialState = {
-  categories: Category[]
+import { State } from '../../models';
+
+const initialState: State = {
+  categories: []
 };
 
-export default initialState;
+export default initialState
+;

@@ -14,9 +14,9 @@ import CategoriesList from './src/components/CategoriesList';
 const App: () => any = () => {
   return (
  <Provider store = {store}>
-  <CategoriesList/>
+   <CategoriesList/>
  </Provider>
   );
 };
 
-export { App };
+export default App;
