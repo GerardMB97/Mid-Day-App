@@ -1,3 +1,4 @@
+export {};
 const { model, Schema } = require('mongoose');
 
 const CategorySchema = new Schema({
