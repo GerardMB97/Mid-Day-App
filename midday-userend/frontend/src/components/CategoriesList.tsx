@@ -12,7 +12,6 @@ import {
   View,
   SafeAreaView,
   ImageBackground,
-  Image
 } from 'react-native';
 import colors from '../../colors';
 import { loadCategories } from '../redux/actions/restaurantAction';
@@ -25,7 +24,6 @@ function CategoriesList ({ categories, actions }:any) {
 
   return (
     <View style = {styles.container}>
-      <Image source={require('../models/avatar.jpg')} style= {{ width: 200, height: 200 }}></Image>
       <TextInput style = {styles.input} placeholder="Tipo de menú o restaurante"></TextInput>
       <Icon style={styles.search} name= "search-outline"></Icon>
       <Text style = {styles.title}>¿Qué Menú te apetece hoy?</Text>
