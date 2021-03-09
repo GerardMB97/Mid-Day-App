@@ -8,7 +8,10 @@ export interface LoadCategoriesAction{
   categories: Category[]
 }
 
-export type RestaurantAction = LoadCategoriesAction;
+export interface FilterCategories{
+  type: string,
+  value: string
+}
 
  interface Actions{
   loadCategories: any
@@ -21,5 +24,8 @@ export interface Props {
 }
 
 export interface State {
-  categories: Category[]
+  categories: {
+    allCategories: Category[],
+    filteredCategories: Category[]
+  }
 }

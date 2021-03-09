@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Dispatch } from 'react';
-import { LoadCategoriesAction } from '../../models';
+import { FilterCategories, LoadCategoriesAction } from '../../models';
 import restaurantActionTypes from './restaurantActionTypes';
 
 export const loadCategories = () => {
@@ -12,5 +12,12 @@ export const loadCategories = () => {
       categories: data
     });
   };
-}
-;
+};
+
+export const filterCategories = (value: string):FilterCategories => {
+  console.log('1vez');
+  return {
+    type: restaurantActionTypes.FILTER_CATEGORIES,
+    value
+  };
+};

@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Dispatch, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
 import Icon from 'react-native-vector-icons/Ionicons';
 import {
   StyleSheet,
@@ -11,61 +10,11 @@ import {
   FlatList,
   View,
   SafeAreaView,
-  ImageBackground,
+  ImageBackground
 } from 'react-native';
 import colors from '../../colors';
-import { loadCategories } from '../redux/actions/restaurantAction';
+import { loadCategories, filterCategories } from '../redux/actions/restaurantAction';
 import { Category } from '../models';
-function CategoriesList ({ categories, actions }:any) {
-  useEffect(() => {
-    actions.loadCategories();
-  }, []);
-  console.log(categories);
-
-  return (
-    <View style = {styles.container}>
-      <TextInput style = {styles.input} placeholder="Tipo de menú o restaurante"></TextInput>
-      <Icon style={styles.search} name= "search-outline"></Icon>
-      <Text style = {styles.title}>¿Qué Menú te apetece hoy?</Text>
-      <SafeAreaView style = {styles.listContainer}>
-      <FlatList
-        style = {styles.list}
-        columnWrapperStyle={{ justifyContent: 'space-between' }}
-        numColumns={2}
-        data ={categories}
-        keyExtractor = {(item => item.name)}
-        renderItem={({ item }) =>
-          <View style = {styles.listElement} >
-            <ImageBackground source= {{ uri: item.image }} style = {styles.image}>
-              <View style = {styles.nameContainer}><Text>{item.name}</Text></View>
-            </ImageBackground>
-          </View>}
-      >
-      </FlatList>
-      </SafeAreaView>
-    </View>
-
-  );
-}
-
-CategoriesList.propTypes = {
-  categories: PropTypes.array.isRequired,
-  actions: PropTypes.shape({
-    loadCategories: PropTypes.func.isRequired
-  }).isRequired
-};
-interface destructuredSate{
-  categories: Category[]
-}
-function mapStateToProps ({ categories }: destructuredSate) {
-  return { categories };
-}
-
-function mapDispatchToProps (dispatch: Dispatch) {
-  return { actions: bindActionCreators({ loadCategories }, dispatch) };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CategoriesList);
 
 const styles = StyleSheet.create({
   container: {
@@ -129,3 +78,62 @@ const styles = StyleSheet.create({
     top: 0
   }
 });
+function CategoriesList ({ categories, actions }:any) {
+  const [inputValue, setInputValue] = useState('');
+
+  useEffect(() => {
+    actions.loadCategories();
+  }, []);
+  return (
+    <View style = {styles.container}>
+      <TextInput
+      style = {styles.input}
+      placeholder="Tipo de menú o restaurante"
+      value={inputValue}
+      onChangeText={(text) => { setInputValue(text); actions.filterCategories(text); }}>
+      </TextInput>
+      <Icon style={styles.search} name= "search-outline"></Icon>
+      <Text style = {styles.title}>¿Qué Menú te apetece hoy?</Text>
+      <SafeAreaView style = {styles.listContainer}>
+      <FlatList
+        style = {styles.list}
+        columnWrapperStyle={{ justifyContent: 'space-between' }}
+        numColumns={2}
+        data ={inputValue.length ? categories.filteredCategories : categories.allCategories}
+        keyExtractor = {(item => item.name)}
+        renderItem={({ item }) =>
+          <View style = {styles.listElement} >
+            <ImageBackground source= {{ uri: item.image }} style = {styles.image}>
+              <View style = {styles.nameContainer}><Text>{item.name}</Text></View>
+            </ImageBackground>
+          </View>}
+      >
+      </FlatList>
+      </SafeAreaView>
+    </View>
+
+  );
+}
+
+CategoriesList.propTypes = {
+  categories: PropTypes.shape({
+    allCategories: PropTypes.array.isRequired,
+    filteredCategories: PropTypes.array.isRequired
+  }).isRequired,
+  actions: PropTypes.shape({
+    loadCategories: PropTypes.func.isRequired,
+    filterCategories: PropTypes.func.isRequired
+  }).isRequired
+};
+interface destructuredSate{
+  categories: Category[]
+}
+function mapStateToProps ({ categories }: destructuredSate) {
+  return { categories };
+}
+
+function mapDispatchToProps (dispatch: Dispatch) {
+  return { actions: bindActionCreators({ loadCategories, filterCategories }, dispatch) };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CategoriesList);
