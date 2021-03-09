@@ -12,9 +12,9 @@ import {
   SafeAreaView,
   ImageBackground
 } from 'react-native';
-import colors from '../../colors';
-import { loadCategories, filterCategories } from '../redux/actions/restaurantAction';
-import { Category } from '../models';
+import colors from '../../../colors';
+import { loadCategories, filterCategories } from '../../redux/actions/restaurantAction';
+import { Category } from '../../models';
 
 const styles = StyleSheet.create({
   container: {

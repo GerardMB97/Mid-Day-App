@@ -15,7 +15,6 @@ export const loadCategories = () => {
 };
 
 export const filterCategories = (value: string):FilterCategories => {
-  console.log('1vez');
   return {
     type: restaurantActionTypes.FILTER_CATEGORIES,
     value
