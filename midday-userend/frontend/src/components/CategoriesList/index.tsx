@@ -1,20 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Dispatch, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Icon from 'react-native-vector-icons/Ionicons';
+
 import {
   StyleSheet,
-  TextInput,
   Text,
   FlatList,
   View,
   SafeAreaView,
-  ImageBackground
+  ImageBackground,
+  TouchableOpacity
 } from 'react-native';
 import colors from '../../../colors';
 import { loadCategories, filterCategories } from '../../redux/actions/restaurantAction';
 import { Category } from '../../models';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+
+import SearchBar from '../SearchBar';
 
 const styles = StyleSheet.create({
   container: {
@@ -76,10 +77,15 @@ const styles = StyleSheet.create({
     height: '100%',
     position: 'absolute',
     top: 0
+  },
+  nav: {
+    width: '100%',
+    height: 150
   }
 });
+
 function CategoriesList ({ categories, actions, navigation }:any) {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = React.useState('');
 
   useEffect(() => {
     actions.loadCategories();
@@ -87,13 +93,11 @@ function CategoriesList ({ categories, actions, navigation }:any) {
 
   return (
     <View style = {styles.container}>
-      <TextInput
-      style = {styles.input}
-      placeholder="Tipo de menú o restaurante"
-      value={inputValue}
-      onChangeText={(text) => { setInputValue(text); actions.filterCategories(text); }}>
-      </TextInput>
-      <Icon style={styles.search} name= "search-outline"></Icon>
+      <SearchBar inputValue={inputValue}
+       setInputValue={setInputValue}
+       inputPlaceholder='Tipo de menu o restaurante'
+       action = {actions.filterCategories}
+       ></SearchBar>
       <Text style = {styles.title}>¿Qué Menú te apetece hoy?</Text>
       <SafeAreaView style = {styles.listContainer}>
       <FlatList
@@ -104,12 +108,15 @@ function CategoriesList ({ categories, actions, navigation }:any) {
         keyExtractor = {(item => item.name)}
         renderItem={({ item }) =>
           <View style = {styles.listElement} >
-            <TouchableOpacity
-            onPress={() => navigation.navigate('CategoriesDetail')}>
+
             <ImageBackground source= {{ uri: item.image }} style = {styles.image} >
-              <View style = {styles.nameContainer}><Text>{item.name}</Text></View>
+              <TouchableOpacity testID={item.name} onPress={() => navigation.navigate('CategoriesDetail')} style = {styles.nav}>
+                <View style={styles.nameContainer}>
+                <Text>{item.name}</Text>
+                </View>
+                </TouchableOpacity>
             </ImageBackground>
-            </TouchableOpacity>
+
           </View>}
       >
       </FlatList>

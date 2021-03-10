@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { fireEvent, render } from 'react-native-testing-library';
 
-import CategoriesList from './CategoriesList';
+import CategoriesList from './index';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
@@ -25,17 +25,38 @@ describe('Given a CategoriesList component', () => {
     );
     expect(rendered).toMatchSnapshot();
   });
-  describe('When input value changes ', () => {
-    test('Then onChangeText should be invoked', () => {
-      const tree = render(
+  describe('When inputValue has length ', () => {
+    test('Then should render the filtered categories', () => {
+      const rendered = render(
       <Provider store={store}><CategoriesList /></Provider>
       );
 
-      const textInput = tree.getByPlaceholder('Tipo de menú o restaurante');
+      expect(rendered).toMatchSnapshot();
+    });
+  });
+  describe('When a category is clicked', () => {
+    test('Then it should navigate', () => {
+      const navigation = {
+        navigate: jest.fn()
+      };
 
-      fireEvent.changeText(textInput, 'asiatica');
+      const { getByTestId } = render(<Provider store={store}><CategoriesList navigation = {navigation}/></Provider>);
+      fireEvent.press(getByTestId('asian'));
 
-      expect(actions.filterCategories).toHaveBeenCalled();
+      expect(navigation.navigate).toHaveBeenCalled();
+    });
+  });
+  describe('When inputValue has length', () => {
+    test('Then it should render filteredCategories', () => {
+      const realUseState = React.useState;
+      const stubInitialState = 'asiatica';
+
+      jest
+        .spyOn(React, 'useState')
+        .mockImplementationOnce(() => realUseState(stubInitialState));
+
+      const rendered = render(<Provider store={store}><CategoriesList/></Provider>);
+      expect(rendered).toMatchSnapshot();
     });
   });
 });

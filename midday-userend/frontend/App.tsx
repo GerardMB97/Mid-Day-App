@@ -5,8 +5,8 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import store from './src/redux/store/configureStore';
 
-import LandingPage from './src/pages/LandingPage';
 import CategoriesDetail from './src/pages/CategoriesDetail';
+import CategoriesList from './src/components/CategoriesList';
 
 const Stack = createStackNavigator();
 
@@ -16,8 +16,8 @@ export default function App () {
       <Provider store={store}>
         <NavigationContainer>
           <Stack.Navigator>
-            <Stack.Screen name='LandingPage' component={LandingPage} options={{ headerShown: false }}/>
-            <Stack.Screen name='CategoriesDetail' component={CategoriesDetail}/>
+            <Stack.Screen name='LandingPage' component={CategoriesList} options={{ headerShown: false }}/>
+            <Stack.Screen name='CategoriesDetail/' component={CategoriesDetail}/>
         </Stack.Navigator>
         </NavigationContainer>
       </Provider>

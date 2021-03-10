@@ -6,9 +6,12 @@ const restaurantRouter = ():Router => {
   const router = Router();
 
   router
+    .route('/restaurants/categories/:category')
+    .get(restaurantController.getRestaurants);
+
+  router
     .route('/restaurants/categories')
-    .get(restaurantController.getRestaurants)
-    .post(restaurantController.createCategory);
+    .get(restaurantController.getCategories);
 
   return router;
 };

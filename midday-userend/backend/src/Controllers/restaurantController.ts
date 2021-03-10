@@ -1,26 +1,33 @@
 import { Request, Response } from 'express';
 export {};
 const Category = require('../Models/categoryModel');
+const Restaurant = require('../Models/restaurantModel');
 
 const restaurantController = () => {
+  const getCategories = async (req: Request, res: Response) => {
+    try {
+      const categories = await Category.find({});
+      res.json(categories);
+    } catch (error) {
+      res.status(500);
+      res.send(error);
+    }
+  };
+
   const getRestaurants = async (req: Request, res: Response) => {
     try {
-      const restaurants = await Category.find({});
+      const restaurants = await Restaurant.find({});
       res.json(restaurants);
     } catch (error) {
       res.status(500);
       res.send(error);
     }
   };
-  const createCategory = (req: Request, res:Response) => {
-    const newCategory = new Category(req.body);
-    newCategory.save();
-    res.json(newCategory);
-  };
 
   return {
-    getRestaurants,
-    createCategory
+    getCategories,
+    getRestaurants
+
   };
 };
 
