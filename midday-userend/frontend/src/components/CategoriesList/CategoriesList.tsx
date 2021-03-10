@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Dispatch, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {
   StyleSheet,
@@ -15,6 +14,7 @@ import {
 import colors from '../../../colors';
 import { loadCategories, filterCategories } from '../../redux/actions/restaurantAction';
 import { Category } from '../../models';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const styles = StyleSheet.create({
   container: {
@@ -78,12 +78,13 @@ const styles = StyleSheet.create({
     top: 0
   }
 });
-function CategoriesList ({ categories, actions }:any) {
+function CategoriesList ({ categories, actions, navigation }:any) {
   const [inputValue, setInputValue] = useState('');
 
   useEffect(() => {
     actions.loadCategories();
   }, []);
+
   return (
     <View style = {styles.container}>
       <TextInput
@@ -103,9 +104,12 @@ function CategoriesList ({ categories, actions }:any) {
         keyExtractor = {(item => item.name)}
         renderItem={({ item }) =>
           <View style = {styles.listElement} >
-            <ImageBackground source= {{ uri: item.image }} style = {styles.image}>
+            <TouchableOpacity
+            onPress={() => navigation.navigate('CategoriesDetail')}>
+            <ImageBackground source= {{ uri: item.image }} style = {styles.image} >
               <View style = {styles.nameContainer}><Text>{item.name}</Text></View>
             </ImageBackground>
+            </TouchableOpacity>
           </View>}
       >
       </FlatList>
@@ -115,16 +119,6 @@ function CategoriesList ({ categories, actions }:any) {
   );
 }
 
-CategoriesList.propTypes = {
-  categories: PropTypes.shape({
-    allCategories: PropTypes.array.isRequired,
-    filteredCategories: PropTypes.array.isRequired
-  }).isRequired,
-  actions: PropTypes.shape({
-    loadCategories: PropTypes.func.isRequired,
-    filterCategories: PropTypes.func.isRequired
-  }).isRequired
-};
 interface destructuredSate{
   categories: Category[]
 }

@@ -5,7 +5,7 @@ import restaurantActionTypes from './restaurantActionTypes';
 
 export const loadCategories = () => {
   return async (dispatch: Dispatch<LoadCategoriesAction>) => {
-    const { data } = await axios.get('http://localhost:5000/api/midday/restaurants/categories');
+    const { data } = await axios.get('http://192.168.0.36:5000/api/midday/restaurants/categories');
 
     dispatch({
       type: restaurantActionTypes.LOAD_CATEGORIES,
@@ -20,3 +20,9 @@ export const filterCategories = (value: string):FilterCategories => {
     value
   };
 };
+
+const actions = {
+  filterCategories,
+  loadCategories
+};
+export default actions;

@@ -2,7 +2,6 @@ export interface Category{
   name: string,
   image: string
 }
-
 export interface LoadCategoriesAction{
   type: string,
   categories: Category[]
