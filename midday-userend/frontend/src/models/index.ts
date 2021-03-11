@@ -44,5 +44,14 @@ export interface State {
   categories: {
     allCategories: Category[],
     filteredCategories: Category[]
+  },
+  restaurants: {
+    allRestaurants: Restaurant[],
+    categoryRestaurants: Restaurant[],
+    filteredRestaurants: Restaurant[]
   }
+}
+
+export interface Route {
+  params: string
 }

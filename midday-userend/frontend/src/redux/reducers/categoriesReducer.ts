@@ -11,7 +11,7 @@ const restaurantReducer = (state = initialState.categories, action:AnyAction) =>
         filteredCategories: action.categories
       };
     case restaurantActionTypes.FILTER_CATEGORIES:
-      filteredCategories = state.allCategories.filter(category => category.name.includes(action.value));
+      filteredCategories = state.allCategories.filter(({ name }) => name.toUpperCase().includes(action.value.toUpperCase()));
       return { ...state, filteredCategories };
     default:
       return state;

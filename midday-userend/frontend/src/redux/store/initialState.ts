@@ -4,6 +4,11 @@ const initialState: State = {
   categories: {
     allCategories: [],
     filteredCategories: []
+  },
+  restaurants: {
+    allRestaurants: [],
+    categoryRestaurants: [],
+    filteredRestaurants: []
   }
 };
 

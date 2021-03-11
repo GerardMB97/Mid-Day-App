@@ -16,6 +16,7 @@ import { loadCategories, filterCategories } from '../../redux/actions/restaurant
 import { Category } from '../../models';
 
 import SearchBar from '../SearchBar';
+import NotFound from '../NotFound';
 
 const styles = StyleSheet.create({
   container: {
@@ -100,7 +101,9 @@ function CategoriesList ({ categories, actions, navigation }:any) {
        ></SearchBar>
       <Text style = {styles.title}>¿Qué Menú te apetece hoy?</Text>
       <SafeAreaView style = {styles.listContainer}>
-      <FlatList
+        {inputValue.length && !categories.filteredCategories.length
+          ? <NotFound text="No hemos encontrado tu categoria"/>
+          : <FlatList
         style = {styles.list}
         columnWrapperStyle={{ justifyContent: 'space-between' }}
         numColumns={2}
@@ -120,6 +123,8 @@ function CategoriesList ({ categories, actions, navigation }:any) {
           </View>}
       >
       </FlatList>
+        }
+
       </SafeAreaView>
     </View>
 

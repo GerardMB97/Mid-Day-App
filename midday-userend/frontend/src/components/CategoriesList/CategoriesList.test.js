@@ -50,6 +50,21 @@ describe('Given a CategoriesList component', () => {
     test('Then it should render filteredCategories', () => {
       const realUseState = React.useState;
       const stubInitialState = 'asiatica';
+      const store = mockStore({ categories: { allCategories: [], filteredCategories: [{ name: 'asian' }] } });
+
+      jest
+        .spyOn(React, 'useState')
+        .mockImplementationOnce(() => realUseState(stubInitialState));
+
+      const rendered = render(<Provider store={store}><CategoriesList/></Provider>);
+      expect(rendered).toMatchSnapshot();
+    });
+  });
+  describe('When inputValue has length and filtered categories doesnt', () => {
+    test('Then it should render Notfound component', () => {
+      const realUseState = React.useState;
+      const stubInitialState = 'asiatica';
+      const store = mockStore({ categories: { allCategories: [], filteredCategories: [] } });
 
       jest
         .spyOn(React, 'useState')
