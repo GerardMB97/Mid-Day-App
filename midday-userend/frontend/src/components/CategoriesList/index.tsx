@@ -88,7 +88,7 @@ function CategoriesList ({ categories, actions, navigation }:any) {
   const [inputValue, setInputValue] = React.useState('');
 
   useEffect(() => {
-    actions.loadCategories();
+    if (!categories.allCategories.length) { actions.loadCategories(); }
   }, []);
 
   return (

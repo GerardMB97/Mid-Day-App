@@ -59,4 +59,12 @@ describe('Given a CategoriesList component', () => {
       expect(rendered).toMatchSnapshot();
     });
   });
+  describe('When allCategories has no length', () => {
+    test('Then loadCategories should be invoked', () => {
+      const store = mockStore({ categories: { allCategories: [], filteredCategories: [] } });
+
+      render(<Provider store={store}><CategoriesList/></Provider>);
+      expect(actions.loadCategories).toHaveBeenCalled();
+    });
+  });
 });
