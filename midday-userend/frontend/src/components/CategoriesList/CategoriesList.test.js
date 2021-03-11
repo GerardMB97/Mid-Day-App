@@ -12,12 +12,18 @@ jest.mock('../../redux/actions/restaurantAction');
 jest.mock('react-native-vector-icons/Ionicons', () => 'Icon');
 
 describe('Given a CategoriesList component', () => {
+  const restaurants = {
+    allRestaurants: [],
+    categoryRestaurants: [],
+    filteredRestaurants: []
+  };
   const mockStore = configureStore([thunk]);
-  const store = mockStore({ categories: { allCategories: [{ name: 'asian' }], filteredCategories: [] } });
+  const store = mockStore({ categories: { allCategories: [{ name: 'asian' }], filteredCategories: [] }, restaurants });
 
   beforeEach(() => {
     jest.spyOn(actions, 'filterCategories').mockReturnValueOnce({ type: '' });
     jest.spyOn(actions, 'loadCategories').mockReturnValueOnce({ type: '' });
+    jest.spyOn(actions, 'loadRestaurants').mockReturnValueOnce({ type: '' });
   });
   test('Renders correctly', () => {
     const rendered = render(
@@ -50,7 +56,7 @@ describe('Given a CategoriesList component', () => {
     test('Then it should render filteredCategories', () => {
       const realUseState = React.useState;
       const stubInitialState = 'asiatica';
-      const store = mockStore({ categories: { allCategories: [], filteredCategories: [{ name: 'asian' }] } });
+      const store = mockStore({ categories: { allCategories: [], filteredCategories: [{ name: 'asian' }] }, restaurants });
 
       jest
         .spyOn(React, 'useState')
@@ -64,7 +70,7 @@ describe('Given a CategoriesList component', () => {
     test('Then it should render Notfound component', () => {
       const realUseState = React.useState;
       const stubInitialState = 'asiatica';
-      const store = mockStore({ categories: { allCategories: [], filteredCategories: [] } });
+      const store = mockStore({ categories: { allCategories: [], filteredCategories: [] }, restaurants: { allRestaurants: [{ name: 'elpepe' }], filteredRestaurants: [], categoryRestaurants: [] } });
 
       jest
         .spyOn(React, 'useState')
@@ -76,7 +82,7 @@ describe('Given a CategoriesList component', () => {
   });
   describe('When allCategories has no length', () => {
     test('Then loadCategories should be invoked', () => {
-      const store = mockStore({ categories: { allCategories: [], filteredCategories: [] } });
+      const store = mockStore({ categories: { allCategories: [], filteredCategories: [] }, restaurants });
 
       render(<Provider store={store}><CategoriesList/></Provider>);
       expect(actions.loadCategories).toHaveBeenCalled();

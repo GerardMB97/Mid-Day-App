@@ -12,8 +12,8 @@ import {
   TouchableOpacity
 } from 'react-native';
 import colors from '../../../colors';
-import { loadCategories, filterCategories } from '../../redux/actions/restaurantAction';
-import { Category } from '../../models';
+import { loadCategories, filterCategories, loadRestaurants } from '../../redux/actions/restaurantAction';
+import { State } from '../../models';
 
 import SearchBar from '../SearchBar';
 import NotFound from '../NotFound';
@@ -85,11 +85,12 @@ const styles = StyleSheet.create({
   }
 });
 
-function CategoriesList ({ categories, actions, navigation }:any) {
+function CategoriesList ({ categories, restaurants, actions, navigation }:any) {
   const [inputValue, setInputValue] = React.useState('');
 
   useEffect(() => {
     if (!categories.allCategories.length) { actions.loadCategories(); }
+    if (!restaurants.allRestaurants.length) { actions.loadRestaurants(); }
   }, []);
 
   return (
@@ -131,15 +132,12 @@ function CategoriesList ({ categories, actions, navigation }:any) {
   );
 }
 
-interface destructuredSate{
-  categories: Category[]
-}
-function mapStateToProps ({ categories }: destructuredSate) {
-  return { categories };
+function mapStateToProps ({ categories, restaurants }: State) {
+  return { categories, restaurants };
 }
 
 function mapDispatchToProps (dispatch: Dispatch) {
-  return { actions: bindActionCreators({ loadCategories, filterCategories }, dispatch) };
+  return { actions: bindActionCreators({ loadCategories, filterCategories, loadRestaurants }, dispatch) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoriesList);
