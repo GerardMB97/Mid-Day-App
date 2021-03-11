@@ -21,7 +21,7 @@ describe('Given a CategoriesList component', () => {
   const store = mockStore({ categories: { allCategories: [{ name: 'asian' }], filteredCategories: [] }, restaurants });
 
   beforeEach(() => {
-    jest.spyOn(actions, 'filterCategories').mockReturnValueOnce({ type: '' });
+    jest.spyOn(actions, 'filterSearchBar').mockReturnValueOnce({ type: '' });
     jest.spyOn(actions, 'loadCategories').mockReturnValueOnce({ type: '' });
     jest.spyOn(actions, 'loadRestaurants').mockReturnValueOnce({ type: '' });
   });

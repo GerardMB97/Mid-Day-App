@@ -4,9 +4,13 @@ const RestaurantSchema = new Schema({
   name: String,
   image: String,
   category: { type: Schema.Types.ObjectId, ref: 'Category' },
-  capacity: Number,
+  menuPrice: Number,
   phone: Number,
-  address: String
+  street: String,
+  capacity: Number,
+  city: String,
+  address: String,
+  zip: String
 });
 
 module.exports = model('Restaurant', RestaurantSchema);

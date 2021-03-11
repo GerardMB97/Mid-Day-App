@@ -34,7 +34,7 @@ describe('Given a restaurantController', () => {
   });
   describe('Given a getRestaurants method', () => {
     test('Then Should invoke', async () => {
-      Restaurant.find.mockReturnValueOnce({});
+      Restaurant.find.mockReturnValueOnce({ populate: jest.fn() });
       await restaurantController.getRestaurants(req, res);
       expect(res.json).toHaveBeenCalled();
     });

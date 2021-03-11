@@ -14,9 +14,10 @@ export const loadCategories = () => {
   };
 };
 
-export const filterCategories = (value: string):FilterCategories => {
+export const filterSearchBar = (value: string, type: string):FilterCategories => {
+  const actionType = type === 'categories' ? restaurantActionTypes.FILTER_CATEGORIES : restaurantActionTypes.FILTER_RESTAURANTS;
   return {
-    type: restaurantActionTypes.FILTER_CATEGORIES,
+    type: actionType,
     value
   };
 };
@@ -33,8 +34,15 @@ export const loadRestaurants = () => {
   };
 };
 
+export const getCategoryRestaurants = (category: string) => {
+  return {
+    type: restaurantActionTypes.GET_CATEGORY_RESTAURANTS,
+    category
+  };
+};
+
 const actions = {
-  filterCategories,
+  filterSearchBar,
   loadCategories,
   loadRestaurants
 };

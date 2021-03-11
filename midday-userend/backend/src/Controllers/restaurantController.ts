@@ -16,7 +16,7 @@ const restaurantController = () => {
 
   const getRestaurants = async (req: Request, res: Response) => {
     try {
-      const restaurants = await Restaurant.find({});
+      const restaurants = await Restaurant.find({}).populate('category');
       res.json(restaurants);
     } catch (error) {
       res.status(500);

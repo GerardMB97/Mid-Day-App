@@ -12,7 +12,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 import colors from '../../../colors';
-import { loadCategories, filterCategories, loadRestaurants } from '../../redux/actions/restaurantAction';
+import { loadCategories, filterSearchBar, loadRestaurants } from '../../redux/actions/restaurantAction';
 import { State } from '../../models';
 
 import SearchBar from '../SearchBar';
@@ -98,7 +98,7 @@ function CategoriesList ({ categories, restaurants, actions, navigation }:any) {
       <SearchBar inputValue={inputValue}
        setInputValue={setInputValue}
        inputPlaceholder='Tipo de menu o restaurante'
-       action = {actions.filterCategories}
+       action = 'categories'
        ></SearchBar>
       <Text style = {styles.title}>¿Qué Menú te apetece hoy?</Text>
       <SafeAreaView style = {styles.listContainer}>
@@ -114,7 +114,7 @@ function CategoriesList ({ categories, restaurants, actions, navigation }:any) {
           <View style = {styles.listElement} >
 
             <ImageBackground source= {{ uri: item.image }} style = {styles.image} >
-              <TouchableOpacity testID={item.name} onPress={() => navigation.navigate('CategoriesDetail')} style = {styles.nav}>
+              <TouchableOpacity testID={item.name} onPress={() => navigation.navigate('CategoriesDetail', { category: item.name })} style = {styles.nav}>
                 <View style={styles.nameContainer}>
                 <Text>{item.name}</Text>
                 </View>
@@ -137,7 +137,7 @@ function mapStateToProps ({ categories, restaurants }: State) {
 }
 
 function mapDispatchToProps (dispatch: Dispatch) {
-  return { actions: bindActionCreators({ loadCategories, filterCategories, loadRestaurants }, dispatch) };
+  return { actions: bindActionCreators({ loadCategories, filterSearchBar, loadRestaurants }, dispatch) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoriesList);

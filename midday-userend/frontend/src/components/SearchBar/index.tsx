@@ -1,7 +1,10 @@
 import React from 'react';
+import { Dispatch, AnyAction, bindActionCreators } from 'redux';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { TextInput, View, StyleSheet } from 'react-native';
 import colors from '../../../colors';
+import { filterSearchBar } from '../../redux/actions/restaurantAction';
+import { connect } from 'react-redux';
 
 const styles = StyleSheet.create({
   container: {
@@ -28,15 +31,21 @@ const styles = StyleSheet.create({
   }
 });
 
-export default function SearchBar ({ inputPlaceholder, setInputValue, inputValue, action }: {inputPlaceholder: string, setInputValue:any, inputValue:string, action:any}) {
+function SearchBar ({ inputPlaceholder, setInputValue, inputValue, action, actions }: {inputPlaceholder: string, setInputValue:any, inputValue:string, action:any, actions:any}) {
   return (
     <View style = {styles.container}>
      <TextInput
       style = {styles.input}
       placeholder={inputPlaceholder}
       value={inputValue}
-      onChangeText={(text) => { setInputValue(text); action(text); }}>
+      onChangeText={(text) => { setInputValue(text); actions.filterSearchBar(text, action); }}>
       </TextInput>
       <Icon style={styles.search} name= "search-outline"></Icon>
       </View>);
 };
+
+function mapDispatchToProps (dispatch: Dispatch<AnyAction>) {
+  return { actions: bindActionCreators({ filterSearchBar }, dispatch) };
+}
+
+export default connect(null, mapDispatchToProps)(SearchBar);

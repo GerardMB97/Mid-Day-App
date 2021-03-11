@@ -1,6 +1,8 @@
 import React from 'react';
-import { View, Text } from 'react-native';
 
-export default function CategoriesDetail () {
-  return <View><Text>Hello World!</Text></View>;
+import { Route } from '../models';
+import RestaurantsList from '../components/RestaurantsList';
+
+export default function CategoriesDetail ({ route }:{route:Route}) {
+  return <RestaurantsList route = {route}/>;
 }

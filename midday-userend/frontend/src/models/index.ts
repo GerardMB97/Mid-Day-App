@@ -11,7 +11,8 @@ export interface Restaurant{
   _id: string,
   name: string,
   capcity: number,
-  menuPrice: number
+  menuPrice: number,
+  category: Category,
   phone: number,
   street: string,
   number: number,
@@ -28,6 +29,11 @@ export interface LoadRestaurantAction{
 export interface FilterCategories{
   type: string,
   value: string
+}
+
+export interface GetCategoryRestaurants{
+  type: string,
+  category: string
 }
 
  interface Actions{
