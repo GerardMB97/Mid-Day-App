@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Dispatch } from 'react';
-import { FilterCategories, LoadCategoriesAction } from '../../models';
+import { FilterCategories, LoadCategoriesAction, LoadRestaurantAction } from '../../models';
 import restaurantActionTypes from './restaurantActionTypes';
 
 export const loadCategories = () => {
@@ -18,6 +18,17 @@ export const filterCategories = (value: string):FilterCategories => {
   return {
     type: restaurantActionTypes.FILTER_CATEGORIES,
     value
+  };
+};
+
+export const loadRestaurants = () => {
+  return async (dispatch: Dispatch<LoadRestaurantAction>) => {
+    const { data } = await axios.get('http://192.168.0.36:5000/api/midday/restaurants');
+
+    dispatch({
+      type: restaurantActionTypes.LOAD_RESTAURANTS,
+      restaurants: data
+    });
   };
 };
 

@@ -6,7 +6,7 @@ const restaurantRouter = ():Router => {
   const router = Router();
 
   router
-    .route('/restaurants/categories/:category')
+    .route('/restaurants')
     .get(restaurantController.getRestaurants);
 
   router
