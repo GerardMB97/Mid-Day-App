@@ -347,3 +347,7 @@ auth-data.js
 
 /.expo
 .expo/
+
+#ios
+/.ios
+.ios/
