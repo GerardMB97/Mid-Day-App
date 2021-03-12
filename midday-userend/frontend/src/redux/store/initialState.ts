@@ -8,7 +8,8 @@ const initialState: State = {
   restaurants: {
     allRestaurants: [],
     categoryRestaurants: [],
-    filteredRestaurants: []
+    filteredRestaurants: [],
+    selectedRestaurant: null
   }
 };
 
