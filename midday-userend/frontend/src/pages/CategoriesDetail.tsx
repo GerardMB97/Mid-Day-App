@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Route } from '../models';
+import { Route, Navigation } from '../models';
 import RestaurantsList from '../components/RestaurantsList';
 
-export default function CategoriesDetail ({ route }:{route:Route}) {
-  return <RestaurantsList route = {route}/>;
+export default function CategoriesDetail ({ route, navigation }:{route:Route, navigation: Navigation}) {
+  return <RestaurantsList route = {route} navigation = {navigation}/>;
 }

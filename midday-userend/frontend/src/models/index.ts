@@ -61,3 +61,7 @@ export interface State {
 export interface Route {
   params: string
 }
+
+export interface Navigation {
+  navigate: Function
+}

@@ -6,9 +6,9 @@ exports[`Given a CategoriesList component Renders correctly 1`] = `
     Object {
       "alignItems": "center",
       "flex": 1,
-      "marginTop": 100,
       "paddingLeft": 20,
       "paddingRight": 20,
+      "paddingTop": 100,
       "width": "100%",
     }
   }
@@ -103,6 +103,7 @@ exports[`Given a CategoriesList component Renders correctly 1`] = `
       stickyHeaderIndices={Array []}
       style={
         Object {
+          "borderRadius": 15,
           "flexDirection": "column",
         }
       }
@@ -227,9 +228,9 @@ exports[`Given a CategoriesList component When inputValue has length  Then shoul
     Object {
       "alignItems": "center",
       "flex": 1,
-      "marginTop": 100,
       "paddingLeft": 20,
       "paddingRight": 20,
+      "paddingTop": 100,
       "width": "100%",
     }
   }
@@ -324,6 +325,7 @@ exports[`Given a CategoriesList component When inputValue has length  Then shoul
       stickyHeaderIndices={Array []}
       style={
         Object {
+          "borderRadius": 15,
           "flexDirection": "column",
         }
       }
@@ -448,9 +450,9 @@ exports[`Given a CategoriesList component When inputValue has length Then it sho
     Object {
       "alignItems": "center",
       "flex": 1,
-      "marginTop": 100,
       "paddingLeft": 20,
       "paddingRight": 20,
+      "paddingTop": 100,
       "width": "100%",
     }
   }
@@ -545,6 +547,7 @@ exports[`Given a CategoriesList component When inputValue has length Then it sho
       stickyHeaderIndices={Array []}
       style={
         Object {
+          "borderRadius": 15,
           "flexDirection": "column",
         }
       }
@@ -669,9 +672,9 @@ exports[`Given a CategoriesList component When inputValue has length and filtere
     Object {
       "alignItems": "center",
       "flex": 1,
-      "marginTop": 100,
       "paddingLeft": 20,
       "paddingRight": 20,
+      "paddingTop": 100,
       "width": "100%",
     }
   }

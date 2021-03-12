@@ -7,6 +7,7 @@ import store from './src/redux/store/configureStore';
 
 import CategoriesDetail from './src/pages/CategoriesDetail';
 import CategoriesList from './src/components/CategoriesList';
+import RestaurantDetail from './src/pages/RestaurantDetail';
 
 const Stack = createStackNavigator();
 
@@ -18,6 +19,7 @@ export default function App () {
           <Stack.Navigator>
             <Stack.Screen name='LandingPage' component={CategoriesList} options={{ headerShown: false }}/>
             <Stack.Screen name='CategoriesDetail' component={CategoriesDetail}/>
+            <Stack.Screen name='RestaurantDetail' component={RestaurantDetail}/>
         </Stack.Navigator>
         </NavigationContainer>
       </Provider>

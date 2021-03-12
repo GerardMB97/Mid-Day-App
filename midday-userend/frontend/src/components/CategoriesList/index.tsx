@@ -21,11 +21,12 @@ import NotFound from '../NotFound';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 100,
+    paddingTop: 100,
     alignItems: 'center',
     width: '100%',
     paddingLeft: 20,
     paddingRight: 20
+
   },
   input: {
     width: '100%',
@@ -46,7 +47,8 @@ const styles = StyleSheet.create({
     width: '100%'
   },
   list: {
-    flexDirection: 'column'
+    flexDirection: 'column',
+    borderRadius: 15
   },
   listElement: {
     width: '48%',

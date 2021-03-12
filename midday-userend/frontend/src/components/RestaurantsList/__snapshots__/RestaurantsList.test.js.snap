@@ -146,7 +146,7 @@ exports[`Given a component RestaurantsList When has inputValue.length  Then it s
             />
             <View
               accessible={true}
-              focusable={false}
+              focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -275,7 +275,13 @@ exports[`Given a component RestaurantsList When invoked Then it should render co
     />
   </View>
   <RCTScrollView
-    data={Array []}
+    data={
+      Array [
+        Object {
+          "name": "asian",
+        },
+      ]
+    }
     disableVirtualization={false}
     getItem={[Function]}
     getItemCount={[Function]}
@@ -304,7 +310,130 @@ exports[`Given a component RestaurantsList When invoked Then it should render co
     viewabilityConfigCallbackPairs={Array []}
     windowSize={21}
   >
-    <View />
+    <View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "borderColor": "black",
+              "borderRadius": 15,
+              "borderWidth": 1,
+              "height": 150,
+              "marginBottom": 15,
+              "overflow": "hidden",
+              "position": "relative",
+              "width": "100%",
+            }
+          }
+        >
+          <View
+            accessibilityIgnoresInvertColors={true}
+            style={
+              Object {
+                "height": "100%",
+                "position": "absolute",
+                "top": 0,
+                "width": "100%",
+              }
+            }
+          >
+            <Image
+              source={
+                Object {
+                  "uri": undefined,
+                }
+              }
+              style={
+                Array [
+                  Object {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  },
+                  Object {
+                    "height": "100%",
+                    "width": "100%",
+                  },
+                  undefined,
+                ]
+              }
+            />
+            <View
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "height": 150,
+                  "opacity": 1,
+                  "width": "100%",
+                }
+              }
+              testID="asian"
+            >
+              <View
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "rgba(242, 242, 242, 0.8)",
+                    "borderBottomLeftRadius": 15,
+                    "borderBottomRightRadius": 15,
+                    "flexDirection": "row",
+                    "height": 60,
+                    "justifyContent": "space-between",
+                    "padding": 20,
+                    "position": "absolute",
+                    "top": 90,
+                    "width": "100%",
+                  }
+                }
+              >
+                <Text>
+                  asian
+                </Text>
+                <Text>
+                  undefined, undefined
+                </Text>
+                <View
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "rgb(135, 175, 147)",
+                      "borderRadius": 50,
+                      "height": 40,
+                      "justifyContent": "center",
+                      "width": 40,
+                    }
+                  }
+                >
+                  <Text
+                    style={
+                      Object {
+                        "color": "black",
+                        "fontSize": 12,
+                      }
+                    }
+                  >
+                     €
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
   </RCTScrollView>
 </View>
 `;

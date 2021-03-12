@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
 });
 function RestaurantsList ({ route, restaurants, actions, navigation }:any) {
   const [inputValue, setInputValue] = React.useState('');
-  const { category } = route.params;
+  const { category } = route?.params;
   useEffect(() => {
     actions.getCategoryRestaurants(category);
   }, [category]);
@@ -98,7 +98,7 @@ function RestaurantsList ({ route, restaurants, actions, navigation }:any) {
           <View style = {styles.listElement} >
 
             <ImageBackground source= {{ uri: item.image }} style = {styles.image} >
-              <TouchableOpacity testID={item.name} style = {styles.nav}>
+              <TouchableOpacity testID={item.name} style = {styles.nav} onPress={() => { navigation.navigate('RestaurantDetail', { _id: item._id }); }}>
                 <View style={styles.nameContainer}>
                 <Text>{item.name}</Text>
                 <Text>{`${item.street}, ${item.number}`}</Text>
