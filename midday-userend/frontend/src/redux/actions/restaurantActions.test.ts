@@ -2,7 +2,8 @@ import {
   filterSearchBar,
   loadCategories,
   loadRestaurants,
-  getCategoryRestaurants
+  getCategoryRestaurants,
+  getSelectedRestaurant
 } from './restaurantAction';
 import restaurantActionTypes from './restaurantActionTypes';
 import axios from 'axios';
@@ -71,5 +72,17 @@ describe('Given a function getCategoryRestaurants when invoked with params "medi
     };
     const output = getCategoryRestaurants('mediterranean');
     expect(output).toEqual(action);
+  });
+});
+describe('Given a function getSelectedRestaurant, when invoked with an argument 12345', () => {
+  it('Should return and action with _id: 12345 and type GET_SELECTED_RESTAURANT', () => {
+    const action = {
+      type: restaurantActionTypes.GET_SELECTED_RESTAURANT,
+      _id: '12345'
+    };
+
+    const output = getSelectedRestaurant('12345');
+
+    expect(action).toEqual(output);
   });
 });

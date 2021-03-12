@@ -41,9 +41,17 @@ export const getCategoryRestaurants = (category: string) => {
   };
 };
 
+export const getSelectedRestaurant = (_id: string) => {
+  return {
+    type: restaurantActionTypes.GET_SELECTED_RESTAURANT,
+    _id
+  };
+};
+
 const actions = {
   filterSearchBar,
   loadCategories,
-  loadRestaurants
+  loadRestaurants,
+  getSelectedRestaurant
 };
 export default actions;
