@@ -5,7 +5,7 @@ import restaurantActionTypes from './restaurantActionTypes';
 
 export const loadCategories = () => {
   return async (dispatch: Dispatch<LoadCategoriesAction>) => {
-    const { data } = await axios.get('http://192.168.0.36:5000/api/midday/restaurants/categories');
+    const { data } = await axios.get('http://localhost:5000/api/midday/restaurants/categories');
 
     dispatch({
       type: restaurantActionTypes.LOAD_CATEGORIES,
@@ -24,7 +24,7 @@ export const filterSearchBar = (value: string, type: string):FilterCategories =>
 
 export const loadRestaurants = () => {
   return async (dispatch: Dispatch<LoadRestaurantAction>) => {
-    const { data } = await axios.get('http://192.168.0.36:5000/api/midday/restaurants');
+    const { data } = await axios.get('http://localhost:5000/api/midday/restaurants');
     await console.log(data);
 
     dispatch({

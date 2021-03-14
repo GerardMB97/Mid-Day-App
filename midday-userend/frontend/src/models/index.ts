@@ -55,7 +55,7 @@ export interface State {
     allRestaurants: Restaurant[],
     categoryRestaurants: Restaurant[],
     filteredRestaurants: Restaurant[],
-    selectedRestaurant: null | Restaurant
+    selectedRestaurant: Restaurant | {}
   }
 }
 

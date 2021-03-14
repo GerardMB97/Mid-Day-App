@@ -9,7 +9,9 @@ const initialState: State = {
     allRestaurants: [],
     categoryRestaurants: [],
     filteredRestaurants: [],
-    selectedRestaurant: null
+    selectedRestaurant: {
+      category: {}
+    }
   }
 };
 
