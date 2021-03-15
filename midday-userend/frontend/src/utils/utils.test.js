@@ -1,7 +1,9 @@
 import {
   checkSelectedHour,
   handleConfirm,
-  checkName
+  checkName,
+  checkEmail,
+  checkPassword
 } from './index';
 
 describe('Given a function checkSelectedHour', () => {
@@ -52,6 +54,37 @@ describe('Given a funcion checkName', () => {
   describe('When invoked with argument X', () => {
     test('Should return false', () => {
       expect(checkName('X')).toBe(false);
+    });
+  });
+});
+describe('Given a function checkEmail', () => {
+  describe('When invoked with an argument gerard@gmail.com', () => {
+    test('Then it should return true', () => {
+      expect(checkEmail('gerard@gmail.com')).toBe(true);
+    });
+  });
+});
+describe('Given a function checkEmail', () => {
+  describe('When invoked with an argument gerard @gmail.com', () => {
+    test('Then it should return false', () => {
+      expect(checkEmail('gerard @gmail.com')).toBe(false);
+    });
+  });
+});
+describe('Given a function checkPassword', () => {
+  describe('When invoked with argument "barcelona" ', () => {
+    test('Then it should return false', () => {
+      expect(checkPassword('barcelona')).toBe(false);
+    });
+  });
+  describe('When invoked with argument "barcelona10" ', () => {
+    test('Then it should return false', () => {
+      expect(checkPassword('barcelona10')).toBe(false);
+    });
+  });
+  describe('When invoked with argument "Barcelona10" ', () => {
+    test('Then it should return false', () => {
+      expect(checkPassword('Barcelona10')).toBe(true);
     });
   });
 });
