@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 export {};
-const Category = require('../Models/categoryModel');
-const Restaurant = require('../Models/restaurantModel');
+const Category = require('../../Models/categoryModel');
+const Restaurant = require('../../Models/restaurantModel');
 
 const restaurantController = () => {
   const getCategories = async (req: Request, res: Response) => {

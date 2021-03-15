@@ -1,10 +1,18 @@
+export {};
 const { model, Schema } = require('mongoose');
+const md5 = require('md5');
 
 const UserSchema = new Schema({
   email: String,
   password: String,
   name: String,
-  allergies: [String]
+  phone: Number,
+  allergies: [String],
+  foodTastes: [String]
 });
 
-export default model('User', UserSchema);
+UserSchema.methods.validPassword = function validPassword (password: string) {
+  return this.password === md5(password);
+};
+
+module.exports = model('User', UserSchema);
