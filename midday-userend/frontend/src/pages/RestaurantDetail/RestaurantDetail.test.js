@@ -32,13 +32,4 @@ describe('Given a component Restaurant Detail', () => {
       expect(rendered).toMatchSnapshot();
     });
   });
-  describe('When buton with testId calendar is pressed', () => {
-    test('Then it should render correctly', () => {
-      const rendered = render(<Provider store={store}><RestaurantDetail route={{ params: 15 }}></RestaurantDetail></Provider>);
-      const activeCalendar = rendered.getByTestId('calendar');
-      fireEvent.press(activeCalendar);
-
-      expect(rendered).toMatchSnapshot();
-    });
-  });
 });

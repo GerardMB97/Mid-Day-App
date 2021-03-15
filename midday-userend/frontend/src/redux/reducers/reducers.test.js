@@ -20,9 +20,13 @@ describe('Given a categoriesReducer', () => {
   });
   describe('When invoked with an action with different type', () => {
     test('Then it should return same state', () => {
-      const output = categoriesReducer(categoriesState, { type: 'other' });
+      const initialState = {
+        allCategories: [],
+        filteredCategories: []
+      };
+      const output = categoriesReducer(undefined, { type: 'other' });
 
-      expect(output).toEqual(categoriesState);
+      expect(output).toEqual(initialState);
     });
   });
 });
@@ -74,8 +78,16 @@ describe('Given a restaurantReducer ', () => {
   describe('When invoked with an action with deifferent type', () => {
     test('Then it should return same state', () => {
       const action = { type: 'other' };
+      const initialState = {
+        allRestaurants: [],
+        categoryRestaurants: [],
+        filteredRestaurants: [],
+        selectedRestaurant: {
+          category: {}
+        }
+      };
 
-      expect(restaurantReducer(state, action)).toEqual(state);
+      expect(restaurantReducer(undefined, action)).toEqual(initialState);
     });
   });
 });

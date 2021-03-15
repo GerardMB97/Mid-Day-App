@@ -60,7 +60,6 @@ const styles = StyleSheet.create({
   },
   day: {
     marginTop: 20,
-    backgroundColor: colors.green,
     width: '100%',
     height: 70,
     borderRadius: 15,
@@ -69,7 +68,7 @@ const styles = StyleSheet.create({
   },
   calendar: {
     position: 'absolute',
-    left: 130,
+    left: 70,
     top: 320
   },
   touchable: {
@@ -91,7 +90,7 @@ const styles = StyleSheet.create({
   calendarIcon: {
     fontSize: 30,
     position: 'absolute',
-    left: 200,
+    left: 180,
     top: -35
   },
   bookingDetails: {
@@ -111,7 +110,8 @@ const styles = StyleSheet.create({
   },
   timeContainer: {
     position: 'absolute',
-    left: 200
+    left: 220,
+    top: -35
   },
   confirm: {
     marginTop: 10,
@@ -123,7 +123,10 @@ const styles = StyleSheet.create({
     borderRadius: 15
   },
   confirmContainer: {
-    position: 'relative'
+    position: 'relative',
+    top: 400,
+    left: 130
+
   },
   hourModal: {
     borderRadius: 15,
@@ -134,7 +137,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 10,
     position: 'absolute',
-    left: -135,
+    left: -265,
     zIndex: 5
   },
   modalText: {
