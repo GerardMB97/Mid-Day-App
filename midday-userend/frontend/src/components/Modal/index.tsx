@@ -10,7 +10,8 @@ const styles = StyleSheet.create({
     width: 240,
     height: 50,
     backgroundColor: colors.alert,
-    borderRadius: 10
+    borderRadius: 10,
+    padding: 5
   },
   triangle: {
     width: 30,

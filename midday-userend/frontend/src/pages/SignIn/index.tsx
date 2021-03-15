@@ -41,10 +41,6 @@ const styles = StyleSheet.create({
   }
 });
 export default function SignIn ({ navigation }:{navigation:Navigation}) {
-  const [name, setName] = React.useState();
-  const [email, setEmail] = React.useState();
-  const [pwd, setPwd] = React.useState();
-  const [repeatedPwd, setRepeatedPwd] = React.useState();
   return (
     <ImageBackground style={styles.image} source={{ uri: 'https://trello-attachments.s3.amazonaws.com/6041f773bf2ba60154c38447/417x626/b5a3b5bc578c8c8a9603c72b18f9670e/comida-ingredientes_1220-4884.jpg' }}>
       <View style={styles.container}>
