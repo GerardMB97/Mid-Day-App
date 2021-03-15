@@ -10,3 +10,7 @@ export const handleConfirm = (boolean:boolean, setter: Function, callback: Funct
     setTimeout(callback, 3000);
   }
 };
+
+export const checkName = (name:string) => {
+  return name.length > 2;
+};
