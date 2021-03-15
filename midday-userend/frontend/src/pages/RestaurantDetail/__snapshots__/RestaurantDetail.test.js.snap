@@ -1,0 +1,527 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given a component Restaurant Detail Then it should render correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "alignSelf": "center",
+      "flex": 1,
+      "paddingTop": 20,
+      "position": "relative",
+      "width": "90%",
+    }
+  }
+>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "height": "100%",
+        "position": "absolute",
+        "width": "100%",
+        "zIndex": 0,
+      }
+    }
+    testID="calendarUnactive"
+  />
+  <View
+    style={
+      Object {
+        "borderColor": "black",
+        "borderRadius": 15,
+        "borderWidth": 1,
+        "height": 200,
+        "overflow": "hidden",
+        "position": "relative",
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      accessibilityIgnoresInvertColors={true}
+      style={
+        Object {
+          "borderRadius": 15,
+          "height": "100%",
+          "position": "relative",
+          "width": "100%",
+        }
+      }
+    >
+      <Image
+        source={
+          Object {
+            "uri": undefined,
+          }
+        }
+        style={
+          Array [
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            Object {
+              "height": "100%",
+              "width": "100%",
+            },
+            undefined,
+          ]
+        }
+      />
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgba(242, 242, 242, 0.8)",
+            "flexDirection": "row",
+            "height": 40,
+            "justifyContent": "space-between",
+            "paddingLeft": 15,
+            "paddingRight": 15,
+            "width": "100%",
+          }
+        }
+      >
+        <Text />
+        <Text />
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgba(242, 242, 242, 0.8)",
+            "flexDirection": "row",
+            "height": 40,
+            "justifyContent": "space-between",
+            "paddingLeft": 15,
+            "paddingRight": 15,
+            "position": "absolute",
+            "top": 160,
+            "width": "100%",
+          }
+        }
+      >
+        <Text>
+          undefined, undefined
+        </Text>
+        <Text>
+           €
+        </Text>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "borderRadius": 15,
+        "height": 70,
+        "marginTop": 20,
+        "padding": 10,
+        "width": "100%",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontSize": 18,
+          "marginBottom": 10,
+        }
+      }
+    >
+      Cuando quieres reservar?
+    </Text>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-around",
+          "position": "relative",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "left": 220,
+            "position": "absolute",
+            "top": -35,
+          }
+        }
+      >
+        <View
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          testID="show"
+        >
+          <Icon
+            name="time-outline"
+            style={
+              Object {
+                "fontSize": 30,
+              }
+            }
+          />
+          <TimePicker
+            headerTextIOS="Estamos disponibles de 12:00 a 16:00 "
+            isVisible={false}
+            locale="en_GB"
+            minuteInterval={30}
+            mode="time"
+            onCancel={[Function]}
+            onConfirm={[Function]}
+            testID="picker"
+          />
+        </View>
+      </View>
+      <Text>
+        15-3-2021
+         a las 
+        12:00
+      </Text>
+      <Icon
+        accessible={true}
+        focusable={true}
+        name="calendar-outline"
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "fontSize": 30,
+            "left": 180,
+            "position": "absolute",
+            "top": -35,
+          }
+        }
+        testID="calendar"
+      />
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "left": 130,
+        "position": "relative",
+        "top": 400,
+      }
+    }
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "rgb(135, 175, 147)",
+          "borderRadius": 15,
+          "height": 40,
+          "justifyContent": "center",
+          "marginTop": 10,
+          "opacity": 1,
+          "width": 100,
+        }
+      }
+    >
+      <Text>
+        Reservar
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Given a component Restaurant Detail When buton with testId calendarUnactive is pressed Then it should render correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "alignSelf": "center",
+      "flex": 1,
+      "paddingTop": 20,
+      "position": "relative",
+      "width": "90%",
+    }
+  }
+>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "height": "100%",
+        "position": "absolute",
+        "width": "100%",
+        "zIndex": 0,
+      }
+    }
+    testID="calendarUnactive"
+  />
+  <View
+    style={
+      Object {
+        "borderColor": "black",
+        "borderRadius": 15,
+        "borderWidth": 1,
+        "height": 200,
+        "overflow": "hidden",
+        "position": "relative",
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      accessibilityIgnoresInvertColors={true}
+      style={
+        Object {
+          "borderRadius": 15,
+          "height": "100%",
+          "position": "relative",
+          "width": "100%",
+        }
+      }
+    >
+      <Image
+        source={
+          Object {
+            "uri": undefined,
+          }
+        }
+        style={
+          Array [
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            Object {
+              "height": "100%",
+              "width": "100%",
+            },
+            undefined,
+          ]
+        }
+      />
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgba(242, 242, 242, 0.8)",
+            "flexDirection": "row",
+            "height": 40,
+            "justifyContent": "space-between",
+            "paddingLeft": 15,
+            "paddingRight": 15,
+            "width": "100%",
+          }
+        }
+      >
+        <Text />
+        <Text />
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgba(242, 242, 242, 0.8)",
+            "flexDirection": "row",
+            "height": 40,
+            "justifyContent": "space-between",
+            "paddingLeft": 15,
+            "paddingRight": 15,
+            "position": "absolute",
+            "top": 160,
+            "width": "100%",
+          }
+        }
+      >
+        <Text>
+          undefined, undefined
+        </Text>
+        <Text>
+           €
+        </Text>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "borderRadius": 15,
+        "height": 70,
+        "marginTop": 20,
+        "padding": 10,
+        "width": "100%",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontSize": 18,
+          "marginBottom": 10,
+        }
+      }
+    >
+      Cuando quieres reservar?
+    </Text>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-around",
+          "position": "relative",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "left": 220,
+            "position": "absolute",
+            "top": -35,
+          }
+        }
+      >
+        <View
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          testID="show"
+        >
+          <Icon
+            name="time-outline"
+            style={
+              Object {
+                "fontSize": 30,
+              }
+            }
+          />
+          <TimePicker
+            headerTextIOS="Estamos disponibles de 12:00 a 16:00 "
+            isVisible={false}
+            locale="en_GB"
+            minuteInterval={30}
+            mode="time"
+            onCancel={[Function]}
+            onConfirm={[Function]}
+            testID="picker"
+          />
+        </View>
+      </View>
+      <Text>
+        15-3-2021
+         a las 
+        12:00
+      </Text>
+      <Icon
+        accessible={true}
+        focusable={true}
+        name="calendar-outline"
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "fontSize": 30,
+            "left": 180,
+            "position": "absolute",
+            "top": -35,
+          }
+        }
+        testID="calendar"
+      />
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "left": 130,
+        "position": "relative",
+        "top": 400,
+      }
+    }
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "rgb(135, 175, 147)",
+          "borderRadius": 15,
+          "height": 40,
+          "justifyContent": "center",
+          "marginTop": 10,
+          "opacity": 1,
+          "width": 100,
+        }
+      }
+    >
+      <Text>
+        Reservar
+      </Text>
+    </View>
+  </View>
+</View>
+`;

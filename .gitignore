@@ -347,3 +347,6 @@ auth-data.js
 
 /.expo
 .expo/
+
+android/
+Pods/
