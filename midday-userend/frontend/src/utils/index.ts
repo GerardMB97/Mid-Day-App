@@ -12,5 +12,5 @@ export const handleConfirm = (boolean:boolean, setter: Function, callback: Funct
 };
 
 export const checkName = (name:string) => {
-  return name.length > 2;
+  return name.length >= 2;
 };

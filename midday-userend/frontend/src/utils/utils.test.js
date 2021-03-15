@@ -1,4 +1,8 @@
-import { checkSelectedHour, handleConfirm } from './index';
+import {
+  checkSelectedHour,
+  handleConfirm,
+  checkName
+} from './index';
 
 describe('Given a function checkSelectedHour', () => {
   describe('When invoked with "12:00 and ["12:00"]', () => {
@@ -36,6 +40,18 @@ describe('Given a function handleConfirm', () => {
 
       handleConfirm(false, setter, callback);
       expect(setter).toHaveBeenCalled();
+    });
+  });
+});
+describe('Given a funcion checkName', () => {
+  describe('When invoked with argument Xi', () => {
+    test('Should return true', () => {
+      expect(checkName('Xi')).toBe(true);
+    });
+  });
+  describe('When invoked with argument X', () => {
+    test('Should return false', () => {
+      expect(checkName('X')).toBe(false);
     });
   });
 });
