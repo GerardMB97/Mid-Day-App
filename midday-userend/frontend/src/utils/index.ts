@@ -24,3 +24,7 @@ export const checkPassword = (pwd: string) => {
   const validationPwdRegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
   return validationPwdRegExp.test(pwd);
 };
+
+export const checkRepeatedPwd = (pwd: string, repeatedPwd:string) => {
+  return pwd === repeatedPwd;
+};

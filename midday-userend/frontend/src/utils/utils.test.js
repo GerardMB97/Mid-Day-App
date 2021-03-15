@@ -3,7 +3,8 @@ import {
   handleConfirm,
   checkName,
   checkEmail,
-  checkPassword
+  checkPassword,
+  checkRepeatedPwd
 } from './index';
 
 describe('Given a function checkSelectedHour', () => {
@@ -85,6 +86,18 @@ describe('Given a function checkPassword', () => {
   describe('When invoked with argument "Barcelona10" ', () => {
     test('Then it should return false', () => {
       expect(checkPassword('Barcelona10')).toBe(true);
+    });
+  });
+});
+describe('Given a function checkRepeatedPwd', () => {
+  describe('When invoked with arguments "hello", "hello', () => {
+    test('Then it should return true', () => {
+      expect(checkRepeatedPwd('hello', 'hello')).toBe(true);
+    });
+  });
+  describe('When invoked with arguments "hello", "hi', () => {
+    test('Then it should return true', () => {
+      expect(checkRepeatedPwd('hello', 'hi')).toBe(false);
     });
   });
 });
