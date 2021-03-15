@@ -6,7 +6,7 @@ import { State } from '../../models';
 import { getSelectedRestaurant } from '../../redux/actions/restaurantAction';
 import { connect } from 'react-redux';
 import colors from '../../../colors';
-import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
+import { Calendar } from 'react-native-calendars';
 import Icon from 'react-native-vector-icons/Ionicons';
 import TimePicker from '../../components/TimePicker';
 import { checkSelectedHour, handleConfirm } from '../../utils';

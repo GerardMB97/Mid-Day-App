@@ -8,6 +8,8 @@ import store from './src/redux/store/configureStore';
 import CategoriesDetail from './src/pages/CategoriesDetail';
 import CategoriesList from './src/components/CategoriesList';
 import RestaurantDetail from './src/pages/RestaurantDetail';
+import SignIn from './src/pages/SignIn';
+import SignUp from './src/pages/SignUp';
 
 const Stack = createStackNavigator();
 
@@ -16,7 +18,9 @@ export default function App () {
 
       <Provider store={store}>
         <NavigationContainer>
-          <Stack.Navigator>
+          <Stack.Navigator initialRouteName='SignIn' >
+            <Stack.Screen name='SignUp'component={SignUp} options= {{ headerShown: false }}/>
+            <Stack.Screen name='SignIn' component={SignIn} options= {{ headerShown: false }}/>
             <Stack.Screen name='LandingPage' component={CategoriesList} options={{ headerShown: false }}/>
             <Stack.Screen name='CategoriesDetail' component={CategoriesDetail}/>
             <Stack.Screen name='RestaurantDetail' component={RestaurantDetail}/>
