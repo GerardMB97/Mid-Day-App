@@ -14,3 +14,7 @@ export const handleConfirm = (boolean:boolean, setter: Function, callback: Funct
 export const checkName = (name:string) => {
   return name.length >= 2;
 };
+export const checkEmail = (email:string) => {
+  const validationRegExp = /^\S+@\S+\.\S+$/;
+  return validationRegExp.test(email);
+};
