@@ -2,6 +2,7 @@ import colors from '../../../colors';
 import React from 'react';
 import { ImageBackground, View, StyleSheet, Image, TextInput, TouchableOpacity, Text } from 'react-native';
 import { Navigation } from '../../models';
+import Modal from '../../components/Modal';
 
 const styles = StyleSheet.create({
   image: {
@@ -51,6 +52,7 @@ export default function SignIn ({ navigation }:{navigation:Navigation}) {
         <TextInput secureTextEntry={true} style={styles.input} placeholder="Repita su contraseña"></TextInput>
         <TouchableOpacity style={styles.button} ><Text>Sign In</Text></TouchableOpacity>
         <TouchableOpacity onPress={() => { navigation.navigate('SignIn'); }}><Text style={styles.text}>Ya estás registrado? Pincha aquí</Text></TouchableOpacity>
+        <Modal></Modal>
       </View>
     </ImageBackground>
   );
