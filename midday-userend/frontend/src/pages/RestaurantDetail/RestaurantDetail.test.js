@@ -7,7 +7,7 @@ import configureStore from 'redux-mock-store';
 import * as actions from '../../redux/actions/restaurantActions/restaurantAction';
 import RestaurantDetail from '.';
 
-jest.mock('../../redux/actions/restaurantAction');
+jest.mock('../../redux/actions/restaurantActions/restaurantAction');
 jest.mock('react-native-vector-icons/Ionicons', () => 'Icon');
 jest.mock('react-native-calendars', () => 'Calendar');
 jest.mock('react-native-modal-datetime-picker', () => 'TimePicker');

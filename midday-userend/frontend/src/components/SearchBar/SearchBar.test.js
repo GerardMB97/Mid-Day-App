@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import * as actions from '../../redux/actions/restaurantActions/restaurantAction';
 
-jest.mock('../../redux/actions/restaurantAction');
+jest.mock('../../redux/actions/restaurantActions/restaurantAction');
 jest.mock('react-native-vector-icons/Ionicons', () => 'Icon');
 
 jest.spyOn(actions, 'filterSearchBar').mockReturnValueOnce({ type: '' });

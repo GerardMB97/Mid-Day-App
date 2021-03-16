@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 import * as actions from '../../redux/actions/restaurantActions/restaurantAction';
 import RestaurantsList from '../RestaurantsList';
 
-jest.mock('../../redux/actions/restaurantAction');
+jest.mock('../../redux/actions/restaurantActions/restaurantAction');
 jest.mock('react-native-vector-icons/Ionicons', () => 'Icon');
 
 describe('Given a component RestaurantsList', () => {

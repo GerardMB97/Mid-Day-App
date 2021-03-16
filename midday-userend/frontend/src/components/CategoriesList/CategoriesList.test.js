@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 
 import * as actions from '../../redux/actions/restaurantActions/restaurantAction';
 
-jest.mock('../../redux/actions/restaurantAction');
+jest.mock('../../redux/actions/restaurantActions/restaurantAction');
 jest.mock('react-native-vector-icons/Ionicons', () => 'Icon');
 
 describe('Given a CategoriesList component', () => {
