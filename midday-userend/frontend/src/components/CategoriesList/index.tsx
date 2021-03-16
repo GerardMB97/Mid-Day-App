@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
   }
 });
 
-function CategoriesList ({ categories, restaurants, actions, navigation }:any) {
+function CategoriesList ({ categories, restaurants, actions, navigation, user }:any) {
   const [inputValue, setInputValue] = React.useState('');
 
   useEffect(() => {
@@ -134,8 +134,8 @@ function CategoriesList ({ categories, restaurants, actions, navigation }:any) {
   );
 }
 
-function mapStateToProps ({ categories, restaurants }: State) {
-  return { categories, restaurants };
+function mapStateToProps ({ categories, restaurants, user }: State) {
+  return { categories, restaurants, user };
 }
 
 function mapDispatchToProps (dispatch: Dispatch) {

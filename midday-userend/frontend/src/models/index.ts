@@ -56,6 +56,15 @@ export interface State {
     categoryRestaurants: Restaurant[],
     filteredRestaurants: Restaurant[],
     selectedRestaurant: Restaurant | {}
+  },
+  user: {
+    name: string | undefined,
+    password: string | undefined,
+    email: string | undefined,
+    allergies: string[],
+    foodTastes: string[],
+    _id: string | undefined,
+    status: number
   }
 }
 

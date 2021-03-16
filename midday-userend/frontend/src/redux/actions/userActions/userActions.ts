@@ -11,7 +11,6 @@ export const signUp = (name:string, email:string, password:string) => {
         data
       });
     } catch (error) {
-
     }
   };
 };

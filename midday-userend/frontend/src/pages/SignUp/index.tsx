@@ -1,12 +1,15 @@
 import colors from '../../../colors';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ImageBackground, View, StyleSheet, Image, TextInput, TouchableOpacity, Text } from 'react-native';
 import { Navigation } from '../../models';
 import Modal from '../../components/Modal';
 import modalText from '../../constants/modalText';
 import { signUp } from '../../redux/actions/userActions/userActions';
+import { Dispatch, bindActionCreators } from 'redux';
 
 import { checkName, checkEmail, checkPassword, checkRepeatedPwd } from '../../utils';
+
+import { connect } from 'react-redux';
 
 const styles = StyleSheet.create({
   image: {
@@ -65,7 +68,7 @@ const styles = StyleSheet.create({
     zIndex: 3
   }
 });
-export default function SignIn ({ navigation }:{navigation:Navigation}) {
+function SignUp ({ navigation, user, actions }:{navigation:Navigation, user:any, actions: any}) {
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [pwd, setPwd] = React.useState('');
@@ -74,11 +77,20 @@ export default function SignIn ({ navigation }:{navigation:Navigation}) {
   const [emailModal, setEmailModal] = React.useState(false);
   const [pwdModal, setPwdModal] = React.useState(false);
   const [repeatedPwdModal, setRepeatedPwdModal] = React.useState(false);
+  const [existantUserModal, setExistantUserModal] = React.useState(false);
 
   const handleModal = (setter: Function) => {
     setter(true);
     setTimeout(() => { setter(false); }, 4000);
   };
+  useEffect(() => {
+    if (user.status === 1) {
+      handleModal(setExistantUserModal);
+    } else if (user.status === 2) {
+      navigation.navigate('LandingPage');
+    }
+    console.log(user.status);
+  }, [user]);
 
   const handleConfirm = (nameValue:string, emailValue: string, pwdValue: string, repeatedPwdValue: string) => {
     if (!checkName(nameValue)) {
@@ -89,7 +101,7 @@ export default function SignIn ({ navigation }:{navigation:Navigation}) {
       handleModal(setPwdModal);
     } else if (!checkRepeatedPwd(pwdValue, repeatedPwdValue)) {
       handleModal(setRepeatedPwdModal);
-    } else signUp(nameValue, emailValue, pwdValue);
+    } else actions.signUp(nameValue, emailValue, pwdValue);
   };
   return (
     <ImageBackground style={styles.image} source={{ uri: 'https://trello-attachments.s3.amazonaws.com/6041f773bf2ba60154c38447/417x626/b5a3b5bc578c8c8a9603c72b18f9670e/comida-ingredientes_1220-4884.jpg' }}>
@@ -101,6 +113,7 @@ export default function SignIn ({ navigation }:{navigation:Navigation}) {
 
         <TextInput style={styles.input} placeholder="Introduzca su correo"value={email} onChangeText={(text) => { setEmail(text); }}></TextInput>
         {emailModal && <View style={styles.emailModal}><Modal modalText={modalText.wrongMail}></Modal></View>}
+        {existantUserModal && <View style={styles.emailModal}><Modal modalText={modalText.existantUser}></Modal></View>}
 
         <TextInput secureTextEntry={true} style={styles.input} placeholder="Introduzca su contraseña" value={pwd} onChangeText={(text) => { setPwd(text); }}></TextInput>
         {pwdModal && <View style={styles.pwdModal}><Modal modalText={modalText.wrongPwd}></Modal></View>}
@@ -114,3 +127,13 @@ export default function SignIn ({ navigation }:{navigation:Navigation}) {
     </ImageBackground>
   );
 }
+
+function mapStateToProps ({ user }: {user: any}) {
+  return { user };
+}
+
+function mapDispatchToProps (dispatch: Dispatch) {
+  return { actions: bindActionCreators({ signUp }, dispatch) };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
