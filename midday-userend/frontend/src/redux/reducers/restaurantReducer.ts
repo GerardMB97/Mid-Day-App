@@ -1,5 +1,5 @@
 import { AnyAction } from 'redux';
-import restaurantActionTypes from '../actions/restaurantActionTypes';
+import restaurantActionTypes from '../actions/restaurantActions/restaurantActionTypes';
 import initialState from '../store/initialState';
 
 const restaurantReducer = (state = initialState.restaurants, action:AnyAction) => {

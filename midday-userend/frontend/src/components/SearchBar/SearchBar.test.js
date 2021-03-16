@@ -1,10 +1,10 @@
 import React from 'react';
 import SearchBar from '.';
 import { fireEvent, render } from 'react-native-testing-library';
-import { filterSearchBar } from '../../redux/actions/restaurantAction';
+import { filterSearchBar } from '../../redux/actions/restaurantActions/restaurantAction';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import * as actions from '../../redux/actions/restaurantAction';
+import * as actions from '../../redux/actions/restaurantActions/restaurantAction';
 
 jest.mock('../../redux/actions/restaurantAction');
 jest.mock('react-native-vector-icons/Ionicons', () => 'Icon');

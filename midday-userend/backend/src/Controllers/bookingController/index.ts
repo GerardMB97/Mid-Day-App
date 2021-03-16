@@ -8,7 +8,6 @@ const bookingController = () => {
     try {
       const restaurant = await Restaurant.findById(_id);
       const updatedRestaurant = await Restaurant.findByIdAndUpdate(_id, { bookings: [...restaurant.bookings, req.body] }, { new: true });
-      console.log(updatedRestaurant);
       res.json(updatedRestaurant);
     } catch (error) {
       res.status(500);

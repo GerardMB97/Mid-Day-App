@@ -4,6 +4,7 @@ import { ImageBackground, View, StyleSheet, Image, TextInput, TouchableOpacity, 
 import { Navigation } from '../../models';
 import Modal from '../../components/Modal';
 import modalText from '../../constants/modalText';
+import { signUp } from '../../redux/actions/userActions/userActions';
 
 import { checkName, checkEmail, checkPassword, checkRepeatedPwd } from '../../utils';
 
@@ -88,7 +89,7 @@ export default function SignIn ({ navigation }:{navigation:Navigation}) {
       handleModal(setPwdModal);
     } else if (!checkRepeatedPwd(pwdValue, repeatedPwdValue)) {
       handleModal(setRepeatedPwdModal);
-    } else console.warn('Congratulations!');
+    } else signUp(nameValue, emailValue, pwdValue);
   };
   return (
     <ImageBackground style={styles.image} source={{ uri: 'https://trello-attachments.s3.amazonaws.com/6041f773bf2ba60154c38447/417x626/b5a3b5bc578c8c8a9603c72b18f9670e/comida-ingredientes_1220-4884.jpg' }}>

@@ -1,4 +1,4 @@
-import restaurantActionTypes from '../actions/restaurantActionTypes';
+import restaurantActionTypes from '../../redux/actions/restaurantActions/restaurantActionTypes';
 import { AnyAction } from 'redux';
 import initialState from '../store/initialState';
 

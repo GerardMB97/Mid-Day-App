@@ -11,7 +11,7 @@ import {
 import { State } from '../../models/index';
 import { AnyAction, bindActionCreators, Dispatch } from 'redux';
 
-import { getCategoryRestaurants } from '../../redux/actions/restaurantAction';
+import { getCategoryRestaurants } from '../../redux/actions/restaurantActions/restaurantAction';
 import SearchBar from '../SearchBar';
 import colors from '../../../colors';
 

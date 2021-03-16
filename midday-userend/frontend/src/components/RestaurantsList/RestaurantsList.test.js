@@ -2,9 +2,10 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { render, fireEvent } from 'react-native-testing-library';
 import configureStore from 'redux-mock-store';
-
+import * as actions from '../../redux/actions/restaurantActions/restaurantAction';
 import RestaurantsList from '../RestaurantsList';
 
+jest.mock('../../redux/actions/restaurantAction');
 jest.mock('react-native-vector-icons/Ionicons', () => 'Icon');
 
 describe('Given a component RestaurantsList', () => {
@@ -13,6 +14,7 @@ describe('Given a component RestaurantsList', () => {
     categoryRestaurants: [{ name: 'asian' }],
     filteredRestaurants: [{ name: 'hi' }]
   };
+  jest.spyOn(actions, 'getCategoryRestaurants').mockReturnValue({ type: '' });
   const mockStore = configureStore();
   const store = mockStore({ restaurants });
   describe('When invoked', () => {

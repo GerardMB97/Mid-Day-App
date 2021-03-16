@@ -3,7 +3,7 @@ import { Dispatch, AnyAction, bindActionCreators } from 'redux';
 import { Text, ImageBackground, StyleSheet, View, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 
 import { State } from '../../models';
-import { getSelectedRestaurant } from '../../redux/actions/restaurantAction';
+import { getSelectedRestaurant } from '../../redux/actions/restaurantActions/restaurantAction';
 import { connect } from 'react-redux';
 import colors from '../../../colors';
 import { Calendar } from 'react-native-calendars';

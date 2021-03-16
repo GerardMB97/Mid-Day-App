@@ -3,18 +3,18 @@ const md5 = require('md5');
 const User = require('../../Models/userModel');
 
 async function register (req: Request, res: Response) {
-  const { email, password } = req.body;
+  const { email, password, name } = req.body;
 
   const isRegistered = await User.findOne({ email });
 
   if (isRegistered) {
-    res.send('This user is already registered');
+    res.send('409');
   } else {
     const user = new User({
       email,
-      password: md5(password)
+      password: md5(password),
+      name
     });
-    console.log(user);
     try {
       user.save();
       req.login(user, () => { res.json(user); });

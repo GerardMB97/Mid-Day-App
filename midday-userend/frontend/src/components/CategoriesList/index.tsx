@@ -12,7 +12,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 import colors from '../../../colors';
-import { loadCategories, filterSearchBar, loadRestaurants } from '../../redux/actions/restaurantAction';
+import { loadCategories, filterSearchBar, loadRestaurants } from '../../redux/actions/restaurantActions/restaurantAction';
 import { State } from '../../models';
 
 import SearchBar from '../SearchBar';

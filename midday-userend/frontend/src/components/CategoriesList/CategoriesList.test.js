@@ -6,7 +6,7 @@ import CategoriesList from './index';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
-import * as actions from '../../redux/actions/restaurantAction';
+import * as actions from '../../redux/actions/restaurantActions/restaurantAction';
 
 jest.mock('../../redux/actions/restaurantAction');
 jest.mock('react-native-vector-icons/Ionicons', () => 'Icon');
