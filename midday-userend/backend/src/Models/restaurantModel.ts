@@ -10,7 +10,8 @@ const RestaurantSchema = new Schema({
   capacity: Number,
   city: String,
   address: String,
-  zip: String
+  zip: String,
+  bookings: Array
 });
 
 module.exports = model('Restaurant', RestaurantSchema);
