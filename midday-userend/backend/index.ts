@@ -8,6 +8,7 @@ require('dotenv').config();
 const restaurantRouter = require('./src/Routes/restaurantRouter');
 const authRouter = require('./src/Routes/authRouter');
 const bookingRouter = require('./src/Routes/bookingRouter');
+const ingredientsRouter = require('./src/Routes/ingredientsRouter');
 
 const Debug = debug('app');
 
@@ -21,6 +22,7 @@ app.use(session({ secret: 'skylab directory' }));
 
 require('./src/Passport')(app);
 app.use('/api/midday', restaurantRouter);
+app.use('/api/midday/ingredients', ingredientsRouter);
 app.use('/api/midday/users', authRouter);
 app.use('/api/midday/bookings', bookingRouter);
 

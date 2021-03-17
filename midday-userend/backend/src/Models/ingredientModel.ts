@@ -5,4 +5,4 @@ const IngredientSchema = new Schema({
   category: String,
   ingredient: [Object]
 });
-module.exports = model('Category', IngredientSchema);
+module.exports = model('Ingredient', IngredientSchema);
