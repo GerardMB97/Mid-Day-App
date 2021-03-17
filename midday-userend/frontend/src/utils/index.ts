@@ -28,3 +28,8 @@ export const checkPassword = (pwd: string) => {
 export const checkRepeatedPwd = (pwd: string, repeatedPwd:string) => {
   return pwd === repeatedPwd;
 };
+
+export const handleModal = (setter: Function) => {
+  setter(true);
+  setTimeout(() => { setter(false); }, 4000);
+};

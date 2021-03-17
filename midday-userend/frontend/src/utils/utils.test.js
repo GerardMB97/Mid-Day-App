@@ -1,10 +1,12 @@
+import { waitFor } from 'react-native-testing-library';
 import {
   checkSelectedHour,
   handleConfirm,
   checkName,
   checkEmail,
   checkPassword,
-  checkRepeatedPwd
+  checkRepeatedPwd,
+  handleModal
 } from './index';
 
 describe('Given a function checkSelectedHour', () => {
@@ -98,6 +100,16 @@ describe('Given a function checkRepeatedPwd', () => {
   describe('When invoked with arguments "hello", "hi', () => {
     test('Then it should return true', () => {
       expect(checkRepeatedPwd('hello', 'hi')).toBe(false);
+    });
+  });
+});
+describe('Given a function handleModal', () => {
+  describe('When invoked with a function', () => {
+    test('Then it should call the setter 2 times', async () => {
+      const setter = jest.fn();
+      handleModal(setter);
+
+      await waitFor(() => { expect(setter).toHaveBeenCalledTimes(2); }, { timeout: 4100 });
     });
   });
 });

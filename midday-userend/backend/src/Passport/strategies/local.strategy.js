@@ -10,16 +10,18 @@ function LocalStrategy () {
         passwordField: 'password'
       },
       (email, password, done) => {
-        (async () => {
+        (() => {
           User.findOne({ email }, (err, user) => {
             if (err) { return done(err); }
 
             if (!user) {
+              console.log('hola');
               return done(null, false, { message: 'Incorrect username.' });
             }
             if (!user.validPassword(password)) {
               return done(null, false, { message: 'Incorrect password.' });
             }
+            console.log('oie que retorno');
             return done(null, user);
           });
         })();

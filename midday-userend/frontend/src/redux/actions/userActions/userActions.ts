@@ -1,6 +1,6 @@
 import axios from 'axios';
 import userActionTypes from './userActionTypes';
-import { SignUpRoute } from '../../../constants/dataBase';
+import { SignUpRoute, SignInRoute } from '../../../constants/dataBase';
 import { Dispatch } from 'redux';
 export const signUp = (name:string, email:string, password:string) => {
   return async (dispatch:Dispatch) => {
@@ -11,6 +11,25 @@ export const signUp = (name:string, email:string, password:string) => {
         data
       });
     } catch (error) {
+    }
+  };
+};
+
+export const signIn = (email: string, password: string) => {
+  console.log('im in action');
+  return async (dispatch:Dispatch) => {
+    try {
+      const { data } = await axios.post(SignInRoute, { email, password });
+      console.log(data);
+      dispatch({
+        type: userActionTypes.SIGN_IN,
+        data
+      });
+    } catch (error) {
+      dispatch({
+        type: userActionTypes.SIGN_IN,
+        data: null
+      });
     }
   };
 };

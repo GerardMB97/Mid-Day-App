@@ -91,6 +91,7 @@ function CategoriesList ({ categories, restaurants, actions, navigation, user }:
   const [inputValue, setInputValue] = React.useState('');
 
   useEffect(() => {
+    console.log(categories);
     if (!categories.allCategories.length) { actions.loadCategories(); }
     if (!restaurants.allRestaurants.length) { actions.loadRestaurants(); }
   }, []);
@@ -111,7 +112,7 @@ function CategoriesList ({ categories, restaurants, actions, navigation, user }:
         columnWrapperStyle={{ justifyContent: 'space-between' }}
         numColumns={2}
         data ={inputValue.length ? categories.filteredCategories : categories.allCategories}
-        keyExtractor = {(item => item.name)}
+        keyExtractor = {(item => item._id)}
         renderItem={({ item }) =>
           <View style = {styles.listElement} >
 

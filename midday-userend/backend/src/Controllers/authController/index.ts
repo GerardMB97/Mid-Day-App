@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 const md5 = require('md5');
 const User = require('../../Models/userModel');
 
-async function register (req: Request, res: Response) {
+async function register (req:Request, res: Response) {
   const { email, password, name } = req.body;
 
   const isRegistered = await User.findOne({ email });
@@ -25,8 +25,16 @@ async function register (req: Request, res: Response) {
   }
 }
 
-function login (req: Request, res: Response) {
-  res.redirect('/api/midday/restaurants/categories');
+async function login (req: Request, res: Response) {
+  console.log(req.body);
+  try {
+    const { email } = req.body;
+    const user = await User.findOne({ email });
+    console.log(user);
+    res.json(user);
+  } catch (error) {
+    res.status(500);
+  }
 }
 
 function logout (req: Request, res: Response) {

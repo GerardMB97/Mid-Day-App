@@ -89,7 +89,6 @@ function SignUp ({ navigation, user, actions }:{navigation:Navigation, user:any,
     } else if (user.status === 2) {
       navigation.navigate('LandingPage');
     }
-    console.log(user.status);
   }, [user]);
 
   const handleConfirm = (nameValue:string, emailValue: string, pwdValue: string, repeatedPwdValue: string) => {

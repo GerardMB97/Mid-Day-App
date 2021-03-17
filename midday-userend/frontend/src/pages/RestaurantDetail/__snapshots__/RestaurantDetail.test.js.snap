@@ -196,7 +196,7 @@ exports[`Given a component Restaurant Detail Then it should render correctly 1`]
         </View>
       </View>
       <Text>
-        16-3-2021
+        17-3-2021
          a las 
         12:00
       </Text>
@@ -459,7 +459,7 @@ exports[`Given a component Restaurant Detail When buton with testId calendarUnac
         </View>
       </View>
       <Text>
-        16-3-2021
+        17-3-2021
          a las 
         12:00
       </Text>

@@ -40,6 +40,7 @@ function SearchBar ({ inputPlaceholder, setInputValue, inputValue, action, actio
   return (
     <View style = {styles.container}>
      <TextInput
+     testID = 'searchbar'
       style = {styles.input}
       placeholder={inputPlaceholder}
       value={inputValue}

@@ -39,6 +39,7 @@ exports[`Given a component RestaurantsList When has inputValue.length  Then it s
           "width": "100%",
         }
       }
+      testID="searchbar"
       underlineColorAndroid="transparent"
       value="asiatica"
     />
@@ -258,6 +259,7 @@ exports[`Given a component RestaurantsList When invoked Then it should render co
           "width": "100%",
         }
       }
+      testID="searchbar"
       underlineColorAndroid="transparent"
       value=""
     />

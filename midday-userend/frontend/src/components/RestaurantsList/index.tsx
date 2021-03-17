@@ -93,7 +93,7 @@ function RestaurantsList ({ route, restaurants, actions, navigation }:any) {
         style = {styles.list}
         numColumns={1}
         data ={inputValue.length ? restaurants.filteredRestaurants : restaurants.categoryRestaurants}
-        keyExtractor = {(item => item.name)}
+        keyExtractor = {(item => item._id)}
         renderItem={({ item }) =>
           <View style = {styles.listElement} >
 

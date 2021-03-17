@@ -39,6 +39,7 @@ exports[`Given a CategoriesList component Renders correctly 1`] = `
           "width": "100%",
         }
       }
+      testID="searchbar"
       underlineColorAndroid="transparent"
       value=""
     />
@@ -261,6 +262,7 @@ exports[`Given a CategoriesList component When inputValue has length  Then shoul
           "width": "100%",
         }
       }
+      testID="searchbar"
       underlineColorAndroid="transparent"
       value=""
     />
@@ -483,6 +485,7 @@ exports[`Given a CategoriesList component When inputValue has length Then it sho
           "width": "100%",
         }
       }
+      testID="searchbar"
       underlineColorAndroid="transparent"
       value="asiatica"
     />
@@ -705,6 +708,7 @@ exports[`Given a CategoriesList component When inputValue has length and filtere
           "width": "100%",
         }
       }
+      testID="searchbar"
       underlineColorAndroid="transparent"
       value="asiatica"
     />
