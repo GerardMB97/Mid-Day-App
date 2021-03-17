@@ -10,9 +10,9 @@ jest.mock('react-native-vector-icons/Ionicons', () => 'Icon');
 
 describe('Given a component RestaurantsList', () => {
   const restaurants = {
-    allRestaurants: [],
-    categoryRestaurants: [{ name: 'asian' }],
-    filteredRestaurants: [{ name: 'hi' }]
+    allRestaurants: [{ _id: '3' }],
+    categoryRestaurants: [{ name: 'asian', _id: '1' }],
+    filteredRestaurants: [{ name: 'hi', _id: '2' }]
   };
   jest.spyOn(actions, 'getCategoryRestaurants').mockReturnValue({ type: '' });
   const mockStore = configureStore();

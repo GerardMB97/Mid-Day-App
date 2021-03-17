@@ -60,6 +60,7 @@ exports[`Given a component RestaurantsList When has inputValue.length  Then it s
     data={
       Array [
         Object {
+          "_id": "2",
           "name": "hi",
         },
       ]
@@ -280,6 +281,7 @@ exports[`Given a component RestaurantsList When invoked Then it should render co
     data={
       Array [
         Object {
+          "_id": "1",
           "name": "asian",
         },
       ]

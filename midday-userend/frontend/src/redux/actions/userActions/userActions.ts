@@ -16,11 +16,10 @@ export const signUp = (name:string, email:string, password:string) => {
 };
 
 export const signIn = (email: string, password: string) => {
-  console.log('im in action');
   return async (dispatch:Dispatch) => {
     try {
       const { data } = await axios.post(SignInRoute, { email, password });
-      console.log(data);
+
       dispatch({
         type: userActionTypes.SIGN_IN,
         data

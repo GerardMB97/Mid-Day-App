@@ -7,6 +7,7 @@ import { signIn } from '../../redux/actions/userActions/userActions';
 import Modal from '../../components/Modal';
 import modal from '../../constants/modalText';
 import { connect } from 'react-redux';
+import { handleModal } from '../../utils';
 
 const styles = StyleSheet.create({
   image: {
@@ -51,31 +52,30 @@ const styles = StyleSheet.create({
   }
 });
 function SignIn ({ navigation, user, actions }:{navigation:Navigation, user: any, actions: any}) {
+  const [islanding, setIsLanding] = React.useState(true);
+  const [wrongUser, setWrongUser] = React.useState(false);
   const [email, setEmail] = React.useState('');
   const [pwd, setPwd] = React.useState('');
-  const [wrongUser, setWrongUser] = React.useState(false);
 
-  const handleModal = (setter: Function) => {
-    setter(true);
-    setTimeout(() => { setter(false); }, 4000);
-  };
   useEffect(() => {
-    if (user.status === 1) {
-      handleModal(setWrongUser);
+    let timeout:any;
+    if (user.status === 3 && !islanding) {
+      timeout = handleModal(setWrongUser);
     } else if (user.status === 2) {
       navigation.navigate('LandingPage');
     }
-    console.log(user.status);
+    setIsLanding(false);
+    return () => clearTimeout(timeout);
   }, [user]);
   return (
     <ImageBackground style={styles.image} source={{ uri: 'https://trello-attachments.s3.amazonaws.com/6041f773bf2ba60154c38447/417x626/b5a3b5bc578c8c8a9603c72b18f9670e/comida-ingredientes_1220-4884.jpg' }}>
       <View style={styles.container}>
         <Image style={styles.logo} source = {{ uri: 'https://trello-attachments.s3.amazonaws.com/6041f773bf2ba60154c38447/886x624/909520ea82dfc7447a5fe02c2583c808/logo_blanco2_%282%29.png' }}></Image>
-        <TextInput value={email} onChangeText={text => setEmail(text)} style={styles.input} placeholder="Introduzca su correo"></TextInput>
+        <TextInput testID="emailInput" value={email} onChangeText={text => setEmail(text)} style={styles.input} placeholder="Introduzca su correo"></TextInput>
         {wrongUser && <View style={styles.modal}><Modal modalText={modal.wrongUser} ></Modal></View>}
-        <TextInput secureTextEntry={true} value={pwd} onChangeText={text => setPwd(text)} style={styles.input} placeholder="Introduzca su contraseña"></TextInput>
-        <TouchableOpacity onPress={() => { actions.signIn(email, pwd); }} style={styles.button} ><Text>Sign In</Text></TouchableOpacity>
-        <TouchableOpacity onPress={() => { navigation.navigate('SignUp'); }}><Text style={styles.text}>Todaviá no estás registrado? Pincha aquí.</Text></TouchableOpacity>
+        <TextInput testID="pwdInput" secureTextEntry={true} value={pwd} onChangeText={text => setPwd(text)} style={styles.input} placeholder="Introduzca su contraseña"></TextInput>
+        <TouchableOpacity testID="SignIn" onPress={() => { actions.signIn(email, pwd); }} style={styles.button} ><Text>Sign In</Text></TouchableOpacity>
+        <TouchableOpacity testID="navigate" onPress={() => { navigation.navigate('SignUp'); }}><Text style={styles.text}>Todaviá no estás registrado? Pincha aquí.</Text></TouchableOpacity>
       </View>
     </ImageBackground>
   );

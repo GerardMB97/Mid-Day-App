@@ -6,10 +6,9 @@ import Modal from '../../components/Modal';
 import modalText from '../../constants/modalText';
 import { signUp } from '../../redux/actions/userActions/userActions';
 import { Dispatch, bindActionCreators } from 'redux';
-
-import { checkName, checkEmail, checkPassword, checkRepeatedPwd } from '../../utils';
-
+import { handleModal, handleSignUp } from '../../utils';
 import { connect } from 'react-redux';
+;
 
 const styles = StyleSheet.create({
   image: {
@@ -79,48 +78,34 @@ function SignUp ({ navigation, user, actions }:{navigation:Navigation, user:any,
   const [repeatedPwdModal, setRepeatedPwdModal] = React.useState(false);
   const [existantUserModal, setExistantUserModal] = React.useState(false);
 
-  const handleModal = (setter: Function) => {
-    setter(true);
-    setTimeout(() => { setter(false); }, 4000);
-  };
   useEffect(() => {
+    let timeout: any;
     if (user.status === 1) {
-      handleModal(setExistantUserModal);
+      timeout = handleModal(setExistantUserModal);
     } else if (user.status === 2) {
       navigation.navigate('LandingPage');
     }
+    return () => { clearTimeout(timeout); };
   }, [user]);
-
-  const handleConfirm = (nameValue:string, emailValue: string, pwdValue: string, repeatedPwdValue: string) => {
-    if (!checkName(nameValue)) {
-      handleModal(setNameModal);
-    } else if (!checkEmail(emailValue)) {
-      handleModal(setEmailModal);
-    } else if (!checkPassword(pwdValue)) {
-      handleModal(setPwdModal);
-    } else if (!checkRepeatedPwd(pwdValue, repeatedPwdValue)) {
-      handleModal(setRepeatedPwdModal);
-    } else actions.signUp(nameValue, emailValue, pwdValue);
-  };
   return (
     <ImageBackground style={styles.image} source={{ uri: 'https://trello-attachments.s3.amazonaws.com/6041f773bf2ba60154c38447/417x626/b5a3b5bc578c8c8a9603c72b18f9670e/comida-ingredientes_1220-4884.jpg' }}>
       <View style={styles.container}>
         <Image style={styles.logo} source = {{ uri: 'https://trello-attachments.s3.amazonaws.com/6041f773bf2ba60154c38447/886x624/909520ea82dfc7447a5fe02c2583c808/logo_blanco2_%282%29.png' }}></Image>
 
-         <TextInput style={styles.input} placeholder="Introduzca su Nombre" value={name} onChangeText={(text) => { setName(text); }}></TextInput>
+         <TextInput testID="nameInput" style={styles.input} placeholder="Introduzca su Nombre" value={name} onChangeText={(text) => { setName(text); }}></TextInput>
          {nameModal && <View style={styles.nameModal}><Modal modalText={modalText.wrongName}></Modal></View>}
 
-        <TextInput style={styles.input} placeholder="Introduzca su correo"value={email} onChangeText={(text) => { setEmail(text); }}></TextInput>
+        <TextInput testID="emailInput" style={styles.input} placeholder="Introduzca su correo"value={email} onChangeText={(text) => { setEmail(text); }}></TextInput>
         {emailModal && <View style={styles.emailModal}><Modal modalText={modalText.wrongMail}></Modal></View>}
         {existantUserModal && <View style={styles.emailModal}><Modal modalText={modalText.existantUser}></Modal></View>}
 
-        <TextInput secureTextEntry={true} style={styles.input} placeholder="Introduzca su contraseña" value={pwd} onChangeText={(text) => { setPwd(text); }}></TextInput>
+        <TextInput testID="pwdInput" secureTextEntry={true} style={styles.input} placeholder="Introduzca su contraseña" value={pwd} onChangeText={(text) => { setPwd(text); }}></TextInput>
         {pwdModal && <View style={styles.pwdModal}><Modal modalText={modalText.wrongPwd}></Modal></View>}
 
-        <TextInput secureTextEntry={true} style={styles.input} placeholder="Repita su contraseña" value={repeatedPwd} onChangeText={(text) => { setRepeatedPwd(text); }}></TextInput>
+        <TextInput testID="repeatedPWdInput" secureTextEntry={true} style={styles.input} placeholder="Repita su contraseña" value={repeatedPwd} onChangeText={(text) => { setRepeatedPwd(text); }}></TextInput>
         {repeatedPwdModal && <View style={styles.validPwdModal}><Modal modalText={modalText.wrongPwdValidation}></Modal></View>}
-        <TouchableOpacity onPress={() => { handleConfirm(name, email, pwd, repeatedPwd); }}style={styles.button} ><Text>Registrate</Text></TouchableOpacity>
-        <TouchableOpacity onPress={() => { navigation.navigate('SignIn'); }}><Text style={styles.text}>Ya estás registrado? Pincha aquí</Text></TouchableOpacity>
+        <TouchableOpacity testID="Register" onPress={() => { handleSignUp(name, setNameModal, email, setEmailModal, pwd, setPwdModal, repeatedPwd, setRepeatedPwdModal, actions.signUp, handleModal); }}style={styles.button} ><Text>Registrate</Text></TouchableOpacity>
+        <TouchableOpacity testID="navigate" onPress={() => { navigation.navigate('SignIn'); }}><Text style={styles.text}>Ya estás registrado? Pincha aquí</Text></TouchableOpacity>
 
       </View>
     </ImageBackground>

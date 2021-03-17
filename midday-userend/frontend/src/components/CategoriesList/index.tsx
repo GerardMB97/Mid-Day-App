@@ -91,7 +91,6 @@ function CategoriesList ({ categories, restaurants, actions, navigation, user }:
   const [inputValue, setInputValue] = React.useState('');
 
   useEffect(() => {
-    console.log(categories);
     if (!categories.allCategories.length) { actions.loadCategories(); }
     if (!restaurants.allRestaurants.length) { actions.loadRestaurants(); }
   }, []);

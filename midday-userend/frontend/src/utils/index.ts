@@ -31,5 +31,26 @@ export const checkRepeatedPwd = (pwd: string, repeatedPwd:string) => {
 
 export const handleModal = (setter: Function) => {
   setter(true);
-  setTimeout(() => { setter(false); }, 4000);
+  return setTimeout(() => { setter(false); }, 4000);
+};
+
+export const handleSignUp = (name:string,
+  setNameModal:Function,
+  email: string,
+  setEmailModal:Function,
+  pwd: string,
+  setPwdModal:Function,
+  repeatedPwd: string,
+  setRepeatedPwdModal:Function,
+  action:Function,
+  handleModal:Function) => {
+  if (!checkName(name)) {
+    handleModal(setNameModal);
+  } else if (!checkEmail(email)) {
+    handleModal(setEmailModal);
+  } else if (!checkPassword(pwd)) {
+    handleModal(setPwdModal);
+  } else if (!checkRepeatedPwd(pwd, repeatedPwd)) {
+    handleModal(setRepeatedPwdModal);
+  } else action(name, email, pwd);
 };
