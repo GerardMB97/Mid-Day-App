@@ -8228,6 +8228,13 @@ react-native-modal-datetime-picker@^9.2.0:
   dependencies:
     prop-types "^15.7.2"
 
+react-native-multiple-select@^0.5.6:
+  version "0.5.6"
+  resolved "https://registry.yarnpkg.com/react-native-multiple-select/-/react-native-multiple-select-0.5.6.tgz#e13a362f1730d6988ed57cfe310b2e7a84e6f7f6"
+  integrity sha512-I6H7dcVZLy2ToyJ9mv0ANIDnBIcrUfVyEN3jCgPNG8sLyK6JMMNgJwqlJxrlPOaJVjiDjHkF0viu6LjohQFhhQ==
+  dependencies:
+    prop-types "^15.7.2"
+
 react-native-reanimated@~1.13.0:
   version "1.13.2"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.13.2.tgz#1ae5457b24b4913d173a5a064bb28eae7783d293"

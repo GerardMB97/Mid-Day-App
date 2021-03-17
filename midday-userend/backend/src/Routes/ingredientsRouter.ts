@@ -1,12 +1,12 @@
 import { Router } from 'express';
 export {};
-const ingredientController = require('../Controllers/ingredientController');
+const ingredientController = require('../Controllers/ingredientsController');
 
 const ingredientsRouter = ():Router => {
   const router = Router();
 
   router
-    .route('/new/:_id')
+    .route('/')
     .get(ingredientController.getIngredients);
 
   return router;

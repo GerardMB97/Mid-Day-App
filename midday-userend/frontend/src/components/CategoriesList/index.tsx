@@ -17,6 +17,7 @@ import { State } from '../../models';
 
 import SearchBar from '../SearchBar';
 import NotFound from '../NotFound';
+import WelcomeModal from '../WelcomeModal';
 
 const styles = StyleSheet.create({
   container: {
@@ -25,7 +26,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
     paddingLeft: 20,
-    paddingRight: 20
+    paddingRight: 20,
+    position: 'relative'
 
   },
   input: {
@@ -97,6 +99,7 @@ function CategoriesList ({ categories, restaurants, actions, navigation, user }:
 
   return (
     <View style = {styles.container}>
+      <WelcomeModal></WelcomeModal>
       <SearchBar inputValue={inputValue}
        setInputValue={setInputValue}
        inputPlaceholder='Tipo de menu o restaurante'
