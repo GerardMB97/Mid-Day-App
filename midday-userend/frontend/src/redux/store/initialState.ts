@@ -21,7 +21,8 @@ const initialState: State = {
     foodTastes: [],
     _id: undefined,
     status: 0
-  }
+  },
+  ingredients: []
 };
 export default initialState
 ;

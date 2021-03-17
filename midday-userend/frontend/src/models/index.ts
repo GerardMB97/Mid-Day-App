@@ -46,6 +46,11 @@ export interface Props {
 
 }
 
+interface Ingredient {
+  category: string,
+  ingredient:[{name:string}]
+}
+
 export interface State {
   categories: {
     allCategories: Category[],
@@ -65,7 +70,8 @@ export interface State {
     foodTastes: string[],
     _id: string | undefined,
     status: number
-  }
+  },
+  ingredients: Ingredient[]
 }
 
 export interface Route {

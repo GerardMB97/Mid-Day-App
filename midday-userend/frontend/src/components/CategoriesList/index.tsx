@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import colors from '../../../colors';
 import { loadCategories, filterSearchBar, loadRestaurants } from '../../redux/actions/restaurantActions/restaurantAction';
+import { getIngredients } from '../../redux/actions/ingredientActions/ingredientActions';
 import { State } from '../../models';
 
 import SearchBar from '../SearchBar';
@@ -142,7 +143,7 @@ function mapStateToProps ({ categories, restaurants, user }: State) {
 }
 
 function mapDispatchToProps (dispatch: Dispatch) {
-  return { actions: bindActionCreators({ loadCategories, filterSearchBar, loadRestaurants }, dispatch) };
+  return { actions: bindActionCreators({ loadCategories, filterSearchBar, loadRestaurants, getIngredients }, dispatch) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoriesList);
