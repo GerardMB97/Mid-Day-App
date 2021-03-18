@@ -23,7 +23,7 @@ app.use(session({ secret: 'skylab directory' }));
 require('./src/Passport')(app);
 app.use('/api/midday', restaurantRouter);
 app.use('/api/midday/ingredients', ingredientsRouter);
-app.use('/api/midday/users', authRouter);
+app.use('/api/midday/auth', authRouter);
 app.use('/api/midday/bookings', bookingRouter);
 
 connect(process.env.CLUSTERURL!, { useUnifiedTopology: true, useNewUrlParser: true });

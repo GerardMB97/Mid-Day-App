@@ -15,16 +15,3 @@ export const getIngredients = (user: any) => {
     });
   };
 };
-
-export const changeAllergyState = (ingredient:Ingredient, isAllergic:boolean) => {
-  const deleteAction = {
-    type: ingredientActionTypes.REMOVE_ALLERGY,
-    ingredient
-  };
-  const addAction = {
-    type: ingredientActionTypes.ADD_ALLERGY,
-    ingredient
-  };
-
-  return isAllergic ? deleteAction : addAction;
-};
