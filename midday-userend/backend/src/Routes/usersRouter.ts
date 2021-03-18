@@ -1,17 +1,13 @@
 import { Router } from 'express';
 export {};
-const usersController = require('../Controllers/usersController');
+const userController = require('../Controllers/userController');
 
 const usersRouter = ():Router => {
   const router = Router();
 
   router
     .route('/allergies/add')
-    .put(usersController.addAllergy);
-
-  router
-    .route('/allergies/add')
-    .put(usersController.removeAllergy);
+    .put(userController.addAllergy);
 
   return router;
 };

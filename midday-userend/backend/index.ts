@@ -9,6 +9,7 @@ const restaurantRouter = require('./src/Routes/restaurantRouter');
 const authRouter = require('./src/Routes/authRouter');
 const bookingRouter = require('./src/Routes/bookingRouter');
 const ingredientsRouter = require('./src/Routes/ingredientsRouter');
+const usersRouter = require('./src/Routes/usersRouter');
 
 const Debug = debug('app');
 
@@ -25,6 +26,7 @@ app.use('/api/midday', restaurantRouter);
 app.use('/api/midday/ingredients', ingredientsRouter);
 app.use('/api/midday/auth', authRouter);
 app.use('/api/midday/bookings', bookingRouter);
+app.use('/api/midday/users', usersRouter);
 
 connect(process.env.CLUSTERURL!, { useUnifiedTopology: true, useNewUrlParser: true });
 
