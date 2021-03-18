@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, Image, TouchableWithoutFeedback } from 'react-native';
+import { Text, View, StyleSheet, Image, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 import colors from '../../../colors';
 import { blackLogo } from '../../constants/images';
 import modal from '../../constants/modalText';
@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     height: '100%',
     top: '10%',
     zIndex: 5,
-    backgroundColor: colors.green,
+    backgroundColor: colors.alert,
     borderRadius: 15,
     padding: 20,
     alignItems: 'center'
@@ -38,6 +38,15 @@ const styles = StyleSheet.create({
   },
   text: {
     marginBottom: 40
+  },
+  button: {
+    width: 100,
+    height: 40,
+    backgroundColor: colors.gray,
+    marginTop: 40,
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 });
 
@@ -47,7 +56,8 @@ export default function WelcomeModal ({ ingredients }) {
       <TouchableWithoutFeedback ><View style={styles.close}><Text>X</Text></View></TouchableWithoutFeedback>
       <Image style = {styles.logo} source={{ uri: blackLogo }}></Image>
       <Text style={styles.text}>{modal.welcomeText}</Text>
-      <AllergiesList ingredients={ingredients}></AllergiesList>
+      <AllergiesList ingredients={ingredients} ></AllergiesList>
+      <TouchableOpacity style={styles.button}><Text>Guardar</Text></TouchableOpacity>
 
     </View>
   );

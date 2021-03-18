@@ -99,7 +99,6 @@ function CategoriesList ({ categories, restaurants, ingredients, actions, naviga
     if (!ingredients.length) { actions.getIngredients(user); }
   }, []);
   console.log(ingredients);
-  console.log(user);
   return (
     <View style = {styles.container}>
       <WelcomeModal ingredients = {ingredients}></WelcomeModal>

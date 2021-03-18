@@ -1,7 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
-
+import { View, Text, StyleSheet, FlatList, TouchableWithoutFeedback } from 'react-native';
+import colors from '../../../colors';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { bindActionCreators, Dispatch } from 'redux';
+import { updateAllergies } from '../../redux/actions/ingredientActions/ingredientActions';
+import { connect } from 'react-redux';
 
 const styles = StyleSheet.create({
   listTitle: {
@@ -33,6 +36,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   allergyIcon: {
+    color: 'green',
     fontSize: 25
 
   },
@@ -50,7 +54,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   }
 });
-export default function AllergiesList ({ ingredients }) {
+function AllergiesList ({ ingredients, actions }:any) {
   return (
     <View>
       <View style={styles.listTitle}>
@@ -63,15 +67,22 @@ export default function AllergiesList ({ ingredients }) {
         data ={ingredients}
         keyExtractor = {(item => item.category)}
         renderItem={({ item }) =>
+        <TouchableWithoutFeedback onPress={() => { actions.updateAllergies(item.category); }}>
         <View style={item.isAllergic ? styles.selected : styles.listItem}>
         <Text>{item.category}</Text>
         {item.isAllergic ? <Icon style = {styles.allergyIconSelected} name="sad-outline"></Icon> : <Icon style = {styles.allergyIcon} name="happy-outline"></Icon>}
 
         </View>
-
+        </TouchableWithoutFeedback>
        }> </FlatList>
        </View>
     </View>
 
   );
 }
+
+function mapDispatchToProps (dispatch:Dispatch) {
+  return { actions: bindActionCreators({ updateAllergies }, dispatch) };
+}
+
+export default connect(undefined, mapDispatchToProps)(AllergiesList);
