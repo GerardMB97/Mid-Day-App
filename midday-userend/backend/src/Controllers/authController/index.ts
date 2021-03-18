@@ -13,7 +13,8 @@ async function register (req:Request, res: Response) {
     const user = new User({
       email,
       password: md5(password),
-      name
+      name,
+      isNew: true
     });
     try {
       user.save();

@@ -10,7 +10,7 @@ const usersRouter = ():Router => {
     .put(userController.updateAllergies);
 
   router
-    .route('/isNew')
+    .route('/isNewUser')
     .put(userController.updateisNew);
 
   return router;
