@@ -1,6 +1,8 @@
 import categoriesReducer from './categoriesReducer';
 import restaurantReducer from './restaurantReducer';
 import restaurantActionTypes from '../../redux/actions/restaurantActions/restaurantActionTypes';
+import ingredientActionTypes from '../../redux/actions/ingredientActions/ingredientActionsTypes';
+import ingredientReducer from '../../redux/reducers/ingredientReducer';
 
 describe('Given a categoriesReducer', () => {
   const categoriesState = { allCategories: [{ name: 'hi' }, { name: 'bye' }], filteredCategories: [] };
@@ -88,6 +90,29 @@ describe('Given a restaurantReducer ', () => {
       };
 
       expect(restaurantReducer(undefined, action)).toEqual(initialState);
+    });
+  });
+});
+describe('Given a ingredient reducer', () => {
+  describe('When invoked with an action of type GET_INGREDIENTS', () => {
+    test('Then it should return action.data', () => {
+      const action = {
+        type: ingredientActionTypes.GET_INGREDIENTS,
+        data: []
+      };
+      const output = ingredientReducer(undefined, action);
+      expect(output).toEqual([]);
+    });
+  });
+  describe('When invoked with an action of different type', () => {
+    test('Then it should return state', () => {
+      const action = {
+        type: '',
+        data: []
+      };
+      const state = [{ ingredient: 'Ternera' }];
+      const output = ingredientReducer(state, action);
+      expect(output).toEqual(state);
     });
   });
 });

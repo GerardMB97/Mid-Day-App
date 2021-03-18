@@ -90,17 +90,19 @@ const styles = StyleSheet.create({
   }
 });
 
-function CategoriesList ({ categories, restaurants, actions, navigation, user }:any) {
+function CategoriesList ({ categories, restaurants, ingredients, actions, navigation, user }:any) {
   const [inputValue, setInputValue] = React.useState('');
 
   useEffect(() => {
     if (!categories.allCategories.length) { actions.loadCategories(); }
     if (!restaurants.allRestaurants.length) { actions.loadRestaurants(); }
+    if (!ingredients.length) { actions.getIngredients(user); }
   }, []);
-
+  console.log(ingredients);
+  console.log(user);
   return (
     <View style = {styles.container}>
-      <WelcomeModal></WelcomeModal>
+      <WelcomeModal ingredients = {ingredients}></WelcomeModal>
       <SearchBar inputValue={inputValue}
        setInputValue={setInputValue}
        inputPlaceholder='Tipo de menu o restaurante'
@@ -138,8 +140,8 @@ function CategoriesList ({ categories, restaurants, actions, navigation, user }:
   );
 }
 
-function mapStateToProps ({ categories, restaurants, user }: State) {
-  return { categories, restaurants, user };
+function mapStateToProps ({ categories, restaurants, user, ingredients }: State) {
+  return { categories, restaurants, user, ingredients };
 }
 
 function mapDispatchToProps (dispatch: Dispatch) {

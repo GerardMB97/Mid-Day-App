@@ -35,16 +35,19 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'black',
     overflow: 'hidden'
+  },
+  text: {
+    marginBottom: 40
   }
 });
 
-export default function WelcomeModal () {
+export default function WelcomeModal ({ ingredients }) {
   return (
     <View style={styles.container}>
       <TouchableWithoutFeedback ><View style={styles.close}><Text>X</Text></View></TouchableWithoutFeedback>
       <Image style = {styles.logo} source={{ uri: blackLogo }}></Image>
-      <Text>{modal.welcomeText}</Text>
-      <AllergiesList></AllergiesList>
+      <Text style={styles.text}>{modal.welcomeText}</Text>
+      <AllergiesList ingredients={ingredients}></AllergiesList>
 
     </View>
   );

@@ -1,6 +1,7 @@
 import React from 'react';
-import { SafeAreaView, View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
 import MultiSelect from 'react-native-multiple-select';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const items = [
   // name key is must. It is to show the text in front
@@ -17,54 +18,59 @@ const items = [
 ];
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-    padding: 10
+  listTitle: {
+    position: 'relative',
+    borderBottomColor: 'black',
+    borderBottomWidth: 1
   },
   titleText: {
-    padding: 8,
-    fontSize: 16,
-    textAlign: 'center',
-    fontWeight: 'bold'
+    fontSize: 20
   },
-  headingText: {
-    padding: 8
+  list: {
+    height: 300,
+    overflow: 'hidden',
+    flexGrow: 0
+  },
+  closedArrow: {
+    fontSize: 25,
+    position: 'absolute',
+    left: '100%',
+    transform: [{ rotate: '90deg' }]
+  },
+  listItem: {
+    borderBottomWidth: 1,
+    borderBottomColor: 'black',
+    height: 40,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
+  allergyIcon: {
+    fontSize: 25
   }
 });
-export default function AllergiesList () {
-  const [selectedAllergies, setSelectedAllergies] = React.useState([]);
-
-  const onSelectedItemsChange = (selectedItems: any) => {
-    setSelectedAllergies(selectedItems);
-  };
+export default function AllergiesList ({ ingredients }) {
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.container}>
-        <Text style={styles.titleText}>
-          Multiple Select / Dropdown / Picker Example
-          in React Native
-        </Text>
-        <MultiSelect
-          hideTags
-          items={items}
-          uniqueKey="id"
-          onSelectedItemsChange={onSelectedItemsChange}
-          selectedItems={selectedAllergies}
-          selectText="Elija sus alérgenos"
-          searchInputPlaceholderText="Buscar alérgenos"
-          tagRemoveIconColor="#CCC"
-          tagBorderColor="#CCC"
-          tagTextColor="#CCC"
-          selectedItemTextColor="#CCC"
-          selectedItemIconColor="#CCC"
-          itemTextColor="#000"
-          displayKey="name"
-          searchInputStyle={{ color: '#CCC' }}
-          submitButtonColor="#48d22b"
-          submitButtonText="Listo"
-        />
+    <View>
+      <View style={styles.listTitle}>
+        <Text style={styles.titleText}>Seleccione sus alergias</Text>
+        <Icon style={styles.closedArrow} name="caret-forward-outline"></Icon>
       </View>
-    </SafeAreaView>
+      <View style={styles.list}>
+      <FlatList
+
+        data ={ingredients}
+        keyExtractor = {(item => item.category)}
+        renderItem={({ item }) =>
+        <View style={styles.listItem}>
+        <Text>{item.category}</Text>
+        {item.isAllergic ? <Icon style = {styles.allergyIcon} name="alert-circle-outline"></Icon> : <Icon style = {styles.allergyIcon} name="happy-outline"></Icon>}
+
+        </View>
+
+       }> </FlatList>
+       </View>
+    </View>
+
   );
 }

@@ -46,9 +46,9 @@ export interface Props {
 
 }
 
-interface Ingredient {
+export interface Ingredient {
   category: string,
-  ingredient:[{name:string}]
+  isAllergic: boolean
 }
 
 export interface State {
