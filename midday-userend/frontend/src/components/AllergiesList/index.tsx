@@ -64,7 +64,7 @@ export default function AllergiesList ({ ingredients }) {
         renderItem={({ item }) =>
         <View style={styles.listItem}>
         <Text>{item.category}</Text>
-        {item.isAllergic ? <Icon style = {styles.allergyIcon} name="alert-circle-outline"></Icon> : <Icon style = {styles.allergyIcon} name="happy-outline"></Icon>}
+        {item.isAllergic ? <Icon style = {styles.allergyIcon} name="sad-outline"></Icon> : <Icon style = {styles.allergyIcon} name="happy-outline"></Icon>}
 
         </View>
 
