@@ -6,8 +6,8 @@ const usersRouter = ():Router => {
   const router = Router();
 
   router
-    .route('/allergies/add')
-    .put(userController.addAllergy);
+    .route('/allergies')
+    .put(userController.updateAllergies);
 
   return router;
 };
