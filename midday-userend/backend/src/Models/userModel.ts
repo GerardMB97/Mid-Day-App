@@ -7,7 +7,7 @@ const UserSchema = new Schema({
   password: String,
   name: String,
   phone: Number,
-  new: Boolean,
+  isNew: Boolean,
   allergies: [String],
   foodTastes: [String]
 });

@@ -9,6 +9,10 @@ const usersRouter = ():Router => {
     .route('/allergies')
     .put(userController.updateAllergies);
 
+  router
+    .route('/isNew')
+    .put(userController.updateisNew);
+
   return router;
 };
 
