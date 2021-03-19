@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 export {};
 const Category = require('../../Models/categoryModel');
 const Restaurant = require('../../Models/restaurantModel');
+require('../../Models/menuModel');
 
 const restaurantController = () => {
   const getCategories = async (req: Request, res: Response) => {
@@ -16,7 +17,9 @@ const restaurantController = () => {
 
   const getRestaurants = async (req: Request, res: Response) => {
     try {
-      const restaurants = await Restaurant.find({}).populate('category');
+      const restaurants = await Restaurant.find({})
+        .populate('category')
+        .populate('menus');
       res.json(restaurants);
     } catch (error) {
       res.status(500);

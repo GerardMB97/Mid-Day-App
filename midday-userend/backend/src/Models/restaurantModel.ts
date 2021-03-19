@@ -5,6 +5,7 @@ const RestaurantSchema = new Schema({
   image: String,
   category: { type: Schema.Types.ObjectId, ref: 'Category' },
   menuPrice: Number,
+  menus: [{ type: Schema.Types.ObjectId, ref: 'Menu' }],
   phone: Number,
   street: String,
   capacity: Number,
