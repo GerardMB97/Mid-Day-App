@@ -17,7 +17,7 @@ const userController = () => {
   const updateisNew = async (req:Request, res:Response) => {
     try {
       const { _id } = req.body;
-      const updatedUser = await User.findByIdAndUpdate(_id, { isNew: false }, { new: true });
+      const updatedUser = await User.findByIdAndUpdate(_id, { isNewUser: false }, { new: true });
       res.json(updatedUser);
     } catch (error) {
       res.send('There was an error updating the user');

@@ -12,7 +12,6 @@ const ingredientsController = () => {
     try {
       const ingredients = await Ingredient.find({});
       const allergiesList = ingredients.map((ingredient:IngredientInterface) => ingredient.category);
-      console.log(allergiesList);
       res.json(allergiesList);
     } catch (error) {
       res.status(500);

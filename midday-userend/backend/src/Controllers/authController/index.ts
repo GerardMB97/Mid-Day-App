@@ -14,7 +14,7 @@ async function register (req:Request, res: Response) {
       email,
       password: md5(password),
       name,
-      isNew: true
+      isNewUser: true
     });
     try {
       user.save();
@@ -27,11 +27,9 @@ async function register (req:Request, res: Response) {
 }
 
 async function login (req: Request, res: Response) {
-  console.log(req.body);
   try {
     const { email } = req.body;
     const user = await User.findOne({ email });
-    console.log(user);
     res.json(user);
   } catch (error) {
     res.status(500);

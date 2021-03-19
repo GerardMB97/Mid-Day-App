@@ -17,7 +17,6 @@ export const getIngredients = (user: any) => {
 };
 
 export const updateAllergies = (ingredient:string) => {
-  console.log('veryGood');
   return {
     type: ingredientActionTypes.UPDATE_ALLERGY,
     ingredient

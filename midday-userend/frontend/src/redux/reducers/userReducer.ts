@@ -3,13 +3,23 @@ import userActionTypes from '../actions/userActions/userActionTypes';
 import initialState from '../store/initialState';
 
 const userReducer = (state = initialState.user, action:AnyAction) => {
+  let index;
+  let newState;
   switch (action.type) {
     case userActionTypes.SIGN_UP:
-      console.log(state.status);
       return typeof (action.data) === 'number' ? { ...state, status: 1 } : { ...action.data, status: 2 };
 
     case userActionTypes.SIGN_IN:
       return action.data === null ? { ...state, status: 3 } : { ...action.data, status: 2 };
+    case userActionTypes.UPDATE_ISNEW:
+      return action.data;
+    case userActionTypes.UPDATE_USER_ALLERGIES:
+      newState = [...state.allergies];
+      index = newState.findIndex((item) => item === action.allergen);
+      index === -1
+        ? newState.push(action.allergen)
+        : newState.splice(index, 1);
+      return { ...state, allergies: newState };
     default:
       return state;
   }

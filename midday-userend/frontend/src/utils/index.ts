@@ -1,3 +1,6 @@
+import axios from 'axios';
+import { updateAllergiesRoute } from '../constants/dataBase';
+
 export const checkSelectedHour = (selectedHour:string, availableHours:string[]) => {
   return availableHours.findIndex((element) => element === selectedHour) !== -1;
 };
@@ -53,4 +56,8 @@ export const handleSignUp = (name:string,
   } else if (!checkRepeatedPwd(pwd, repeatedPwd)) {
     handleModal(setRepeatedPwdModal);
   } else action(name, email, pwd);
+};
+
+export const updateAllergiesDB = ({ _id, allergies }:any) => {
+  axios.put(updateAllergiesRoute, { _id, allergies });
 };

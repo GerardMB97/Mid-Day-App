@@ -160,6 +160,8 @@ function RestaurantDetail ({ route, selectedRestaurant, actions }: any) {
     actions.getSelectedRestaurant(_id);
   }, []);
 
+  console.log(selectedRestaurant);
+
   return (
 
         <View style={styles.container}>

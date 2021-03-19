@@ -1,6 +1,6 @@
 import axios from 'axios';
 import userActionTypes from './userActionTypes';
-import { SignUpRoute, SignInRoute, updateUserIsNew } from '../../../constants/dataBase';
+import { SignUpRoute, SignInRoute, updateUserIsNew, updateAllergiesRoute } from '../../../constants/dataBase';
 import { Dispatch } from 'redux';
 export const signUp = (name:string, email:string, password:string) => {
   return async (dispatch:Dispatch) => {
@@ -44,5 +44,12 @@ export const updateIsnew = ({ _id }:{_id:string}) => {
     } catch (error) {
 
     }
+  };
+};
+
+export const updateUserAllergies = (allergen: string) => {
+  return {
+    type: userActionTypes.UPDATE_USER_ALLERGIES,
+    allergen
   };
 };

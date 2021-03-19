@@ -4,6 +4,7 @@ import colors from '../../../colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { bindActionCreators, Dispatch } from 'redux';
 import { updateAllergies } from '../../redux/actions/ingredientActions/ingredientActions';
+import { updateUserAllergies } from '../../redux/actions/userActions/userActions';
 import { connect } from 'react-redux';
 
 const styles = StyleSheet.create({
@@ -67,7 +68,7 @@ function AllergiesList ({ ingredients, actions }:any) {
         data ={ingredients}
         keyExtractor = {(item => item.category)}
         renderItem={({ item }) =>
-        <TouchableWithoutFeedback onPress={() => { actions.updateAllergies(item.category); }}>
+        <TouchableWithoutFeedback onPress={() => { actions.updateAllergies(item.category); actions.updateUserAllergies(item.category); }}>
         <View style={item.isAllergic ? styles.selected : styles.listItem}>
         <Text>{item.category}</Text>
         {item.isAllergic ? <Icon style = {styles.allergyIconSelected} name="sad-outline"></Icon> : <Icon style = {styles.allergyIcon} name="happy-outline"></Icon>}
@@ -82,7 +83,7 @@ function AllergiesList ({ ingredients, actions }:any) {
 }
 
 function mapDispatchToProps (dispatch:Dispatch) {
-  return { actions: bindActionCreators({ updateAllergies }, dispatch) };
+  return { actions: bindActionCreators({ updateAllergies, updateUserAllergies }, dispatch) };
 }
 
 export default connect(undefined, mapDispatchToProps)(AllergiesList);

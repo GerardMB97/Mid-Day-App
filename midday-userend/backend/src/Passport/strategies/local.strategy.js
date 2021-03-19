@@ -15,13 +15,12 @@ function LocalStrategy () {
             if (err) { return done(err); }
 
             if (!user) {
-              console.log('hola');
               return done(null, false, { message: 'Incorrect username.' });
             }
             if (!user.validPassword(password)) {
               return done(null, false, { message: 'Incorrect password.' });
             }
-            console.log('oie que retorno');
+
             return done(null, user);
           });
         })();

@@ -98,10 +98,10 @@ function CategoriesList ({ categories, restaurants, ingredients, actions, naviga
     if (!restaurants.allRestaurants.length) { actions.loadRestaurants(); }
     if (!ingredients.length) { actions.getIngredients(user); }
   }, []);
-  console.log(ingredients);
+  console.log(user.allergies);
   return (
     <View style = {styles.container}>
-      <WelcomeModal ingredients = {ingredients}></WelcomeModal>
+      {user.isNewUser && <WelcomeModal user={user} ingredients = {ingredients}></WelcomeModal>}
       <SearchBar inputValue={inputValue}
        setInputValue={setInputValue}
        inputPlaceholder='Tipo de menu o restaurante'
