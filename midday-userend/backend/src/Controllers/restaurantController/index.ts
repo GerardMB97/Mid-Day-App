@@ -23,16 +23,9 @@ const restaurantController = () => {
         .populate('menus')
         .populate({
           path: 'menus',
-          populate: { path: 'firstCourse' }
-        })
-        .populate({
-          path: 'menus',
-          populate: { path: 'secondCourse' }
-        })
-        .populate({
-          path: 'menus',
-          populate: { path: 'dessert' }
+          populate: [{ path: 'firstCourse' }, { path: 'secondCourse' }, { path: 'dessert' }]
         });
+
       res.json(restaurants);
     } catch (error) {
       res.status(500);

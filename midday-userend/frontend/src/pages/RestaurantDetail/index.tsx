@@ -11,6 +11,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import TimePicker from '../../components/TimePicker';
 import { checkSelectedHour, handleConfirm } from '../../utils';
 import availableHours from '../../constants/availableHours';
+import RestaurantMenu from '../../components/RestaurantMenu';
 
 const styles = StyleSheet.create({
   container: {
@@ -158,9 +159,8 @@ function RestaurantDetail ({ route, selectedRestaurant, actions }: any) {
   const { _id } = route.params;
   useEffect(() => {
     actions.getSelectedRestaurant(_id);
-  }, []);
-
-  console.log(selectedRestaurant);
+    console.log('selectedRestaurant');
+  }, [selectedRestaurant]);
 
   return (
 
@@ -200,6 +200,7 @@ function RestaurantDetail ({ route, selectedRestaurant, actions }: any) {
 
           />
           </View>}
+             { selectedRestaurant.menus && <RestaurantMenu selectedRestaurant={selectedRestaurant}></RestaurantMenu>}
           <View style={styles.confirmContainer}>
             {wrongHourModal &&
             <View style={styles.hourModal}>

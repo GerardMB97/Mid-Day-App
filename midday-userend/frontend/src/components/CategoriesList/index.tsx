@@ -98,7 +98,7 @@ function CategoriesList ({ categories, restaurants, ingredients, actions, naviga
     if (!restaurants.allRestaurants.length) { actions.loadRestaurants(); }
     if (!ingredients.length) { actions.getIngredients(user); }
   }, []);
-  console.log(user.allergies);
+
   return (
     <View style = {styles.container}>
       {user.isNewUser && <WelcomeModal user={user} ingredients = {ingredients}></WelcomeModal>}
