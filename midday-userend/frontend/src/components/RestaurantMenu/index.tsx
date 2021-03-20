@@ -1,6 +1,7 @@
 import React from 'react';
-import { Text, View, StyleSheet, TouchableWithoutFeedback, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, TouchableWithoutFeedback, ScrollView, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import colors from '../../../colors';
 
@@ -45,18 +46,88 @@ const styles = StyleSheet.create({
     width: '100%',
     borderColor: colors.green,
     borderWidth: 1,
-    height: 40,
+    height: 70,
     paddingLeft: 10,
     justifyContent: 'center',
-    marginBottom: 10
+    marginBottom: 10,
+    position: 'relative'
+  },
+  listItemSelected: {
+    width: '100%',
+    borderColor: colors.green,
+    borderWidth: 1,
+    height: 70,
+    paddingLeft: 10,
+    justifyContent: 'center',
+    marginBottom: 10,
+    backgroundColor: colors.green
+  },
+  allergyIconSelected: {
+    color: 'red',
+    fontSize: 25,
+    position: 'absolute',
+    left: '85%',
+    top: '60%'
+  },
+  extra: {
+    borderRadius: 50,
+    width: 25,
+    height: 25,
+    backgroundColor: colors.alert,
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+    left: '95%',
+    top: '60%'
+  },
+  save: {
+    borderRadius: 10,
+    backgroundColor: colors.green,
+    width: 140,
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 40,
+    position: 'absolute',
+    top: '95%',
+    left: '65%'
   }
 
 });
 
-function RestaurantMenu ({ selectedRestaurant }:{selectedRestaurant: any}) {
+function RestaurantMenu ({ selectedRestaurant, user }:{selectedRestaurant: any}) {
   const [selectedType, setSelectedType] = React.useState('firstCourse');
   const [selectedTitle, setSelectedTitle] = React.useState(1);
-  console.log('hi', selectedRestaurant.menus[0]);
+  const [selectedFirst, setSelectedFirst] = React.useState('');
+  const [selectedSecond, setSelectedSecond] = React.useState('');
+  const [selectedDessert, setSelectedDessert] = React.useState('');
+
+  const checkAllergies = ({ allergies }:any, { ingredients }:any) => {
+    let isAllergic = false;
+    allergies.forEach((allergy:any) => {
+      if (ingredients.includes(allergy)) {
+        isAllergic = true;
+      }
+    });
+    return isAllergic;
+  };
+
+  const setSelectedDish = (selectedTittle: number, { name }:{name:string}) => {
+    switch (selectedTittle) {
+      case 1:
+        setSelectedFirst(name);
+        break;
+      case 2:
+        setSelectedSecond(name);
+        break;
+      case 3:
+        setSelectedDessert(name);
+        break;
+    }
+  };
+
+  const checkIfselected = ({ name }:{name: string}) => {
+    return name === selectedFirst || name === selectedSecond || name === selectedDessert;
+  };
   return (
    <View style = {styles.menuContainer}>
      <Text>Elige tu menú.</Text>
@@ -81,15 +152,29 @@ function RestaurantMenu ({ selectedRestaurant }:{selectedRestaurant: any}) {
     </View>
     <View style = {styles.list}>
      {selectedRestaurant.menus[0][selectedType].map((item) =>
-    <TouchableWithoutFeedback key={item.name}><View style = {styles.listItem}><Text >{item.name}</Text></View></TouchableWithoutFeedback>
+    <TouchableWithoutFeedback disabled={checkAllergies(user, item)} key={item.name} onPress={() => { setSelectedDish(selectedTitle, item); }}>
+      <View style = {checkIfselected(item) ? styles.listItemSelected : styles.listItem}>
+        <Text >{item.name}</Text>
+        {checkAllergies(user, item) && <Icon style = {styles.allergyIconSelected} name="sad-outline"></Icon>}
+        {item.extra > 0 && <View style={styles.extra}><Text>{item.extra}</Text></View>}
+      </View>
+      </TouchableWithoutFeedback>
      )}
+     <View ><Text>Primer plato:</Text></View>
+     <Text>{selectedFirst}</Text>
+      <View ><Text>Segundo plato:</Text></View>
+       <Text>{selectedSecond}</Text>
+       <View ><Text>Postre:</Text></View>
+        <Text>{selectedDessert}</Text>
      </View>
+
+     <TouchableOpacity style = {styles.save}><Text>Guardar selección</Text></TouchableOpacity>
     </View>
   );
 }
 
-function mapStateToProps ({ restaurants: { selectedRestaurant } }:any) {
-  return { selectedRestaurant };
+function mapStateToProps ({ restaurants: { selectedRestaurant }, user }:any) {
+  return { selectedRestaurant, user };
 }
 
 export default connect(mapStateToProps)(RestaurantMenu);

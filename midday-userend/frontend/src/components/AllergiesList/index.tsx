@@ -68,9 +68,9 @@ function AllergiesList ({ ingredients, actions }:any) {
         data ={ingredients}
         keyExtractor = {(item => item.category)}
         renderItem={({ item }) =>
-        <TouchableWithoutFeedback onPress={() => { actions.updateAllergies(item.category); actions.updateUserAllergies(item.category); }}>
+        <TouchableWithoutFeedback onPress={() => { actions.updateAllergies(item.ingredient); actions.updateUserAllergies(item.ingredient); }}>
         <View style={item.isAllergic ? styles.selected : styles.listItem}>
-        <Text>{item.category}</Text>
+        <Text>{item.ingredient}</Text>
         {item.isAllergic ? <Icon style = {styles.allergyIconSelected} name="sad-outline"></Icon> : <Icon style = {styles.allergyIcon} name="happy-outline"></Icon>}
 
         </View>
