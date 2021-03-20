@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
   }
 });
 
-function RestaurantDetail ({ route, selectedRestaurant, actions, navigation }: any) {
+function RestaurantDetail ({ route, selectedRestaurant, booking, actions, navigation }: any) {
   const [selectedDay, setSelectedDay] = React.useState(new Date().toLocaleDateString('es-ES').replace('/', '-').replace('/', '-'));
   const [calendarModal, setCalendarModal] = React.useState(false);
   const [customers, setCustomers] = React.useState(1);
@@ -165,8 +165,8 @@ function RestaurantDetail ({ route, selectedRestaurant, actions, navigation }: a
   const { _id } = route.params;
   useEffect(() => {
     actions.getSelectedRestaurant(_id);
-    console.log('selectedRestaurant');
-  }, [selectedRestaurant]);
+    console.log(booking);
+  }, [booking]);
 
   return (
 
@@ -237,11 +237,12 @@ function RestaurantDetail ({ route, selectedRestaurant, actions, navigation }: a
 }
 
 function mapStateToProps ({
-  restaurants: { selectedRestaurant }
+  restaurants: { selectedRestaurant }, booking
 }: {
-  restaurants: State['restaurants'];
+  restaurants: State['restaurants'],
+  booking: State['booking']
 }) {
-  return { selectedRestaurant };
+  return { selectedRestaurant, booking };
 }
 
 function mapDispatchToProps (dispatch: Dispatch<AnyAction>) {

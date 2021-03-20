@@ -10,8 +10,10 @@ import {
 } from 'react-native';
 import { State } from '../../models/index';
 import { AnyAction, bindActionCreators, Dispatch } from 'redux';
+import { useIsFocused } from '@react-navigation/native';
 
 import { getCategoryRestaurants } from '../../redux/actions/restaurantActions/restaurantAction';
+import { resetBooking } from '../../redux/actions/bookingActions/bookingActions';
 import SearchBar from '../SearchBar';
 import colors from '../../../colors';
 
@@ -76,10 +78,15 @@ const styles = StyleSheet.create({
 });
 function RestaurantsList ({ route, restaurants, actions, navigation }:any) {
   const [inputValue, setInputValue] = React.useState('');
+  const isFocused = useIsFocused();
   const { category } = route?.params;
   useEffect(() => {
     actions.getCategoryRestaurants(category);
   }, [category]);
+
+  useEffect(() => {
+    actions.resetBooking();
+  }, [isFocused]);
 
   return (
     <View style={styles.container}>
@@ -121,7 +128,7 @@ function mapStateToProps ({ restaurants }:{restaurants:State['restaurants']}) {
 }
 
 function mapDispatchToProps (dispatch: Dispatch<AnyAction>) {
-  return { actions: bindActionCreators({ getCategoryRestaurants }, dispatch) };
+  return { actions: bindActionCreators({ getCategoryRestaurants, resetBooking }, dispatch) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RestaurantsList);

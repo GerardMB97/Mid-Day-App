@@ -22,7 +22,14 @@ const initialState: State = {
     _id: undefined,
     status: 0
   },
-  ingredients: []
+  ingredients: [],
+  booking: {
+    date: '',
+    hour: '',
+    bookingAdmin: '',
+    pax: 1,
+    people: []
+  }
 };
 export default initialState
 ;

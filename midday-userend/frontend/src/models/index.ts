@@ -52,6 +52,16 @@ export interface Ingredient {
   name: string
 }
 
+interface User {
+   name: string | undefined,
+    password: string | undefined,
+    email: string | undefined,
+    allergies: string[],
+    foodTastes: string[],
+    _id: string | undefined,
+    status: number
+}
+
 export interface State {
   categories: {
     allCategories: Category[],
@@ -63,15 +73,15 @@ export interface State {
     filteredRestaurants: Restaurant[],
     selectedRestaurant: Restaurant | {}
   },
-  user: {
-    name: string | undefined,
-    password: string | undefined,
-    email: string | undefined,
-    allergies: string[],
-    foodTastes: string[],
-    _id: string | undefined,
-    status: number
-  },
+  user:User,
+
+  booking: {
+  date: string,
+  hour: string,
+  bookingAdmin: string,
+  pax: Number,
+  people: {user: string | User, selections : string[]}[]
+  }
   ingredients: Ingredient[]
 }
 

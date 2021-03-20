@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import colors from '../../../colors';
+import { bindActionCreators, Dispatch } from 'redux';
+import { saveMenuSelection } from '../../redux/actions/bookingActions/bookingActions';
 
 const styles = StyleSheet.create({
   menuContainer: {
@@ -94,12 +96,12 @@ const styles = StyleSheet.create({
 
 });
 
-function RestaurantMenu ({ selectedRestaurant, user }:{selectedRestaurant: any}) {
+function RestaurantMenu ({ selectedRestaurant, user, actions, navigation, booking }:{selectedRestaurant: any, user:any, actions: any, navigation:any, booking:any}) {
   const [selectedType, setSelectedType] = React.useState('firstCourse');
   const [selectedTitle, setSelectedTitle] = React.useState(1);
-  const [selectedFirst, setSelectedFirst] = React.useState('');
-  const [selectedSecond, setSelectedSecond] = React.useState('');
-  const [selectedDessert, setSelectedDessert] = React.useState('');
+  const [selectedFirst, setSelectedFirst] = React.useState(booking.people.length ? booking.people[0].selections[0] : '');
+  const [selectedSecond, setSelectedSecond] = React.useState(booking.people.length ? booking.people[0].selections[1] : '');
+  const [selectedDessert, setSelectedDessert] = React.useState(booking.people.length ? booking.people[0].selections[2] : '');
 
   const checkAllergies = ({ allergies }:any, { ingredients }:any) => {
     let isAllergic = false;
@@ -168,13 +170,17 @@ function RestaurantMenu ({ selectedRestaurant, user }:{selectedRestaurant: any})
         <Text>{selectedDessert}</Text>
      </View>
 
-     <TouchableOpacity style = {styles.save}><Text>Guardar selección</Text></TouchableOpacity>
+     <TouchableOpacity style = {styles.save} onPress={() => { actions.saveMenuSelection(selectedFirst, selectedSecond, selectedDessert, user); navigation.goBack(); }}><Text>Guardar selección</Text></TouchableOpacity>
     </View>
   );
 }
 
-function mapStateToProps ({ restaurants: { selectedRestaurant }, user }:any) {
-  return { selectedRestaurant, user };
+function mapStateToProps ({ restaurants: { selectedRestaurant }, user, booking }:any) {
+  return { selectedRestaurant, user, booking };
 }
 
-export default connect(mapStateToProps)(RestaurantMenu);
+function mapDispatchToProps (dispatch:Dispatch) {
+  return { actions: bindActionCreators({ saveMenuSelection }, dispatch) };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RestaurantMenu);
