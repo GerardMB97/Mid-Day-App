@@ -10,6 +10,7 @@ import CategoriesList from './src/components/CategoriesList';
 import RestaurantDetail from './src/pages/RestaurantDetail';
 import SignIn from './src/pages/SignIn';
 import SignUp from './src/pages/SignUp';
+import RestaurantMenu from './src/components/RestaurantMenu';
 
 const Stack = createStackNavigator();
 
@@ -24,6 +25,7 @@ export default function App () {
             <Stack.Screen name='LandingPage' component={CategoriesList} options={{ headerShown: false }}/>
             <Stack.Screen name='CategoriesDetail' component={CategoriesDetail}/>
             <Stack.Screen name='RestaurantDetail' component={RestaurantDetail}/>
+            <Stack.Screen name='RestaurantMenu' component={RestaurantMenu}/>
         </Stack.Navigator>
         </NavigationContainer>
       </Provider>

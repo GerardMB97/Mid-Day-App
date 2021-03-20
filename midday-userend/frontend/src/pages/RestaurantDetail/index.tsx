@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Dispatch, AnyAction, bindActionCreators } from 'redux';
-import { Text, ImageBackground, StyleSheet, View, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
+import { Text, ImageBackground, StyleSheet, View, TouchableWithoutFeedback, TouchableOpacity, TextInput } from 'react-native';
 
 import { State } from '../../models';
 import { getSelectedRestaurant } from '../../redux/actions/restaurantActions/restaurantAction';
@@ -9,6 +9,7 @@ import colors from '../../../colors';
 import { Calendar } from 'react-native-calendars';
 import Icon from 'react-native-vector-icons/Ionicons';
 import TimePicker from '../../components/TimePicker';
+import NumericInput from 'react-native-numeric-input';
 import { checkSelectedHour, handleConfirm } from '../../utils';
 import availableHours from '../../constants/availableHours';
 import RestaurantMenu from '../../components/RestaurantMenu';
@@ -125,7 +126,7 @@ const styles = StyleSheet.create({
   },
   confirmContainer: {
     position: 'relative',
-    top: 400,
+    top: 50,
     left: 130
 
   },
@@ -143,12 +144,17 @@ const styles = StyleSheet.create({
   },
   modalText: {
     textAlign: 'center'
+  },
+  input: {
+    width: 50,
+    height: 50
   }
 });
 
-function RestaurantDetail ({ route, selectedRestaurant, actions }: any) {
+function RestaurantDetail ({ route, selectedRestaurant, actions, navigation }: any) {
   const [selectedDay, setSelectedDay] = React.useState(new Date().toLocaleDateString('es-ES').replace('/', '-').replace('/', '-'));
   const [calendarModal, setCalendarModal] = React.useState(false);
+  const [customers, setCustomers] = React.useState(1);
   const [selectedHour, setSelectedHour] = React.useState('12:00');
   const [wrongHourModal, setWrongHourModal] = React.useState(false);
 
@@ -200,7 +206,23 @@ function RestaurantDetail ({ route, selectedRestaurant, actions }: any) {
 
           />
           </View>}
-             { selectedRestaurant.menus && <RestaurantMenu selectedRestaurant={selectedRestaurant}></RestaurantMenu>}
+          <Text>Cuantos sereis?</Text>
+          <NumericInput
+          value={customers}
+            onChange={value => setCustomers(value)}
+            onLimitReached={(isMax, msg) => console.log(isMax, msg)}
+            minValue= {0}
+            maxValue={40}
+            totalWidth={100}
+            totalHeight={30}
+            iconSize={25}
+            step={1}
+            valueType='real'
+            rounded
+            textColor='black'
+            rightButtonBackgroundColor={colors.green}
+            leftButtonBackgroundColor={colors.green}/>
+          <TouchableWithoutFeedback onPress={() => navigation.navigate('RestaurantMenu')}><Text>Elige tu menú</Text></TouchableWithoutFeedback>
           <View style={styles.confirmContainer}>
             {wrongHourModal &&
             <View style={styles.hourModal}>
