@@ -1,11 +1,11 @@
 import React from 'react';
-import { Text, View, StyleSheet, TouchableWithoutFeedback, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import colors from '../../../colors';
 import { bindActionCreators, Dispatch } from 'redux';
-import { saveMenuSelection } from '../../redux/actions/bookingActions/bookingActions';
+import { saveMenuSelection, resetBooking } from '../../redux/actions/bookingActions/bookingActions';
 
 const styles = StyleSheet.create({
   menuContainer: {
@@ -170,7 +170,7 @@ function RestaurantMenu ({ selectedRestaurant, user, actions, navigation, bookin
         <Text>{selectedDessert}</Text>
      </View>
 
-     <TouchableOpacity style = {styles.save} onPress={() => { actions.saveMenuSelection(selectedFirst, selectedSecond, selectedDessert, user); navigation.goBack(); }}><Text>Guardar selección</Text></TouchableOpacity>
+     <TouchableOpacity style = {styles.save} onPress={() => { actions.resetBooking(); actions.saveMenuSelection(selectedFirst, selectedSecond, selectedDessert, user); navigation.goBack(); }}><Text>Guardar selección</Text></TouchableOpacity>
     </View>
   );
 }
@@ -180,7 +180,7 @@ function mapStateToProps ({ restaurants: { selectedRestaurant }, user, booking }
 }
 
 function mapDispatchToProps (dispatch:Dispatch) {
-  return { actions: bindActionCreators({ saveMenuSelection }, dispatch) };
+  return { actions: bindActionCreators({ saveMenuSelection, resetBooking }, dispatch) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RestaurantMenu);

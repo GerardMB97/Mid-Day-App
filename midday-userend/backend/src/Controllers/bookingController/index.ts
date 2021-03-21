@@ -1,21 +1,21 @@
 import { Request, Response } from 'express';
 export {};
-const Restaurant = require('../../Models/restaurantModel');
+const Booking = require('../../Models/bookingModel');
 
 const bookingController = () => {
-  const createBooking = async (req:Request, res:Response) => {
-    const { _id } = req.params;
+  const createNewBooking = async (req:Request, res:Response) => {
+    const newBooking = new Booking(req.body);
     try {
-      const restaurant = await Restaurant.findById(_id);
-      const updatedRestaurant = await Restaurant.findByIdAndUpdate(_id, { bookings: [...restaurant.bookings, req.body] }, { new: true });
-      res.json(updatedRestaurant);
+      newBooking.save();
+      res.status(200);
+      res.json(newBooking);
     } catch (error) {
       res.status(500);
-      res.send('There was an error creating your booking');
+      res.send('There was an error saving yout booking');
     }
   };
   return {
-    createBooking
+    createNewBooking
   };
 };
 

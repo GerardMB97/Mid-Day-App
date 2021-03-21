@@ -6,6 +6,6 @@ const BookingSchema = new Schema({
   hour: String,
   bookingAdmin: { type: Schema.Types.ObjectId, ref: 'User' },
   pax: Number,
-  people: [Object]
+  people: [{ user: { type: Schema.Types.ObjectId, ref: 'User' }, selections: [String] }]
 });
 module.exports = model('Booking', BookingSchema);

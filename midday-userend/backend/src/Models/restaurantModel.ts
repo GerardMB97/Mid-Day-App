@@ -12,7 +12,7 @@ const RestaurantSchema = new Schema({
   city: String,
   address: String,
   zip: String,
-  bookings: Array
+  bookings: [{ type: Schema.Types.ObjectId, ref: 'Booking' }]
 });
 
 module.exports = model('Restaurant', RestaurantSchema);

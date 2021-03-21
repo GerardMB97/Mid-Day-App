@@ -33,9 +33,24 @@ const restaurantController = () => {
     }
   };
 
+  const addBookingToRestaurant = async (req: Request, res: Response) => {
+    const { restaurantId, bookingId } = req.body;
+    try {
+      const restaurant = await Restaurant.findById(restaurantId);
+      const updatedRestaurant = await Restaurant.findByIdAndUpdate(restaurantId, { bookings: [...restaurant.bookings, bookingId] }, { new: true });
+
+      res.json(updatedRestaurant);
+      res.status(200);
+    } catch (error) {
+      res.status(500);
+      res.send('There was an error trying to save your booking into the restaurant');
+    }
+  };
+
   return {
     getCategories,
-    getRestaurants
+    getRestaurants,
+    addBookingToRestaurant
 
   };
 };

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Dispatch, AnyAction, bindActionCreators } from 'redux';
-import { Text, ImageBackground, StyleSheet, View, TouchableWithoutFeedback, TouchableOpacity, TextInput } from 'react-native';
+import { Text, ImageBackground, StyleSheet, View, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 
 import { State } from '../../models';
 import { getSelectedRestaurant } from '../../redux/actions/restaurantActions/restaurantAction';
@@ -10,9 +10,9 @@ import { Calendar } from 'react-native-calendars';
 import Icon from 'react-native-vector-icons/Ionicons';
 import TimePicker from '../../components/TimePicker';
 import NumericInput from 'react-native-numeric-input';
-import { checkSelectedHour, handleConfirm } from '../../utils';
+import { checkSelectedHour, handleConfirm, createBooking } from '../../utils';
 import availableHours from '../../constants/availableHours';
-import RestaurantMenu from '../../components/RestaurantMenu';
+;
 
 const styles = StyleSheet.create({
   container: {
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
   }
 });
 
-function RestaurantDetail ({ route, selectedRestaurant, booking, actions, navigation }: any) {
+function RestaurantDetail ({ route, selectedRestaurant, booking, user, actions, navigation }: any) {
   const [selectedDay, setSelectedDay] = React.useState(new Date().toLocaleDateString('es-ES').replace('/', '-').replace('/', '-'));
   const [calendarModal, setCalendarModal] = React.useState(false);
   const [customers, setCustomers] = React.useState(1);
@@ -230,19 +230,20 @@ function RestaurantDetail ({ route, selectedRestaurant, booking, actions, naviga
             </View>
             }
 
-          <TouchableOpacity style={styles.confirm} onPress={() => handleConfirm(checkSelectedHour(selectedHour, availableHours), setWrongHourModal, handleConfirmCallback) }><Text>Reservar</Text></TouchableOpacity>
+          <TouchableOpacity style={styles.confirm} onPress={() => { handleConfirm(checkSelectedHour(selectedHour, availableHours), setWrongHourModal, handleConfirmCallback); createBooking(selectedDay, selectedHour, user._id, customers, booking.people, selectedRestaurant._id); }}><Text>Reservar</Text></TouchableOpacity>
           </View>
           </View>
   );
 }
 
 function mapStateToProps ({
-  restaurants: { selectedRestaurant }, booking
+  restaurants: { selectedRestaurant }, booking, user
 }: {
   restaurants: State['restaurants'],
-  booking: State['booking']
+  booking: State['booking'],
+  user: State['user']
 }) {
-  return { selectedRestaurant, booking };
+  return { selectedRestaurant, booking, user };
 }
 
 function mapDispatchToProps (dispatch: Dispatch<AnyAction>) {

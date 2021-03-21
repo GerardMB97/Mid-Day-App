@@ -6,8 +6,8 @@ const bookingRouter = ():Router => {
   const router = Router();
 
   router
-    .route('/new/:_id')
-    .put(bookingController.createBooking);
+    .route('/new')
+    .post(bookingController.createNewBooking);
 
   return router;
 };

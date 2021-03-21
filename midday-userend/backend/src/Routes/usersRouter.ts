@@ -6,6 +6,9 @@ const usersRouter = ():Router => {
   const router = Router();
 
   router
+    .route('/')
+    .put(userController.addBookingToUser);
+  router
     .route('/allergies')
     .put(userController.updateAllergies);
 

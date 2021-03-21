@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { updateAllergiesRoute } from '../constants/dataBase';
+import { updateAllergiesRoute, newBookingRoute, bookingToRestRoute, bookingToUserRoute } from '../constants/dataBase';
 
 export const checkSelectedHour = (selectedHour:string, availableHours:string[]) => {
   return availableHours.findIndex((element) => element === selectedHour) !== -1;
@@ -60,4 +60,28 @@ export const handleSignUp = (name:string,
 
 export const updateAllergiesDB = ({ _id, allergies }:any) => {
   axios.put(updateAllergiesRoute, { _id, allergies });
+};
+
+export const createBooking = async (date, hour, bookingAdmin, pax, people, restaurantId) => {
+  const booking = {
+    date,
+    hour,
+    bookingAdmin,
+    pax,
+    people
+
+  };
+  const { data: { _id } } = await axios.post(newBookingRoute, booking);
+
+  const reqBody = {
+    bookingId: _id,
+    restaurantId
+
+  };
+  axios.put(bookingToRestRoute, reqBody);
+  const userReqBody = {
+    bookingId: _id,
+    userId: bookingAdmin
+  };
+  axios.put(bookingToUserRoute, userReqBody);
 };

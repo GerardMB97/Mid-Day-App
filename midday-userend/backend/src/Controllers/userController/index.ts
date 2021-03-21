@@ -25,9 +25,26 @@ const userController = () => {
     }
   };
 
+  const addBookingToUser = async (req:Request, res:Response) => {
+    const { userId, bookingId } = req.body;
+    try {
+      const user = await User.findById(userId);
+
+      const updatedUser = await User.findByIdAndUpdate(userId, { bookings: [...user.bookings, bookingId] }, { new: true });
+      console.log(updatedUser);
+
+      res.json(updatedUser);
+      res.status(200);
+    } catch (error) {
+      res.status(500);
+      res.send('There was an error trying to save your booking into the restaurant');
+    }
+  };
+
   return {
     updateAllergies,
-    updateisNew
+    updateisNew,
+    addBookingToUser
   };
 };
 module.exports = userController();
