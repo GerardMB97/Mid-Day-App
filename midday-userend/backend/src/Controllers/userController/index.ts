@@ -44,9 +44,14 @@ const userController = () => {
     const { email } = req.params;
 
     try {
-      const user = await User.find({ email });
-      res.json(user);
-      res.status(200);
+      const user = await User.findOne({ email });
+      if (user === null) {
+        res.status(404);
+        res.json({ data: { _id: null } });
+      } else {
+        res.json(user);
+        res.status(200);
+      }
     } catch {
       res.status(500);
       res.send("This user doesn't exist");
@@ -56,7 +61,8 @@ const userController = () => {
   return {
     updateAllergies,
     updateisNew,
-    addBookingToUser
+    addBookingToUser,
+    findUser
   };
 };
 module.exports = userController();

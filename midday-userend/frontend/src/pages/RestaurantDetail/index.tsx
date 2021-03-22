@@ -12,15 +12,18 @@ import {
 
 import { State } from '../../models';
 import { getSelectedRestaurant } from '../../redux/actions/restaurantActions/restaurantAction';
+import { handleInvitation, resetBooking } from '../../redux/actions/bookingActions/bookingActions';
 import { connect } from 'react-redux';
 import colors from '../../../colors';
 import { Calendar } from 'react-native-calendars';
 import Icon from 'react-native-vector-icons/Ionicons';
 import TimePicker from '../../components/TimePicker';
-import { checkSelectedHour, handleConfirm, createBooking, getMonthName, getDay } from '../../utils';
+import { checkSelectedHour, handleConfirm, createBooking, getMonthName, getDay, handleModal } from '../../utils';
 import availableHours from '../../constants/availableHours';
 import CalendarIcon from '../../components/CalendarIcon';
-import CustomerSelector from '../../components/CustomerSelector';
+import Modal from '../../components/Modal';
+import modal from '../../constants/modalText';
+;
 
 const styles = StyleSheet.create({
   container: {
@@ -96,7 +99,8 @@ const styles = StyleSheet.create({
   calendar: {
     position: 'absolute',
     left: '20%',
-    top: 390
+    top: 390,
+    zIndex: 5
   },
   touchable: {
     width: '100%',
@@ -193,11 +197,13 @@ const styles = StyleSheet.create({
   },
   customers: {
     position: 'absolute',
-    left: 50
+    left: 50,
+    width: 20
   },
   searchContainer: {
     width: '100%',
-    position: 'relative'
+    position: 'relative',
+    zIndex: 10
   },
   invite: {
     position: 'absolute',
@@ -207,6 +213,11 @@ const styles = StyleSheet.create({
   },
   icon: {
     fontSize: 30
+  },
+  modalInv: {
+    position: 'absolute',
+    left: -200,
+    top: 50
   }
 });
 
@@ -225,6 +236,7 @@ function RestaurantDetail ({
   const [customers, setCustomers] = React.useState(1);
   const [selectedHour, setSelectedHour] = React.useState('12:00');
   const [wrongHourModal, setWrongHourModal] = React.useState(false);
+  const [invitationValue, setInvitationValue] = React.useState('');
 
   const handleConfirmCallback = () => {
     setWrongHourModal(false);
@@ -259,16 +271,10 @@ function RestaurantDetail ({
 
           <View><CalendarIcon month={getMonthName(selectedDay)} day={getDay(selectedDay)}></CalendarIcon></View>
         <View style={styles.people}>
-          <View style={styles.more}>
-            <TouchableWithoutFeedback onPress={() => { if (customers < 50) { setCustomers(customers + 1); } }}>
-              <Text>+</Text>
-            </TouchableWithoutFeedback>
-            </View>
+
         <Icon style={styles.menuIcon} name="people-outline"></Icon>
           <View style={styles.less}>
-            <TouchableWithoutFeedback onPress={() => { if (customers > 1) { setCustomers(customers - 1); } }}>
-              <Text>-</Text>
-            </TouchableWithoutFeedback>
+
             <Text style ={styles.customers}>{customers}</Text>
           </View>
         </View>
@@ -293,8 +299,12 @@ function RestaurantDetail ({
 
       </View>
       <View style={styles.searchContainer}>
-        <TextInput style={styles.searchBar} placeholder="Con quien te apetece comer hoy?"></TextInput>
-        <View style={styles.invite}><TouchableWithoutFeedback><Icon style={styles.icon} name="add-circle-outline"></Icon></TouchableWithoutFeedback></View>
+        <TextInput style={styles.searchBar} placeholder="Con quien te apetece comer hoy?" value={invitationValue} onChangeText={(text) => { setInvitationValue(text); }}></TextInput>
+        <View style={styles.invite}>
+          <TouchableWithoutFeedback onPress={() => { setInvitationValue(''); actions.handleInvitation(invitationValue, customers, setCustomers); }}>
+            <Icon style={styles.icon} name="add-circle-outline"></Icon>
+          </TouchableWithoutFeedback>
+        </View>
       </View>
         <View style={styles.calendar}>
           <Calendar
@@ -330,6 +340,7 @@ function RestaurantDetail ({
               booking.people,
               selectedRestaurant._id
             );
+            actions.resetBooking();
           }}
         >
           <Text>Reservar</Text>
@@ -352,7 +363,7 @@ function mapStateToProps ({
 }
 
 function mapDispatchToProps (dispatch: Dispatch<AnyAction>) {
-  return { actions: bindActionCreators({ getSelectedRestaurant }, dispatch) };
+  return { actions: bindActionCreators({ getSelectedRestaurant, handleInvitation, resetBooking }, dispatch) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RestaurantDetail);

@@ -6,3 +6,4 @@ export const updateAllergiesRoute = 'http://localhost:6000/api/midday/users/alle
 export const newBookingRoute = 'http://localhost:6000/api/midday/bookings/new';
 export const bookingToRestRoute = 'http://localhost:6000/api/midday/restaurants';
 export const bookingToUserRoute = 'http://localhost:6000/api/midday/users';
+export const findUserRoute = 'http://localhost:6000/api/midday/users/';

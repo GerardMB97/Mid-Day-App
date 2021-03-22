@@ -10,6 +10,9 @@ const bookingReducer = (state = initialState.booking, action:AnyAction) => {
       };
     case bookingActionTypes.RESET_BOOKING:
       return initialState.booking;
+    case bookingActionTypes.INVITE:
+      console.log('hello');
+      return { ...state, people: [...state.people, { user: action._id }] };
     default:
       return state;
   }
