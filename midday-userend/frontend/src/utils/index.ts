@@ -85,3 +85,47 @@ export const createBooking = async (date, hour, bookingAdmin, pax, people, resta
   };
   axios.put(bookingToUserRoute, userReqBody);
 };
+
+export const getMonthName = (date: string):string => {
+  const month = date.split('-')[1];
+  console.log(month);
+  switch (month) {
+    case '01':
+    case '1':
+      return 'ENE';
+    case '02':
+    case '2':
+      return 'FEB';
+    case '03':
+    case '3':
+      return 'MAR';
+    case '04':
+    case '4':
+      return 'ABR';
+    case '05':
+    case '5':
+      return 'MAY';
+    case '06':
+    case '6':
+      return 'JUN';
+    case '07':
+    case '7':
+      return 'JUL';
+    case '08':
+    case '8':
+      return 'AGO';
+    case '09':
+    case '9':
+      return 'SEP';
+    case '10':
+      return 'OCT';
+    case '11':
+      return 'NOV';
+    default:
+      return 'DIC';
+  }
+};
+
+export const getDay = (date: string) => {
+  return date.split('-')[0];
+};
