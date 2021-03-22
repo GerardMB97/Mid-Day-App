@@ -58,6 +58,17 @@ const userController = () => {
     }
   };
 
+  const addInvitation = async (req:Request, res:Response) => {
+    const { userId, bookingId } = req.body;
+
+    try {
+      const invitedUser = await User.findById(userId);
+      const updatedUser = await User.findByIdAndUpdate(bookingId, { ...invitedUser, invitations: [...invitedUser.invitations, bookingId] });
+    } catch (error) {
+
+    }
+  };
+
   return {
     updateAllergies,
     updateisNew,

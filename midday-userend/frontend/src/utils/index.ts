@@ -88,7 +88,6 @@ export const createBooking = async (date, hour, bookingAdmin, pax, people, resta
 
 export const getMonthName = (date: string):string => {
   const month = date.split('-')[1];
-  console.log(month);
   switch (month) {
     case '01':
     case '1':

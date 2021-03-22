@@ -232,11 +232,18 @@ function RestaurantDetail ({
   const [selectedDay, setSelectedDay] = React.useState(
     new Date().toLocaleDateString('es-ES').replace('/', '-').replace('/', '-')
   );
-  console.log(selectedDay);
+
   const [customers, setCustomers] = React.useState(1);
   const [selectedHour, setSelectedHour] = React.useState('12:00');
   const [wrongHourModal, setWrongHourModal] = React.useState(false);
   const [invitationValue, setInvitationValue] = React.useState('');
+
+  const resetBooking = () => {
+    setCustomers(1);
+    setSelectedHour('12:00');
+    setSelectedDay(new Date().toLocaleDateString('es-ES').replace('/', '-').replace('/', '-'));
+    actions.resetBooking();
+  };
 
   const handleConfirmCallback = () => {
     setWrongHourModal(false);
@@ -245,7 +252,6 @@ function RestaurantDetail ({
   const { _id } = route.params;
   useEffect(() => {
     actions.getSelectedRestaurant(_id);
-    console.log(booking);
   }, [booking]);
 
   return (
@@ -301,7 +307,7 @@ function RestaurantDetail ({
       <View style={styles.searchContainer}>
         <TextInput style={styles.searchBar} placeholder="Con quien te apetece comer hoy?" value={invitationValue} onChangeText={(text) => { setInvitationValue(text); }}></TextInput>
         <View style={styles.invite}>
-          <TouchableWithoutFeedback onPress={() => { setInvitationValue(''); actions.handleInvitation(invitationValue, customers, setCustomers); }}>
+          <TouchableWithoutFeedback onPress={() => { setInvitationValue(''); actions.handleInvitation(invitationValue, customers, setCustomers, booking); }}>
             <Icon style={styles.icon} name="add-circle-outline"></Icon>
           </TouchableWithoutFeedback>
         </View>
@@ -340,7 +346,7 @@ function RestaurantDetail ({
               booking.people,
               selectedRestaurant._id
             );
-            actions.resetBooking();
+            resetBooking();
           }}
         >
           <Text>Reservar</Text>

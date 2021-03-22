@@ -7,7 +7,6 @@ export default function CustomerSelector ({ customers, setCustomers }) {
     <NumericInput
         value={customers}
         onChange={(value) => setCustomers(value)}
-        onLimitReached={(isMax, msg) => console.log(isMax, msg)}
         minValue={0}
         maxValue={40}
         totalWidth={100}

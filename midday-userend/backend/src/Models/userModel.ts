@@ -9,6 +9,7 @@ const UserSchema = new Schema({
   phone: Number,
   isNewUser: Boolean,
   bookings: [{ type: Schema.Types.ObjectId, ref: 'Booking' }],
+  invitations: [{ type: Schema.Types.ObjectId, ref: 'Booking' }],
   allergies: [String],
   foodTastes: [String]
 });
