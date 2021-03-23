@@ -64,9 +64,7 @@ const userController = () => {
 
     try {
       const invitedUser = await User.findById(userId);
-      console.log(invitedUser);
       const updatedUser = await User.findByIdAndUpdate(userId, { invitations: [...invitedUser.invitations, bookingId] }, { new: true });
-      console.log(updatedUser);
       res.status(200);
       res.json(updatedUser);
     } catch (error) {

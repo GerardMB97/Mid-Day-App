@@ -5,7 +5,8 @@ const User = require('../../Models/userModel');
 async function register (req:Request, res: Response) {
   const { email, password, name } = req.body;
 
-  const isRegistered = await User.findOne({ email });
+  const isRegistered = await User.findOne({ email })
+    .populate(['bookings', 'invitations']);
 
   if (isRegistered) {
     res.send('409');
@@ -29,7 +30,10 @@ async function register (req:Request, res: Response) {
 async function login (req: Request, res: Response) {
   try {
     const { email } = req.body;
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email })
+      .populate(['bookings', 'invitations'])
+      .populate({ path: 'invitations', populate: [{ path: 'bookingAdmin' }, { path: 'people', populate: { path: 'user' } }] })
+      .populate({ path: 'bookings', populate: [{ path: 'bookingAdmin' }, { path: 'people', populate: { path: 'user' } }] });
     res.json(user);
   } catch (error) {
     res.status(500);

@@ -3,7 +3,7 @@ import React from 'react';
 import { Text } from 'react-native';
 import { connect } from 'react-redux';
 
-function BookingsList ({ user }) {
+function BookingsList ({ user }:{user:User}) {
   console.log(user);
   return (
     <Text>Hello World!</Text>
