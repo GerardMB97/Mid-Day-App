@@ -1,4 +1,3 @@
-import { User, Booking } from '../../models';
 import { Dispatch, bindActionCreators } from 'redux';
 import React from 'react';
 import { Text, View, StyleSheet, FlatList, ImageBackground, TouchableWithoutFeedback } from 'react-native';
@@ -69,16 +68,17 @@ function BookingsList ({ user, actions, route, navigation }:{user:User, actions:
       data={user[list]}
       renderItem = {({ item }) => {
         const isAdmin = user._id === item.bookingAdmin?._id;
-        const company = item.people.length - 2;
+        const company = item.people?.length - 2;
         const companyString = company > 0 ? `os ha invitado a ti y a ${company} más` : 'te ha invitado';
         return (
+
         <View style={styles.bookingBadge}>
           <ImageBackground
           imageStyle={{ opacity: 0.7 }} style={styles.bookingImage} source={{ uri: item.restaurant?.image }}>
 
             {list === 'bookings'
               ? <View style={styles.topContainer}><Text>reserva para {item.pax} en {item.restaurant?.name} el {item.date}</Text></View>
-              : <View style={styles.topContainer}><Text>{item.bookingAdmin.name} {companyString} a comer en {item.restaurant.name} el {item.date}</Text></View>
+              : <View style={styles.topContainer}><Text>{item.bookingAdmin?.name} {companyString} a comer en {item.restaurant?.name} el {item.date}</Text></View>
           }
 
             {list === 'bookings'

@@ -1,4 +1,4 @@
-import { getIngredients } from './ingredientActions';
+import { getIngredients, updateAllergies } from './ingredientActions';
 import axios from 'axios';
 import ingredientActionTypes from './ingredientActionsTypes';
 
@@ -15,6 +15,15 @@ describe('Given a getIngredients function', () => {
       await dispatcherfn(dispatch);
 
       expect(dispatch).toHaveBeenCalledWith({ type: ingredientActionTypes.GET_INGREDIENTS, data: [] });
+    });
+  });
+});
+
+describe('Given an updateAllergies function', () => {
+  describe('When invoked with "carrot"', () => {
+    test('Then it should return an action with type UPDATE_ALLERGY and ingredient: carrot', () => {
+      const output = updateAllergies('carrot');
+      expect(output).toEqual({ type: ingredientActionTypes.UPDATE_ALLERGY, ingredient: 'carrot' });
     });
   });
 });

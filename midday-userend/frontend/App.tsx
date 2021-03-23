@@ -16,7 +16,7 @@ import BookingsList from './src/components/BookingsList';
 
 const Stack = createStackNavigator();
 
-export default function App () {
+export default function Approutes () {
   return (
 
       <Provider store={store}>
@@ -24,6 +24,7 @@ export default function App () {
           <Stack.Navigator >
             <Stack.Screen name='SignUp'component={SignUp} options= {{ headerShown: false }}/>
             <Stack.Screen name='SignIn' component={SignIn} options= {{ headerShown: false }}/>
+            <Stack.Screen name='Profile' component={Profile}/>
             <Stack.Screen name='LandingPage' component={CategoriesList} options={{ headerShown: false }}/>
             <Stack.Screen name='BookingsList' component={BookingsList}/>
             <Stack.Screen name='CategoriesDetail' component={CategoriesDetail}/>

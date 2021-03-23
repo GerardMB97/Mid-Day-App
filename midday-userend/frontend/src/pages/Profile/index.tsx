@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, ImageBackground, TextInput } from 'react-native';
+import { Text, View, StyleSheet, ImageBackground, TextInput, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import colors from '../../../colors';
 
 const styles = StyleSheet.create({
@@ -52,21 +52,25 @@ const styles = StyleSheet.create({
     marginTop: 20
   }
 });
-export default function Profile () {
+export default function Profile ({ navigation }:any) {
   return (
 
     <View style={styles.container}>
        <TextInput style={styles.telephoneInput} placeholder="Guarde o actualize su teléfono." keyboardType= "number-pad"></TextInput>
       <View style={styles.tittlesContainer}>
         <View style={styles.tittleCard}>
+          <TouchableWithoutFeedback onPress={() => navigation.navigate('BookingsList', { list: 'bookings' })}>
           <ImageBackground style={styles.tittleImage} source={{ uri: 'https://trello-attachments.s3.amazonaws.com/6041f773bf2ba60154c38447/1200x800/b5d5a43ad062677a3ba031d5b8adc753/Booking.jpg' }}>
             <View style={styles.tittle}><Text style={styles.tittleText}>Gestione sus reservas</Text></View>
           </ImageBackground>
+          </TouchableWithoutFeedback>
         </View>
          <View style={styles.tittleCard}>
+           <TouchableWithoutFeedback onPress={() => navigation.navigate('BookingsList', { list: 'invitations' })}>
           <ImageBackground style={styles.tittleImage} source={{ uri: 'https://trello-attachments.s3.amazonaws.com/5ffc5f162c16556900cb7618/6041f773bf2ba60154c38447/a9bbfc25545b7a55eb91debdec31b04f/invitations.jpg' }}>
             <View style={styles.tittle}><Text style={styles.tittleText}>Gestione sus invitaciones</Text></View>
           </ImageBackground>
+          </TouchableWithoutFeedback>
         </View>
          <View style={styles.tittleCard}>
           <ImageBackground style={styles.tittleImage} source={{ uri: 'https://trello-attachments.s3.amazonaws.com/5ffc5f162c16556900cb7618/6041f773bf2ba60154c38447/fddd57c653edbcce55e75edac1033811/allergies.jpg' }}>

@@ -6,9 +6,8 @@ import colors from '../../../colors';
 import { blackLogo } from '../../constants/images';
 import modal from '../../constants/modalText';
 import AllergiesList from '../AllergiesList';
-import { updateIsnew } from '../../redux/actions/userActions/userActions';
+import { updateIsnew, updateAllergiesDB } from '../../redux/actions/userActions/userActions';
 import { connect } from 'react-redux';
-import { updateAllergiesDB } from '../../utils';
 
 const styles = StyleSheet.create({
   container: {
@@ -62,14 +61,14 @@ function WelcomeModal ({ ingredients, user, actions }:any) {
       <Image style = {styles.logo} source={{ uri: blackLogo }}></Image>
       <Text style={styles.text}>{modal.welcomeText}</Text>
       <AllergiesList ingredients={ingredients} ></AllergiesList>
-      <TouchableOpacity onPress={() => { actions.updateIsnew(user); updateAllergiesDB(user); }} style={styles.button}><Text>Guardar</Text></TouchableOpacity>
+      <TouchableOpacity onPress={() => { actions.updateIsnew(user); actions.updateAllergiesDB(user); }} style={styles.button}><Text>Guardar</Text></TouchableOpacity>
 
     </View>
   );
 }
 
 function mapDispatchToProps (dispatch:Dispatch) {
-  return { actions: bindActionCreators({ updateIsnew }, dispatch) };
+  return { actions: bindActionCreators({ updateIsnew, updateAllergiesDB }, dispatch) };
 }
 
 export default connect(undefined, mapDispatchToProps)(WelcomeModal);

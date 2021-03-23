@@ -23,7 +23,8 @@ const userReducer = (state = initialState.user, action:AnyAction) => {
     case userActionTypes.DELETE_BOOKING:
       return action.user;
     case userActionTypes.DELETE_INVITATION:
-      console.log(action.user);
+      return action.user;
+    case userActionTypes.UPDATE_ALLERGIES_DB:
       return action.user;
     default:
       return state;

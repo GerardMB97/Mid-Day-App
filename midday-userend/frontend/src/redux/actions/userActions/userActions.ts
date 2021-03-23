@@ -1,6 +1,6 @@
 import axios from 'axios';
 import userActionTypes from './userActionTypes';
-import { SignUpRoute, SignInRoute, updateUserIsNew, deleteBookingRoute, deleteInvitationRoute, updateBookingPaxRoute } from '../../../constants/dataBase';
+import { SignUpRoute, SignInRoute, updateUserIsNew, deleteBookingRoute, deleteInvitationRoute, updateBookingPaxRoute, updateAllergiesRoute } from '../../../constants/dataBase';
 import { Dispatch } from 'redux';
 export const signUp = (name:string, email:string, password:string) => {
   return async (dispatch:Dispatch) => {
@@ -54,6 +54,21 @@ export const updateUserAllergies = (allergen: string) => {
   };
 };
 
+export const updateAllergiesDB = ({ _id, allergies }:any) => {
+  return async (dispatch:Dispatch) => {
+    try {
+      const { data } = await axios.put(updateAllergiesRoute, { _id, allergies });
+
+      dispatch({
+        type: userActionTypes.UPDATE_ALLERGIES_DB,
+        user: data
+      });
+    } catch (error) {
+
+    }
+  };
+};
+
 export const deleteBooking = ({ email }: {email:string}, bookingId:string) => {
   return async (dispatch:Dispatch) => {
     const { data } = await axios.put(`${deleteBookingRoute}${email}`, { bookingId });
@@ -70,7 +85,7 @@ export const deleteInvitation = (userId:string, invitationId:string) => {
     try {
       await axios.put(updateBookingPaxRoute, { userId, bookingId: invitationId });
       const { data } = await axios.put(deleteInvitationRoute, { userId, invitationId });
-
+      console.log(data);
       dispatch({
         type: userActionTypes.DELETE_INVITATION,
         user: data

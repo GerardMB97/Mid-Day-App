@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableWithoutFeedback } from 'react-native';
-import colors from '../../../colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { bindActionCreators, Dispatch } from 'redux';
 import { updateAllergies } from '../../redux/actions/ingredientActions/ingredientActions';

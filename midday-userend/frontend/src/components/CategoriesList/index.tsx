@@ -107,7 +107,7 @@ function CategoriesList ({ categories, restaurants, ingredients, actions, naviga
        inputPlaceholder='Tipo de menu o restaurante'
        action = 'categories'
        ></SearchBar>
-       <TouchableOpacity onPress={() => navigation.navigate('BookingsList', { list: 'invitations' })}><Text>Navegame Sabroso</Text></TouchableOpacity>
+       <TouchableOpacity onPress={() => navigation.navigate('Profile')}><Text>Navegame Sabroso</Text></TouchableOpacity>
       <Text style = {styles.title}>¿Qué Menú te apetece hoy?</Text>
       <SafeAreaView style = {styles.listContainer}>
         {inputValue.length && !categories.filteredCategories.length

@@ -58,11 +58,7 @@ export const handleSignUp = (name:string,
   } else action(name, email, pwd);
 };
 
-export const updateAllergiesDB = ({ _id, allergies }:any) => {
-  axios.put(updateAllergiesRoute, { _id, allergies });
-};
-
-const addInvitation = (userId, bookingId) => {
+export const addInvitation = (userId, bookingId) => {
   axios.put(invitationsRoute, { userId, bookingId });
 };
 

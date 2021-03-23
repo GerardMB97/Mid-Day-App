@@ -31,14 +31,6 @@ describe('Given a CategoriesList component', () => {
     );
     expect(rendered).toMatchSnapshot();
   });
-  describe('When inputValue has length ', () => {
-    test('Then should render the filtered categories', () => {
-      const rendered = render(
-      <Provider store={store}><CategoriesList /></Provider>
-      );
-
-      expect(rendered).toMatchSnapshot();
-    });
   });
   describe('When a category is clicked', () => {
     test('Then it should navigate', () => {

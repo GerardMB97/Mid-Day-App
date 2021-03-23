@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { waitFor } from 'react-native-testing-library';
 import {
   checkSelectedHour,
@@ -7,7 +8,13 @@ import {
   checkPassword,
   checkRepeatedPwd,
   handleModal,
-  handleSignUp
+  handleSignUp,
+  updateAllergiesDB,
+  getMonthName,
+  getDay,
+  addInvitation,
+  createBooking,
+  updateSelection
 } from './index';
 
 describe('Given a function checkSelectedHour', () => {
@@ -160,6 +167,93 @@ describe('Given a function handleSignUp', () => {
       handleSignUp(name, setNameModal, email, setEmailModal, pwd, setPwdModal, repeatedPwd, setRepeatedPwdModal, action, handleModal);
 
       expect(action).toHaveBeenCalledWith(name, email, pwd);
+    });
+  });
+});
+describe('Given a function updateAllergiesDB', () => {
+  describe('When invoked with _id and allergies', () => {
+    test('Then it should invoke axios.put', () => {
+      axios.put = jest.fn();
+      const object = {
+        _id: '1',
+        allergies: 'none'
+      };
+      updateAllergiesDB(object);
+      expect(axios.put).toHaveBeenCalled();
+    });
+  });
+});
+describe('Given a function getMonthName', () => {
+  const testInfo = [{ month: '12-1-21', result: 'ENE' },
+    { month: '12-01-21', result: 'ENE' },
+    { month: '12-2-21', result: 'FEB' },
+    { month: '12-02-21', result: 'FEB' },
+    { month: '12-3-21', result: 'MAR' },
+    { month: '12-03-21', result: 'MAR' },
+    { month: '12-4-21', result: 'ABR' },
+    { month: '12-04-21', result: 'ABR' },
+    { month: '12-5-21', result: 'MAY' },
+    { month: '12-05-21', result: 'MAY' },
+    { month: '12-6-21', result: 'JUN' },
+    { month: '12-06-21', result: 'JUN' },
+    { month: '12-7-21', result: 'JUL' },
+    { month: '12-07-21', result: 'JUL' },
+    { month: '12-8-21', result: 'AGO' },
+    { month: '12-08-21', result: 'AGO' },
+    { month: '12-9-21', result: 'SEP' },
+    { month: '12-09-21', result: 'SEP' },
+    { month: '12-10-21', result: 'OCT' },
+    { month: '12-11-21', result: 'NOV' },
+    { month: '12-12-21', result: 'DIC' }];
+
+  testInfo.forEach(info =>
+    describe(`When invoked with ${info.month}`, () => {
+      test(`Then it should return ${info.result}`, () => {
+        const output = getMonthName(info.month);
+        expect(output).toBe(info.result);
+      });
+    }));
+});
+describe('Given a function getDay', () => {
+  describe('When invoked with 12-01-21', () => {
+    test('Then it should return 12', () => {
+      const output = getDay('12-01-21');
+      expect(output).toBe('12');
+    });
+  });
+});
+describe('Given a function addInvitation', () => {
+  describe('When invoked with 2 ids', () => {
+    test('it should invoke axios.put with an objext with userId and bookingId', () => {
+      axios.put = jest.fn();
+      addInvitation('1', '2');
+
+      expect(axios.put).toHaveBeenCalledWith('http://localhost:6000/api/midday/users/invitations', { userId: '1', bookingId: '2' });
+    });
+  });
+});
+describe('Given a function createBooking', () => {
+  describe('When invoked with the necessary data', () => {
+    test('Then it should invoke axios.post once', async () => {
+      axios.post = jest.fn().mockReturnValue({ data: { people: [{ user: 'hi' }] } });
+      await createBooking();
+      expect(axios.post).toHaveBeenCalledTimes(1);
+    });
+  });
+  describe('When invoked with the necessary data', () => {
+    test('Then it should invoke axios.put twice', async () => {
+      axios.put = jest.fn().mockReturnValue({ data: { people: [{ user: 'hi' }] } });
+      await createBooking();
+      expect(axios.post).toHaveBeenCalledTimes(2);
+    });
+  });
+});
+describe('Given a updateSelection', () => {
+  describe('When invoked', () => {
+    test('Then it should invoke axios.pu', () => {
+      axios.put = jest.fn();
+      updateSelection();
+      expect(axios.put).toHaveBeenCalled();
     });
   });
 });
