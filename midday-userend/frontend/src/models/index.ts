@@ -55,7 +55,7 @@ export interface Ingredient {
 export interface Booking {
   date: string,
   hour: string,
-  bookingAdmin: string,
+  bookingAdmin: User,
   pax: number,
   restaurant: Restaurant,
   _id: string
