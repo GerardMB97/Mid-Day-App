@@ -60,12 +60,18 @@ const userController = () => {
 
   const addInvitation = async (req:Request, res:Response) => {
     const { userId, bookingId } = req.body;
+    console.log('assaasass', bookingId);
 
     try {
       const invitedUser = await User.findById(userId);
-      const updatedUser = await User.findByIdAndUpdate(bookingId, { ...invitedUser, invitations: [...invitedUser.invitations, bookingId] });
+      console.log(invitedUser);
+      const updatedUser = await User.findByIdAndUpdate(userId, { invitations: [...invitedUser.invitations, bookingId] }, { new: true });
+      console.log(updatedUser);
+      res.status(200);
+      res.json(updatedUser);
     } catch (error) {
-
+      res.status(500);
+      res.send('There was an error sending your invitation');
     }
   };
 
@@ -73,7 +79,8 @@ const userController = () => {
     updateAllergies,
     updateisNew,
     addBookingToUser,
-    findUser
+    findUser,
+    addInvitation
   };
 };
 module.exports = userController();

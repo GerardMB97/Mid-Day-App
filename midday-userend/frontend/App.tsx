@@ -11,6 +11,7 @@ import RestaurantDetail from './src/pages/RestaurantDetail';
 import SignIn from './src/pages/SignIn';
 import SignUp from './src/pages/SignUp';
 import RestaurantMenu from './src/components/RestaurantMenu';
+import Profile from './src/pages/Profile';
 
 const Stack = createStackNavigator();
 

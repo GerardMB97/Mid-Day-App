@@ -107,6 +107,7 @@ function CategoriesList ({ categories, restaurants, ingredients, actions, naviga
        inputPlaceholder='Tipo de menu o restaurante'
        action = 'categories'
        ></SearchBar>
+       <Text>Navegame Sabroso</Text>
       <Text style = {styles.title}>¿Qué Menú te apetece hoy?</Text>
       <SafeAreaView style = {styles.listContainer}>
         {inputValue.length && !categories.filteredCategories.length

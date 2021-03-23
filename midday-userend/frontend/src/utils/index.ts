@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { updateAllergiesRoute, newBookingRoute, bookingToRestRoute, bookingToUserRoute, findUserRoute } from '../constants/dataBase';
+import { updateAllergiesRoute, newBookingRoute, bookingToRestRoute, bookingToUserRoute, findUserRoute, invitationsRoute } from '../constants/dataBase';
 
 export const checkSelectedHour = (selectedHour:string, availableHours:string[]) => {
   return availableHours.findIndex((element) => element === selectedHour) !== -1;
@@ -62,6 +62,10 @@ export const updateAllergiesDB = ({ _id, allergies }:any) => {
   axios.put(updateAllergiesRoute, { _id, allergies });
 };
 
+const addInvitation = (userId, bookingId) => {
+  axios.put(invitationsRoute, { userId, bookingId });
+};
+
 export const createBooking = async (date, hour, bookingAdmin, pax, people, restaurantId) => {
   const booking = {
     date,
@@ -71,16 +75,17 @@ export const createBooking = async (date, hour, bookingAdmin, pax, people, resta
     people
 
   };
-  const { data: { _id } } = await axios.post(newBookingRoute, booking);
+  const { data } = await axios.post(newBookingRoute, booking);
 
+  data.people.forEach(person => { if (bookingAdmin !== person.user) { addInvitation(person.user, data._id); } });
   const reqBody = {
-    bookingId: _id,
+    bookingId: data._id,
     restaurantId
 
   };
   axios.put(bookingToRestRoute, reqBody);
   const userReqBody = {
-    bookingId: _id,
+    bookingId: data._id,
     userId: bookingAdmin
   };
   axios.put(bookingToUserRoute, userReqBody);
