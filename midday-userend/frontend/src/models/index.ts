@@ -10,8 +10,9 @@ export interface LoadCategoriesAction{
 export interface Restaurant{
   _id: string,
   name: string,
-  capcity: number,
+  capacity: number,
   menuPrice: number,
+  image: string,
   category: Category,
   phone: number,
   street: string,
@@ -51,15 +52,25 @@ export interface Ingredient {
   isAllergic: boolean,
   name: string
 }
-
-interface User {
-   name: string | undefined,
-    password: string | undefined,
-    email: string | undefined,
-    allergies: string[],
-    foodTastes: string[],
-    _id: string | undefined,
-    status: number
+export interface Booking {
+  date: string,
+  hour: string,
+  bookingAdmin: string,
+  pax: number,
+  restaurant: Restaurant,
+  _id: string
+  people: {user: string | User, selections : string[]}[]
+}
+export interface User {
+  name: string | undefined,
+  bookings: Booking[],
+  invitations: Booking[]
+  password: string | undefined,
+  email: string | undefined,
+  allergies: string[],
+  foodTastes: string[],
+  _id: string | undefined,
+  status: number
 }
 
 export interface State {
@@ -74,14 +85,7 @@ export interface State {
     selectedRestaurant: Restaurant | {}
   },
   user:User,
-
-  booking: {
-  date: string,
-  hour: string,
-  bookingAdmin: string,
-  pax: Number,
-  people: {user: string | User, selections : string[]}[]
-  }
+  booking: Booking
   ingredients: Ingredient[]
 }
 

@@ -72,7 +72,8 @@ export const createBooking = async (date, hour, bookingAdmin, pax, people, resta
     hour,
     bookingAdmin,
     pax,
-    people
+    people,
+    restaurant: restaurantId
 
   };
   const { data } = await axios.post(newBookingRoute, booking);

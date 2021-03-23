@@ -32,8 +32,8 @@ async function login (req: Request, res: Response) {
     const { email } = req.body;
     const user = await User.findOne({ email })
       .populate(['bookings', 'invitations'])
-      .populate({ path: 'invitations', populate: [{ path: 'bookingAdmin' }, { path: 'people', populate: { path: 'user' } }] })
-      .populate({ path: 'bookings', populate: [{ path: 'bookingAdmin' }, { path: 'people', populate: { path: 'user' } }] });
+      .populate({ path: 'invitations', populate: [{ path: 'bookingAdmin' }, { path: 'restaurant' }, { path: 'people', populate: { path: 'user' } }] })
+      .populate({ path: 'bookings', populate: [{ path: 'bookingAdmin' }, { path: 'restaurant' }, { path: 'people', populate: { path: 'user' } }] });
     res.json(user);
   } catch (error) {
     res.status(500);
