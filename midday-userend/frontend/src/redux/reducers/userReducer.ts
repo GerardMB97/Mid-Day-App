@@ -20,6 +20,8 @@ const userReducer = (state = initialState.user, action:AnyAction) => {
         ? newState.push(action.allergen)
         : newState.splice(index, 1);
       return { ...state, allergies: newState };
+    case userActionTypes.DELETE_BOOKING:
+      return action.user;
     default:
       return state;
   }

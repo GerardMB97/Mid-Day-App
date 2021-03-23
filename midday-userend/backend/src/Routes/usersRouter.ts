@@ -9,6 +9,9 @@ const usersRouter = ():Router => {
     .route('/')
     .put(userController.addBookingToUser);
   router
+    .route('/deleteInvitation')
+    .put(userController.deleteInvitation);
+  router
     .route('/invitations')
     .put(userController.addInvitation);
   router

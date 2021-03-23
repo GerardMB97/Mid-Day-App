@@ -44,7 +44,10 @@ const userController = () => {
     const { email } = req.params;
 
     try {
-      const user = await User.findOne({ email });
+      const user = await User.findOne({ email })
+        .populate(['bookings', 'invitations'])
+        .populate({ path: 'invitations', populate: [{ path: 'bookingAdmin' }, { path: 'restaurant' }, { path: 'people', populate: { path: 'user' } }] })
+        .populate({ path: 'bookings', populate: [{ path: 'bookingAdmin' }, { path: 'restaurant' }, { path: 'people', populate: { path: 'user' } }] });
       if (user === null) {
         res.status(404);
         res.json({ data: { _id: null } });
@@ -73,12 +76,25 @@ const userController = () => {
     }
   };
 
+  const deleteInvitation = async (req:Request, res:Response) => {
+    try {
+      const { userId, invitationId } = req.body;
+      const updatedUser = await User.findByIdAndUpdate(userId, { $pull: { invitations: invitationId } }, { new: true });
+      res.json(updatedUser);
+      res.status(200);
+    } catch (error) {
+      res.status(500);
+      res.send(error);
+    }
+  };
+
   return {
     updateAllergies,
     updateisNew,
     addBookingToUser,
     findUser,
-    addInvitation
+    addInvitation,
+    deleteInvitation
   };
 };
 module.exports = userController();

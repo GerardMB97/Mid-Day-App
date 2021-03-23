@@ -1,6 +1,6 @@
 import axios from 'axios';
 import userActionTypes from './userActionTypes';
-import { SignUpRoute, SignInRoute, updateUserIsNew, updateAllergiesRoute } from '../../../constants/dataBase';
+import { SignUpRoute, SignInRoute, updateUserIsNew, deleteBookingRoute } from '../../../constants/dataBase';
 import { Dispatch } from 'redux';
 export const signUp = (name:string, email:string, password:string) => {
   return async (dispatch:Dispatch) => {
@@ -51,5 +51,16 @@ export const updateUserAllergies = (allergen: string) => {
   return {
     type: userActionTypes.UPDATE_USER_ALLERGIES,
     allergen
+  };
+};
+
+export const deleteBooking = ({ email }: {email:string}, bookingId:string) => {
+  return async (dispatch:Dispatch) => {
+    const { data } = await axios.put(`${deleteBookingRoute}${email}`, { bookingId });
+
+    dispatch({
+      type: userActionTypes.DELETE_BOOKING,
+      user: data
+    });
   };
 };
