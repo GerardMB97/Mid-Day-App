@@ -27,9 +27,22 @@ const bookingController = () => {
       res.status(500);
     }
   };
+  const updateBooking = async (req:Request, res:Response) => {
+    try {
+      const { userId, bookingId } = req.body;
+
+      const updatedBooking = await Booking.findByIdAndUpdate(bookingId, { $inc: { pax: -1 }, $pull: { people: { user: userId } } }, { new: true });
+      res.json(updatedBooking);
+      res.status(200);
+    } catch (error) {
+      res.status(500);
+      res.send('There was an error trying to update your booking');
+    }
+  };
   return {
     createNewBooking,
-    deleteBooking
+    deleteBooking,
+    updateBooking
   };
 };
 

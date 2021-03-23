@@ -7,7 +7,8 @@ const bookingRouter = ():Router => {
 
   router
     .route('/new')
-    .post(bookingController.createNewBooking);
+    .post(bookingController.createNewBooking)
+    .put(bookingController.updateBooking);
   router
     .route('/delete/:email')
     .put(bookingController.deleteBooking);
