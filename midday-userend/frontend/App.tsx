@@ -12,6 +12,7 @@ import SignIn from './src/pages/SignIn';
 import SignUp from './src/pages/SignUp';
 import RestaurantMenu from './src/components/RestaurantMenu';
 import Profile from './src/pages/Profile';
+import BookingsList from './src/components/BookingsList';
 
 const Stack = createStackNavigator();
 
@@ -24,6 +25,7 @@ export default function App () {
             <Stack.Screen name='SignUp'component={SignUp} options= {{ headerShown: false }}/>
             <Stack.Screen name='SignIn' component={SignIn} options= {{ headerShown: false }}/>
             <Stack.Screen name='LandingPage' component={CategoriesList} options={{ headerShown: false }}/>
+            <Stack.Screen name='BookingsList' component={BookingsList}/>
             <Stack.Screen name='CategoriesDetail' component={CategoriesDetail}/>
             <Stack.Screen name='RestaurantDetail' component={RestaurantDetail}/>
             <Stack.Screen name='RestaurantMenu' component={RestaurantMenu}/>
