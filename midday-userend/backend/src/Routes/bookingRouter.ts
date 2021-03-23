@@ -12,6 +12,9 @@ const bookingRouter = ():Router => {
   router
     .route('/delete/:email')
     .put(bookingController.deleteBooking);
+  router
+    .route('/')
+    .put(bookingController.updateSelection);
 
   return router;
 };

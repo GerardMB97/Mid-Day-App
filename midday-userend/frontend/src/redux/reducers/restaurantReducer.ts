@@ -16,8 +16,9 @@ const restaurantReducer = (state = initialState.restaurants, action:AnyAction) =
       filteredRestaurants = state.categoryRestaurants.filter(({ name }) => name.toUpperCase().includes(action.value.toUpperCase()));
       return { ...state, filteredRestaurants };
     case restaurantActionTypes.GET_SELECTED_RESTAURANT:
-      index = state.categoryRestaurants.findIndex(({ _id }) => _id === action._id);
-      return { ...state, selectedRestaurant: state.categoryRestaurants[index] };
+      console.log('Hello its me mario');
+      index = state.allRestaurants.findIndex(({ _id }) => _id === action._id);
+      return { ...state, selectedRestaurant: state.allRestaurants[index] };
     default:
       return state;
   }

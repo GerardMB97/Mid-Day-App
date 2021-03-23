@@ -11,3 +11,4 @@ export const invitationsRoute = 'http://localhost:6000/api/midday/users/invitati
 export const deleteBookingRoute = 'http://localhost:6000/api/midday/bookings/delete/';
 export const updateBookingPaxRoute = 'http://localhost:6000/api/midday/bookings/new';
 export const deleteInvitationRoute = 'http://localhost:6000/api/midday/users/deleteInvitation';
+export const updateSelectionRoute = 'http://localhost:6000/api/midday/bookings';

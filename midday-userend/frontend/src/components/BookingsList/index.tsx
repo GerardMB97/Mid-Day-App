@@ -7,6 +7,7 @@ import colors from '../../../colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import { deleteBooking, deleteInvitation } from '../../redux/actions/userActions/userActions';
+import { getSelectedRestaurant } from '../../redux/actions/restaurantActions/restaurantAction';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -58,7 +59,7 @@ const styles = StyleSheet.create({
   }
 });
 
-function BookingsList ({ user, actions, route }:{user:User, actions:any, route:any}) {
+function BookingsList ({ user, actions, route, navigation }:{user:User, actions:any, route:any, navigation: any}) {
   const { list }:{list:'invitations' | 'bookings'} = route.params;
   return (
     <View style={styles.container}>
@@ -89,7 +90,7 @@ function BookingsList ({ user, actions, route }:{user:User, actions:any, route:a
               <TouchableWithoutFeedback><Icon style={styles.icon} name="settings-outline"></Icon></TouchableWithoutFeedback>
             </View>
               : <View style={styles.bottomContainer}>
-                <TouchableWithoutFeedback><Icon style={styles.greenicon} name="restaurant-outline"></Icon></TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={() => { actions.getSelectedRestaurant(item.restaurant._id); navigation.navigate('RestaurantMenu', { mode: 'editting', bookingId: item._id }); }}><Icon style={styles.greenicon} name="restaurant-outline"></Icon></TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={() => { actions.deleteInvitation(user._id, item._id); }}><Icon style={styles.redicon} name="trash-outline"></Icon></TouchableWithoutFeedback>
               </View>}
 
@@ -111,6 +112,6 @@ function mapStateToProps ({ user }:{user:User}) {
   return { user };
 }
 function mapDispatchToProps (dispatch:Dispatch) {
-  return { actions: bindActionCreators({ deleteBooking, deleteInvitation }, dispatch) };
+  return { actions: bindActionCreators({ deleteBooking, deleteInvitation, getSelectedRestaurant }, dispatch) };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(BookingsList);

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { updateAllergiesRoute, newBookingRoute, bookingToRestRoute, bookingToUserRoute, findUserRoute, invitationsRoute } from '../constants/dataBase';
+import { updateAllergiesRoute, newBookingRoute, bookingToRestRoute, bookingToUserRoute, updateSelectionRoute, invitationsRoute } from '../constants/dataBase';
 
 export const checkSelectedHour = (selectedHour:string, availableHours:string[]) => {
   return availableHours.findIndex((element) => element === selectedHour) !== -1;
@@ -133,4 +133,8 @@ export const getMonthName = (date: string):string => {
 
 export const getDay = (date: string) => {
   return date.split('-')[0];
+};
+
+export const updateSelection = async (selections, bookingId, userId) => {
+  await axios.put(updateSelectionRoute, { selections, bookingId, userId });
 };

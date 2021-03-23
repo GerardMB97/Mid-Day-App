@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import colors from '../../../colors';
 import { bindActionCreators, Dispatch } from 'redux';
 import { saveMenuSelection, resetBooking } from '../../redux/actions/bookingActions/bookingActions';
+import { updateSelection } from '../../utils';
 
 const styles = StyleSheet.create({
   menuContainer: {
@@ -96,12 +97,24 @@ const styles = StyleSheet.create({
 
 });
 
-function RestaurantMenu ({ selectedRestaurant, user, actions, navigation, booking }:{selectedRestaurant: any, user:any, actions: any, navigation:any, booking:any}) {
+function RestaurantMenu ({ selectedRestaurant, user, actions, navigation, booking, route }:{selectedRestaurant: any, user:any, actions: any, navigation:any, booking:any, route: any}) {
   const [selectedType, setSelectedType] = React.useState('firstCourse');
   const [selectedTitle, setSelectedTitle] = React.useState(1);
   const [selectedFirst, setSelectedFirst] = React.useState(booking.people.length ? booking.people[0].selections[0] : '');
   const [selectedSecond, setSelectedSecond] = React.useState(booking.people.length ? booking.people[0].selections[1] : '');
   const [selectedDessert, setSelectedDessert] = React.useState(booking.people.length ? booking.people[0].selections[2] : '');
+
+  const { mode, bookingId } = route.params;
+  console.log(selectedRestaurant);
+  const save = (modeValue) => {
+    if (modeValue === 'normal') {
+      actions.resetBooking();
+      actions.saveMenuSelection(selectedFirst, selectedSecond, selectedDessert, user);
+      navigation.goBack();
+    } else {
+      updateSelection([selectedFirst, selectedSecond, selectedDessert], bookingId, user._id);
+    }
+  };
 
   const checkAllergies = ({ allergies }:any, { ingredients }:any) => {
     let isAllergic = false;
@@ -170,7 +183,7 @@ function RestaurantMenu ({ selectedRestaurant, user, actions, navigation, bookin
         <Text>{selectedDessert}</Text>
      </View>
 
-     <TouchableOpacity style = {styles.save} onPress={() => { actions.resetBooking(); actions.saveMenuSelection(selectedFirst, selectedSecond, selectedDessert, user); navigation.goBack(); }}><Text>Guardar selección</Text></TouchableOpacity>
+     <TouchableOpacity style = {styles.save} onPress={() => { save(mode); }}><Text>Guardar selección</Text></TouchableOpacity>
     </View>
   );
 }

@@ -293,7 +293,7 @@ function RestaurantDetail ({
             <Text>{selectedHour}</Text>
           </View>
            <TouchableWithoutFeedback
-        onPress={() => navigation.navigate('RestaurantMenu')}
+        onPress={() => navigation.navigate('RestaurantMenu', { mode: 'normal', bookingId: '1' })}
       >
         <Icon style = {styles.menuIcon} name="restaurant-outline"></Icon>
       </TouchableWithoutFeedback>
