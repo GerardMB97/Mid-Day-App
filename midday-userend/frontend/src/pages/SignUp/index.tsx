@@ -8,7 +8,6 @@ import { signUp } from '../../redux/actions/userActions/userActions';
 import { Dispatch, bindActionCreators } from 'redux';
 import { handleModal, handleSignUp } from '../../utils';
 import { connect } from 'react-redux';
-;
 
 const styles = StyleSheet.create({
   image: {

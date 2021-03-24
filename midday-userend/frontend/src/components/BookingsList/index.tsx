@@ -21,7 +21,8 @@ const styles = StyleSheet.create({
     shadowColor: 'black',
     shadowRadius: 2,
     shadowOpacity: 1.0,
-    position: 'relative'
+    position: 'relative',
+    marginBottom: 20
   },
   bookingImage: {
     width: '100%',

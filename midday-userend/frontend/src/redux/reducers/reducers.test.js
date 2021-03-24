@@ -54,7 +54,7 @@ describe('Given a restaurantReducer ', () => {
     test('Then it should return an object equal to state plus allRestaurants: action.restaurants', () => {
       const action = { type: restaurantActionTypes.GET_CATEGORY_RESTAURANTS, category: 'asian' };
 
-      const expectedOutput = { ...state, categoryRestaurants: [{ category: { name: 'asian' } }] };
+      const expectedOutput = { ...state, categoryRestaurants: [{ category: { name: 'asian' }, _id: '1234' }] };
 
       expect(restaurantReducer(state, action)).toEqual(expectedOutput);
     });
@@ -72,7 +72,7 @@ describe('Given a restaurantReducer ', () => {
     test('Then it should return an object equal to state plus allRestaurants: action.restaurants', () => {
       const action = { type: restaurantActionTypes.GET_SELECTED_RESTAURANT, _id: '1234' };
 
-      const expectedOutput = { ...state, selectedRestaurant: { name: 'asian', _id: '1234' } };
+      const expectedOutput = { ...state, selectedRestaurant: { category: { name: 'asian' }, _id: '1234' } };
 
       expect(restaurantReducer(state, action)).toEqual(expectedOutput);
     });

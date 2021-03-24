@@ -46,15 +46,15 @@ export const handleSignUp = (name:string,
   repeatedPwd: string,
   setRepeatedPwdModal:Function,
   action:Function,
-  handleModal:Function) => {
+  handleModalFn:Function) => {
   if (!checkName(name)) {
-    handleModal(setNameModal);
+    handleModalFn(setNameModal);
   } else if (!checkEmail(email)) {
-    handleModal(setEmailModal);
+    handleModalFn(setEmailModal);
   } else if (!checkPassword(pwd)) {
-    handleModal(setPwdModal);
+    handleModalFn(setPwdModal);
   } else if (!checkRepeatedPwd(pwd, repeatedPwd)) {
-    handleModal(setRepeatedPwdModal);
+    handleModalFn(setRepeatedPwdModal);
   } else action(name, email, pwd);
 };
 

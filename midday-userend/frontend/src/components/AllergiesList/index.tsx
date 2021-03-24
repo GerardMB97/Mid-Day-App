@@ -65,7 +65,7 @@ function AllergiesList ({ ingredients, actions }:any) {
       <FlatList
 
         data ={ingredients}
-        keyExtractor = {(item => item.category)}
+        keyExtractor = {(item => item.ingredient)}
         renderItem={({ item }) =>
         <TouchableWithoutFeedback onPress={() => { actions.updateAllergies(item.ingredient); actions.updateUserAllergies(item.ingredient); }}>
         <View style={item.isAllergic ? styles.selected : styles.listItem}>

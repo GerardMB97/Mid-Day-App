@@ -6,7 +6,7 @@ const bookingReducer = (state = initialState.booking, action:AnyAction) => {
   let newPeople;
   switch (action.type) {
     case bookingActionTypes.SAVE_SELECTION:
-      console.log(state);
+
       if (state.people.findIndex(person => person.user === action.user._id) === -1) {
         return {
           ...state, people: [...state.people, { user: action.user._id, selections: action.data }]

@@ -8,8 +8,6 @@ import { bindActionCreators, Dispatch } from 'redux';
 import { saveMenuSelection, resetBooking } from '../../redux/actions/bookingActions/bookingActions';
 import { deleteInvitation, addBookingToUser } from '../../redux/actions/userActions/userActions';
 import { updateSelection } from '../../utils';
-import axios from 'axios';
-import { bookingToUserRoute } from '../../constants/dataBase';
 
 const styles = StyleSheet.create({
   menuContainer: {
@@ -109,7 +107,6 @@ const styles = StyleSheet.create({
 
 function RestaurantMenu ({ selectedRestaurant, user, actions, navigation, booking, route }:{selectedRestaurant: any, user:any, actions: any, navigation:any, booking:any, route: any}) {
   const { mode } = route.params;
-  console.log(mode);
   const [myMenu, setMyMenu] = useState(booking.people.length && mode !== 'normal' ? booking.people.find((person) => user._id === person.user).selections : '');
 
   const [selectedType, setSelectedType] = React.useState('firstCourse');
@@ -122,7 +119,6 @@ function RestaurantMenu ({ selectedRestaurant, user, actions, navigation, bookin
     setSelectedFirst(myMenu ? myMenu[0] : '');
     setSelectedSecond(myMenu ? myMenu[1] : '');
     setSelectedDessert(myMenu ? myMenu[2] : '');
-    console.log('hi', myMenu);
   }, [booking, myMenu]);
 
   const save = async (modeValue:string, userId, bookingId) => {
