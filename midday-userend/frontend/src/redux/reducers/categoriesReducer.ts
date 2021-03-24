@@ -1,8 +1,8 @@
-import restaurantActionTypes from '../actions/restaurantActionTypes';
+import restaurantActionTypes from '../../redux/actions/restaurantActions/restaurantActionTypes';
 import { AnyAction } from 'redux';
 import initialState from '../store/initialState';
 
-const categoryReducer = (state = initialState.categories, action:AnyAction) => {
+const categoriesReducer = (state = initialState.categories, action:AnyAction) => {
   let filteredCategories;
   switch (action.type) {
     case restaurantActionTypes.LOAD_CATEGORIES:
@@ -18,4 +18,4 @@ const categoryReducer = (state = initialState.categories, action:AnyAction) => {
   }
 };
 
-export default categoryReducer;
+export default categoriesReducer;

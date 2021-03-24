@@ -1,5 +1,5 @@
 import { AnyAction } from 'redux';
-import restaurantActionTypes from '../actions/restaurantActionTypes';
+import restaurantActionTypes from '../actions/restaurantActions/restaurantActionTypes';
 import initialState from '../store/initialState';
 
 const restaurantReducer = (state = initialState.restaurants, action:AnyAction) => {
@@ -16,8 +16,8 @@ const restaurantReducer = (state = initialState.restaurants, action:AnyAction) =
       filteredRestaurants = state.categoryRestaurants.filter(({ name }) => name.toUpperCase().includes(action.value.toUpperCase()));
       return { ...state, filteredRestaurants };
     case restaurantActionTypes.GET_SELECTED_RESTAURANT:
-      index = state.categoryRestaurants.findIndex(({ _id }) => _id === action._id);
-      return { ...state, selectedRestaurant: state.categoryRestaurants[index] };
+      index = state.allRestaurants.findIndex(({ _id }) => _id === action._id);
+      return { ...state, selectedRestaurant: state.allRestaurants[index] };
     default:
       return state;
   }

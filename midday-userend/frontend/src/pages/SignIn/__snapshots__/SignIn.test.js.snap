@@ -1,0 +1,351 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given a SignIn component When rendered Then it should render properly 1`] = `
+<View
+  accessibilityIgnoresInvertColors={true}
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Image
+    source={
+      Object {
+        "uri": "https://trello-attachments.s3.amazonaws.com/6041f773bf2ba60154c38447/417x626/b5a3b5bc578c8c8a9603c72b18f9670e/comida-ingredientes_1220-4884.jpg",
+      }
+    }
+    style={
+      Array [
+        Object {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        Object {
+          "height": undefined,
+          "width": undefined,
+        },
+        undefined,
+      ]
+    }
+  />
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "marginTop": 100,
+        "width": "100%",
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "uri": "https://trello-attachments.s3.amazonaws.com/6041f773bf2ba60154c38447/886x624/909520ea82dfc7447a5fe02c2583c808/logo_blanco2_%282%29.png",
+        }
+      }
+      style={
+        Object {
+          "height": 250,
+          "width": 400,
+        }
+      }
+    />
+    <TextInput
+      allowFontScaling={true}
+      onChangeText={[Function]}
+      placeholder="Introduzca su correo"
+      rejectResponderTermination={true}
+      style={
+        Object {
+          "backgroundColor": "white",
+          "borderRadius": 5,
+          "height": 40,
+          "marginTop": 40,
+          "paddingLeft": 10,
+          "width": 250,
+        }
+      }
+      testID="emailInput"
+      underlineColorAndroid="transparent"
+      value="hello"
+    />
+    <TextInput
+      allowFontScaling={true}
+      onChangeText={[Function]}
+      placeholder="Introduzca su contraseña"
+      rejectResponderTermination={true}
+      secureTextEntry={true}
+      style={
+        Object {
+          "backgroundColor": "white",
+          "borderRadius": 5,
+          "height": 40,
+          "marginTop": 40,
+          "paddingLeft": 10,
+          "width": 250,
+        }
+      }
+      testID="pwdInput"
+      underlineColorAndroid="transparent"
+      value="hello"
+    />
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "rgb(135, 175, 147)",
+          "borderRadius": 5,
+          "height": 40,
+          "justifyContent": "center",
+          "marginBottom": 20,
+          "marginTop": 40,
+          "opacity": 1,
+          "width": 100,
+        }
+      }
+      testID="SignIn"
+    >
+      <Text>
+        Sign In
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+      testID="navigate"
+    >
+      <Text
+        style={
+          Object {
+            "color": "white",
+          }
+        }
+      >
+        Todaviá no estás registrado? Pincha aquí.
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Given a SignIn component When rendered with isLanding set to false and user status is 3 Then it should render properly 1`] = `
+<View
+  accessibilityIgnoresInvertColors={true}
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Image
+    source={
+      Object {
+        "uri": "https://trello-attachments.s3.amazonaws.com/6041f773bf2ba60154c38447/417x626/b5a3b5bc578c8c8a9603c72b18f9670e/comida-ingredientes_1220-4884.jpg",
+      }
+    }
+    style={
+      Array [
+        Object {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        Object {
+          "height": undefined,
+          "width": undefined,
+        },
+        undefined,
+      ]
+    }
+  />
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "marginTop": 100,
+        "width": "100%",
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "uri": "https://trello-attachments.s3.amazonaws.com/6041f773bf2ba60154c38447/886x624/909520ea82dfc7447a5fe02c2583c808/logo_blanco2_%282%29.png",
+        }
+      }
+      style={
+        Object {
+          "height": 250,
+          "width": 400,
+        }
+      }
+    />
+    <TextInput
+      allowFontScaling={true}
+      onChangeText={[Function]}
+      placeholder="Introduzca su correo"
+      rejectResponderTermination={true}
+      style={
+        Object {
+          "backgroundColor": "white",
+          "borderRadius": 5,
+          "height": 40,
+          "marginTop": 40,
+          "paddingLeft": 10,
+          "width": 250,
+        }
+      }
+      testID="emailInput"
+      underlineColorAndroid="transparent"
+      value=""
+    />
+    <View
+      style={
+        Object {
+          "position": "absolute",
+          "top": 350,
+          "zIndex": 2,
+        }
+      }
+    >
+      <View>
+        <View
+          style={
+            Object {
+              "backgroundColor": "rgb(247, 199, 48)",
+              "height": 30,
+              "left": 20,
+              "position": "absolute",
+              "top": -5,
+              "transform": Array [
+                Object {
+                  "rotate": "45deg",
+                },
+              ],
+              "width": 30,
+            }
+          }
+        />
+        <Text
+          style={
+            Object {
+              "backgroundColor": "rgb(247, 199, 48)",
+              "borderRadius": 10,
+              "height": 50,
+              "padding": 5,
+              "width": 240,
+            }
+          }
+        >
+          Lo siento no existe un usuario con este correo y contraseña
+        </Text>
+      </View>
+    </View>
+    <TextInput
+      allowFontScaling={true}
+      onChangeText={[Function]}
+      placeholder="Introduzca su contraseña"
+      rejectResponderTermination={true}
+      secureTextEntry={true}
+      style={
+        Object {
+          "backgroundColor": "white",
+          "borderRadius": 5,
+          "height": 40,
+          "marginTop": 40,
+          "paddingLeft": 10,
+          "width": 250,
+        }
+      }
+      testID="pwdInput"
+      underlineColorAndroid="transparent"
+      value=""
+    />
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "rgb(135, 175, 147)",
+          "borderRadius": 5,
+          "height": 40,
+          "justifyContent": "center",
+          "marginBottom": 20,
+          "marginTop": 40,
+          "opacity": 1,
+          "width": 100,
+        }
+      }
+      testID="SignIn"
+    >
+      <Text>
+        Sign In
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+      testID="navigate"
+    >
+      <Text
+        style={
+          Object {
+            "color": "white",
+          }
+        }
+      >
+        Todaviá no estás registrado? Pincha aquí.
+      </Text>
+    </View>
+  </View>
+</View>
+`;

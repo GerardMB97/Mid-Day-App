@@ -1,6 +1,8 @@
 import categoriesReducer from './categoriesReducer';
 import restaurantReducer from './restaurantReducer';
-import restaurantActionTypes from '../actions/restaurantActionTypes';
+import restaurantActionTypes from '../../redux/actions/restaurantActions/restaurantActionTypes';
+import ingredientActionTypes from '../../redux/actions/ingredientActions/ingredientActionsTypes';
+import ingredientReducer from '../../redux/reducers/ingredientReducer';
 
 describe('Given a categoriesReducer', () => {
   const categoriesState = { allCategories: [{ name: 'hi' }, { name: 'bye' }], filteredCategories: [] };
@@ -32,16 +34,16 @@ describe('Given a categoriesReducer', () => {
 });
 describe('Given a restaurantReducer ', () => {
   const state = {
-    allRestaurants: [{ category: { name: 'asian' } }],
+    allRestaurants: [{ category: { name: 'asian' }, _id: '1234' }],
     categoryRestaurants: [{ name: 'asian', _id: '1234' }],
     filteredRestaurants: [],
     selectedRestaurant: {
-      category: {}
+      category: { name: 'asian' }
     }
   };
   describe('When invoked with an action with type LOAD_restaurants', () => {
     test('Then it should return an object equal to state plus allRestaurants: action.restaurants', () => {
-      const action = { type: restaurantActionTypes.LOAD_RESTAURANTS, restaurants: [{ name: 'Can Gerard' }] };
+      const action = { type: restaurantActionTypes.LOAD_RESTAURANTS, restaurants: [{ category: { name: 'asian' } }] };
 
       const expectedOutput = { ...state, allRestaurants: [...action.restaurants] };
 
@@ -52,7 +54,7 @@ describe('Given a restaurantReducer ', () => {
     test('Then it should return an object equal to state plus allRestaurants: action.restaurants', () => {
       const action = { type: restaurantActionTypes.GET_CATEGORY_RESTAURANTS, category: 'asian' };
 
-      const expectedOutput = { ...state, categoryRestaurants: [{ category: { name: 'asian' } }] };
+      const expectedOutput = { ...state, categoryRestaurants: [{ category: { name: 'asian' }, _id: '1234' }] };
 
       expect(restaurantReducer(state, action)).toEqual(expectedOutput);
     });
@@ -61,7 +63,7 @@ describe('Given a restaurantReducer ', () => {
     test('Then it should return an object equal to state plus allRestaurants: action.restaurants', () => {
       const action = { type: restaurantActionTypes.FILTER_RESTAURANTS, value: 'asian' };
 
-      const expectedOutput = { ...state, filteredRestaurants: [{ name: 'asian', _id: '1234' }] };
+      const expectedOutput = { ...state, filteredRestaurants: [{ _id: '1234', name: 'asian' }] };
 
       expect(restaurantReducer(state, action)).toEqual(expectedOutput);
     });
@@ -70,7 +72,7 @@ describe('Given a restaurantReducer ', () => {
     test('Then it should return an object equal to state plus allRestaurants: action.restaurants', () => {
       const action = { type: restaurantActionTypes.GET_SELECTED_RESTAURANT, _id: '1234' };
 
-      const expectedOutput = { ...state, selectedRestaurant: { name: 'asian', _id: '1234' } };
+      const expectedOutput = { ...state, selectedRestaurant: { category: { name: 'asian' }, _id: '1234' } };
 
       expect(restaurantReducer(state, action)).toEqual(expectedOutput);
     });
@@ -88,6 +90,29 @@ describe('Given a restaurantReducer ', () => {
       };
 
       expect(restaurantReducer(undefined, action)).toEqual(initialState);
+    });
+  });
+});
+describe('Given a ingredient reducer', () => {
+  describe('When invoked with an action of type GET_INGREDIENTS', () => {
+    test('Then it should return action.data', () => {
+      const action = {
+        type: ingredientActionTypes.GET_INGREDIENTS,
+        data: []
+      };
+      const output = ingredientReducer(undefined, action);
+      expect(output).toEqual([]);
+    });
+  });
+  describe('When invoked with an action of different type', () => {
+    test('Then it should return state', () => {
+      const action = {
+        type: '',
+        data: []
+      };
+      const state = [{ ingredient: 'Ternera' }];
+      const output = ingredientReducer(state, action);
+      expect(output).toEqual(state);
     });
   });
 });

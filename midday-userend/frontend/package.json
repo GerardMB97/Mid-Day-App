@@ -5,11 +5,12 @@
     "ios": "react-native run-ios",
     "web": "expo start --web",
     "start": "react-native start",
-    "test": "jest --watchAll --collect-coverage"
+    "test": "jest --watchAll --collect-coverage --detectOpenHandles"
   },
   "dependencies": {
     "@react-native-community/datetimepicker": "3.0.4",
     "@react-native-community/masked-view": "0.1.10",
+    "@react-navigation/bottom-tabs": "^5.11.8",
     "@react-navigation/native": "^5.9.3",
     "@react-navigation/stack": "^5.14.3",
     "@testing-library/jest-dom": "^5.11.9",
@@ -36,6 +37,8 @@
     "react-native-calendars": "^1.1254.0",
     "react-native-gesture-handler": "~1.8.0",
     "react-native-modal-datetime-picker": "^9.2.0",
+    "react-native-multiple-select": "^0.5.6",
+    "react-native-numeric-input": "^1.8.3",
     "react-native-reanimated": "~1.13.0",
     "react-native-redash": "^16.0.8",
     "react-native-safe-area-context": "3.1.9",
@@ -67,18 +70,18 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.3.1",
     "eslint-plugin-react": "^7.22.0",
-    "jest-expo": "~40.0.0",
+    "jest-expo": "^40.0.2",
     "jsdom": "16.5.0",
     "jsdom-global": "3.0.2",
     "react-test-renderer": "^17.0.1",
     "ts-jest": "^26.5.3",
     "typescript": "~4.0.0"
   },
-"jest": {
+  "jest": {
     "preset": "jest-expo",
     "transform": {
       "\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
     }
   },
-  "private": true 
+  "private": true
 }

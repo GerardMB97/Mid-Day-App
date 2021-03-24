@@ -12,20 +12,23 @@ import {
   TouchableOpacity
 } from 'react-native';
 import colors from '../../../colors';
-import { loadCategories, filterSearchBar, loadRestaurants } from '../../redux/actions/restaurantAction';
+import { loadCategories, filterSearchBar, loadRestaurants } from '../../redux/actions/restaurantActions/restaurantAction';
+import { getIngredients } from '../../redux/actions/ingredientActions/ingredientActions';
 import { State } from '../../models';
 
 import SearchBar from '../SearchBar';
 import NotFound from '../NotFound';
+import WelcomeModal from '../WelcomeModal';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 100,
+    paddingTop: 20,
     alignItems: 'center',
     width: '100%',
     paddingLeft: 20,
-    paddingRight: 20
+    paddingRight: 20,
+    position: 'relative'
 
   },
   input: {
@@ -87,16 +90,18 @@ const styles = StyleSheet.create({
   }
 });
 
-function CategoriesList ({ categories, restaurants, actions, navigation }:any) {
+function CategoriesList ({ categories, restaurants, ingredients, actions, navigation, user }:any) {
   const [inputValue, setInputValue] = React.useState('');
 
   useEffect(() => {
     if (!categories.allCategories.length) { actions.loadCategories(); }
     if (!restaurants.allRestaurants.length) { actions.loadRestaurants(); }
+    if (!ingredients.length) { actions.getIngredients(user); }
   }, []);
 
   return (
     <View style = {styles.container}>
+      {user.isNewUser && <WelcomeModal user={user} ingredients = {ingredients}></WelcomeModal>}
       <SearchBar inputValue={inputValue}
        setInputValue={setInputValue}
        inputPlaceholder='Tipo de menu o restaurante'
@@ -111,7 +116,7 @@ function CategoriesList ({ categories, restaurants, actions, navigation }:any) {
         columnWrapperStyle={{ justifyContent: 'space-between' }}
         numColumns={2}
         data ={inputValue.length ? categories.filteredCategories : categories.allCategories}
-        keyExtractor = {(item => item.name)}
+        keyExtractor = {(item => item._id)}
         renderItem={({ item }) =>
           <View style = {styles.listElement} >
 
@@ -134,12 +139,12 @@ function CategoriesList ({ categories, restaurants, actions, navigation }:any) {
   );
 }
 
-function mapStateToProps ({ categories, restaurants }: State) {
-  return { categories, restaurants };
+function mapStateToProps ({ categories, restaurants, user, ingredients }: State) {
+  return { categories, restaurants, user, ingredients };
 }
 
 function mapDispatchToProps (dispatch: Dispatch) {
-  return { actions: bindActionCreators({ loadCategories, filterSearchBar, loadRestaurants }, dispatch) };
+  return { actions: bindActionCreators({ loadCategories, filterSearchBar, loadRestaurants, getIngredients }, dispatch) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoriesList);

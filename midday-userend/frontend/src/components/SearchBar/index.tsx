@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Dispatch, AnyAction, bindActionCreators } from 'redux';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { TextInput, View, StyleSheet } from 'react-native';
 import colors from '../../../colors';
-import { filterSearchBar } from '../../redux/actions/restaurantAction';
+import { filterSearchBar } from '../../redux/actions/restaurantActions/restaurantAction';
 import { connect } from 'react-redux';
 
 const styles = StyleSheet.create({
@@ -31,14 +31,20 @@ const styles = StyleSheet.create({
   }
 });
 
-function SearchBar ({ inputPlaceholder, setInputValue, inputValue, action, actions }: {inputPlaceholder: string, setInputValue:any, inputValue:string, action:any, actions:any}) {
+function SearchBar ({ inputPlaceholder, setInputValue, inputValue, action, actions }: {inputPlaceholder: string, setInputValue:any, inputValue:string, action:string, actions:any}) {
+  useEffect(() => {
+    const timeout = setTimeout(() => actions.filterSearchBar(inputValue, action), 350);
+
+    return () => clearTimeout(timeout);
+  }, [inputValue]);
   return (
     <View style = {styles.container}>
      <TextInput
+     testID = 'searchbar'
       style = {styles.input}
       placeholder={inputPlaceholder}
       value={inputValue}
-      onChangeText={(text) => { setInputValue(text); actions.filterSearchBar(text, action); }}>
+      onChangeText={(text) => { setInputValue(text); }}>
       </TextInput>
       <Icon style={styles.search} name= "search-outline"></Icon>
       </View>);

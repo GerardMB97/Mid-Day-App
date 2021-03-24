@@ -7,7 +7,8 @@ const restaurantRouter = ():Router => {
 
   router
     .route('/restaurants')
-    .get(restaurantController.getRestaurants);
+    .get(restaurantController.getRestaurants)
+    .put(restaurantController.addBookingToRestaurant);
 
   router
     .route('/restaurants/categories')

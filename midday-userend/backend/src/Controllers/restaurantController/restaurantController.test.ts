@@ -1,10 +1,9 @@
-const restaurantController = require('./restaurantController');
-const Categories = require('../Models/categoryModel');
-const Restaurant = require('../Models/restaurantModel');
-require('../Models/categoryModel');
+const restaurantController = require('.');
+const Categories = require('../../Models/categoryModel');
+const Restaurant = require('../../Models/restaurantModel');
 
-jest.mock('../Models/categoryModel');
-jest.mock('../Models/restaurantModel');
+jest.mock('../../Models/categoryModel');
+jest.mock('../../Models/restaurantModel');
 
 describe('Given a restaurantController', () => {
   let req:any, res:any;

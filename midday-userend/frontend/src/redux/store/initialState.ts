@@ -12,8 +12,24 @@ const initialState: State = {
     selectedRestaurant: {
       category: {}
     }
+  },
+  user: {
+    name: undefined,
+    email: undefined,
+    password: undefined,
+    allergies: [],
+    foodTastes: [],
+    _id: undefined,
+    status: 0
+  },
+  ingredients: [],
+  booking: {
+    date: '',
+    hour: '',
+    bookingAdmin: '',
+    pax: 1,
+    people: []
   }
 };
-
 export default initialState
 ;
