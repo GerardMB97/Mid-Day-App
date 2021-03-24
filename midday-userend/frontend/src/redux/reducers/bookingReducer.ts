@@ -12,6 +12,9 @@ const bookingReducer = (state = initialState.booking, action:AnyAction) => {
       return initialState.booking;
     case bookingActionTypes.INVITE:
       return { ...state, people: [...state.people, { user: action._id }] };
+    case bookingActionTypes.GET_BOOKING:
+      console.log('booking', action.booking);
+      return action.booking;
     default:
       return state;
   }

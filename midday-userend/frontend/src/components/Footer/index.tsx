@@ -1,14 +1,16 @@
 import * as React from 'react';
+import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icons from 'react-native-vector-icons/Ionicons';
-import Profile from 'src/pages/Profile';
-import CategoriesList from '../CategoriesList';
+import HomeStackScreen from '../Navigation/homeStackScreen';
+import ProfileStackScreen from '../Navigation/profileStackScreen';
+import InvitationsStackScreen from '../Navigation/invitationStackScreen';
 
 const Tab = createBottomTabNavigator();
 export default function Footer () {
   return (
-    <NavigationContainer>
+
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: function render ({ focused, color, size }:any) {
@@ -29,9 +31,10 @@ export default function Footer () {
           inactiveTintColor: 'gray'
         }}
       >
-        <Tab.Screen name="Profile" component={Profile} />
-        <Tab.Screen name="CategoriesList" component={CategoriesList} />
+        <Tab.Screen name="Landing" component={ProfileStackScreen} />
+        <Tab.Screen name="Home" component={HomeStackScreen} />
+        <Tab.Screen name="Invitations" component={InvitationsStackScreen} />
       </Tab.Navigator>
-    </NavigationContainer>
+
   );
 }

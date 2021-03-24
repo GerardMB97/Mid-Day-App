@@ -62,32 +62,6 @@ export const addInvitation = (userId, bookingId) => {
   axios.put(invitationsRoute, { userId, bookingId });
 };
 
-export const createBooking = async (date, hour, bookingAdmin, pax, people, restaurantId) => {
-  const booking = {
-    date,
-    hour,
-    bookingAdmin,
-    pax,
-    people,
-    restaurant: restaurantId
-
-  };
-  const { data } = await axios.post(newBookingRoute, booking);
-
-  data.people.forEach(person => { if (bookingAdmin !== person.user) { addInvitation(person.user, data._id); } });
-  const reqBody = {
-    bookingId: data._id,
-    restaurantId
-
-  };
-  axios.put(bookingToRestRoute, reqBody);
-  const userReqBody = {
-    bookingId: data._id,
-    userId: bookingAdmin
-  };
-  axios.put(bookingToUserRoute, userReqBody);
-};
-
 export const getMonthName = (date: string):string => {
   const month = date.split('-')[1];
   switch (month) {

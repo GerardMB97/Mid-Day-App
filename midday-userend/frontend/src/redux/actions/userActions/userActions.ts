@@ -1,7 +1,9 @@
 import axios from 'axios';
 import userActionTypes from './userActionTypes';
-import { SignUpRoute, SignInRoute, updateUserIsNew, deleteBookingRoute, deleteInvitationRoute, updateBookingPaxRoute, updateAllergiesRoute } from '../../../constants/dataBase';
+
+import { SignUpRoute, SignInRoute, updateUserIsNew, deleteBookingRoute, deleteInvitationRoute, updateBookingPaxRoute, updateAllergiesRoute, newBookingRoute, bookingToRestRoute, bookingToUserRoute } from '../../../constants/dataBase';
 import { Dispatch } from 'redux';
+import { addInvitation } from '../../../utils';
 export const signUp = (name:string, email:string, password:string) => {
   return async (dispatch:Dispatch) => {
     try {
@@ -85,10 +87,45 @@ export const deleteInvitation = (userId:string, invitationId:string) => {
     try {
       await axios.put(updateBookingPaxRoute, { userId, bookingId: invitationId });
       const { data } = await axios.put(deleteInvitationRoute, { userId, invitationId });
-      console.log(data);
       dispatch({
         type: userActionTypes.DELETE_INVITATION,
         user: data
+      });
+    } catch (error) {
+
+    }
+  };
+};
+
+export const createBooking = (date, hour, bookingAdmin, pax, people, restaurantId) => {
+  return async (dispatch:Dispatch) => {
+    try {
+      const booking = {
+        date,
+        hour,
+        bookingAdmin,
+        pax,
+        people,
+        restaurant: restaurantId
+
+      };
+      const { data } = await axios.post(newBookingRoute, booking);
+
+      data.people.forEach(async (person) => { if (bookingAdmin !== person.user) { await addInvitation(person.user, data._id); } });
+      const reqBody = {
+        bookingId: data._id,
+        restaurantId
+
+      };
+      await axios.put(bookingToRestRoute, reqBody);
+      const userReqBody = {
+        bookingId: data._id,
+        userId: bookingAdmin
+      };
+      const user = await axios.put(bookingToUserRoute, userReqBody);
+      dispatch({
+        type: userActionTypes.CREATE_BOOKING,
+        user: user.data
       });
     } catch (error) {
 

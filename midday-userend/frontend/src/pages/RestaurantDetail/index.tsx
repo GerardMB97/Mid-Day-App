@@ -13,12 +13,13 @@ import {
 import { State } from '../../models';
 import { getSelectedRestaurant } from '../../redux/actions/restaurantActions/restaurantAction';
 import { handleInvitation, resetBooking } from '../../redux/actions/bookingActions/bookingActions';
+import { createBooking } from '../../redux/actions/userActions/userActions';
 import { connect } from 'react-redux';
 import colors from '../../../colors';
 import { Calendar } from 'react-native-calendars';
 import Icon from 'react-native-vector-icons/Ionicons';
 import TimePicker from '../../components/TimePicker';
-import { checkSelectedHour, handleConfirm, createBooking, getMonthName, getDay, handleModal } from '../../utils';
+import { checkSelectedHour, handleConfirm, getMonthName, getDay } from '../../utils';
 import availableHours from '../../constants/availableHours';
 import CalendarIcon from '../../components/CalendarIcon';
 import Modal from '../../components/Modal';
@@ -255,7 +256,8 @@ function RestaurantDetail ({
   }, [booking]);
 
   return (
-    <View style={styles.container}>
+    selectedRestaurant
+      ? <View style={styles.container}>
       <View style={styles.imageContainer}>
         <ImageBackground
           source={{ uri: selectedRestaurant.image }}
@@ -338,7 +340,7 @@ function RestaurantDetail ({
               setWrongHourModal,
               handleConfirmCallback
             );
-            createBooking(
+            actions.createBooking(
               selectedDay,
               selectedHour,
               user._id,
@@ -353,7 +355,7 @@ function RestaurantDetail ({
         </TouchableOpacity>
       </View>
     </View>
-  );
+      : <Text>We re loading</Text>);
 }
 
 function mapStateToProps ({
@@ -369,7 +371,7 @@ function mapStateToProps ({
 }
 
 function mapDispatchToProps (dispatch: Dispatch<AnyAction>) {
-  return { actions: bindActionCreators({ getSelectedRestaurant, handleInvitation, resetBooking }, dispatch) };
+  return { actions: bindActionCreators({ getSelectedRestaurant, handleInvitation, resetBooking, createBooking }, dispatch) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RestaurantDetail);

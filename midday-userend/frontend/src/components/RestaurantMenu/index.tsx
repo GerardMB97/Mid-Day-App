@@ -98,15 +98,18 @@ const styles = StyleSheet.create({
 });
 
 function RestaurantMenu ({ selectedRestaurant, user, actions, navigation, booking, route }:{selectedRestaurant: any, user:any, actions: any, navigation:any, booking:any, route: any}) {
+  const { mode, bookingId } = route.params;
+  console.log('bookingInComponent', booking);
+  let myMenu;
+  if (booking.people.length) { myMenu = booking.people.find((person) => user._id === person.user).selections; }
+
   const [selectedType, setSelectedType] = React.useState('firstCourse');
   const [selectedTitle, setSelectedTitle] = React.useState(1);
-  const [selectedFirst, setSelectedFirst] = React.useState(booking.people.length ? booking.people[0].selections[0] : '');
-  const [selectedSecond, setSelectedSecond] = React.useState(booking.people.length ? booking.people[0].selections[1] : '');
-  const [selectedDessert, setSelectedDessert] = React.useState(booking.people.length ? booking.people[0].selections[2] : '');
+  const [selectedFirst, setSelectedFirst] = React.useState(myMenu ? myMenu[0] : '');
+  const [selectedSecond, setSelectedSecond] = React.useState(myMenu ? myMenu[1] : '');
+  const [selectedDessert, setSelectedDessert] = React.useState(myMenu ? myMenu[2] : '');
 
-  const { mode, bookingId } = route.params;
-  console.log(selectedRestaurant);
-  const save = (modeValue) => {
+  const save = (modeValue:string) => {
     if (modeValue === 'normal') {
       actions.resetBooking();
       actions.saveMenuSelection(selectedFirst, selectedSecond, selectedDessert, user);
@@ -144,7 +147,8 @@ function RestaurantMenu ({ selectedRestaurant, user, actions, navigation, bookin
     return name === selectedFirst || name === selectedSecond || name === selectedDessert;
   };
   return (
-   <View style = {styles.menuContainer}>
+    selectedRestaurant.menus.length
+      ? <View style = {styles.menuContainer}>
      <Text>Elige tu menú.</Text>
     <View style = {styles.picker}>
 
@@ -166,7 +170,7 @@ function RestaurantMenu ({ selectedRestaurant, user, actions, navigation, bookin
 
     </View>
     <View style = {styles.list}>
-     {selectedRestaurant.menus[0][selectedType].map((item) =>
+     {selectedRestaurant.menus.length && selectedRestaurant.menus[0][selectedType].map((item) =>
     <TouchableWithoutFeedback disabled={checkAllergies(user, item)} key={item.name} onPress={() => { setSelectedDish(selectedTitle, item); }}>
       <View style = {checkIfselected(item) ? styles.listItemSelected : styles.listItem}>
         <Text >{item.name}</Text>
@@ -185,6 +189,7 @@ function RestaurantMenu ({ selectedRestaurant, user, actions, navigation, bookin
 
      <TouchableOpacity style = {styles.save} onPress={() => { save(mode); }}><Text>Guardar selección</Text></TouchableOpacity>
     </View>
+      : <Text>No hemos definido un menú</Text>
   );
 }
 

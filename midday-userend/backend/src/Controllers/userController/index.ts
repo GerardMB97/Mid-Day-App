@@ -66,7 +66,6 @@ const userController = () => {
 
   const addInvitation = async (req:Request, res:Response) => {
     const { userId, bookingId } = req.body;
-    console.log('assaasass', bookingId);
 
     try {
       const invitedUser = await User.findById(userId);

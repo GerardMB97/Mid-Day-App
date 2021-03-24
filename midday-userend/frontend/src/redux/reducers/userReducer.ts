@@ -1,5 +1,6 @@
 import { AnyAction } from 'redux';
 import userActionTypes from '../actions/userActions/userActionTypes';
+import bookingActionTypes from '../actions/bookingActions/bookingActionTypes';
 import initialState from '../store/initialState';
 
 const userReducer = (state = initialState.user, action:AnyAction) => {
@@ -25,6 +26,8 @@ const userReducer = (state = initialState.user, action:AnyAction) => {
     case userActionTypes.DELETE_INVITATION:
       return action.user;
     case userActionTypes.UPDATE_ALLERGIES_DB:
+      return action.user;
+    case userActionTypes.CREATE_BOOKING:
       return action.user;
     default:
       return state;

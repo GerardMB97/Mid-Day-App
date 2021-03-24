@@ -23,7 +23,7 @@ import WelcomeModal from '../WelcomeModal';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 100,
+    paddingTop: 20,
     alignItems: 'center',
     width: '100%',
     paddingLeft: 20,
@@ -107,7 +107,6 @@ function CategoriesList ({ categories, restaurants, ingredients, actions, naviga
        inputPlaceholder='Tipo de menu o restaurante'
        action = 'categories'
        ></SearchBar>
-       <TouchableOpacity onPress={() => navigation.navigate('Profile')}><Text>Navegame Sabroso</Text></TouchableOpacity>
       <Text style = {styles.title}>¿Qué Menú te apetece hoy?</Text>
       <SafeAreaView style = {styles.listContainer}>
         {inputValue.length && !categories.filteredCategories.length

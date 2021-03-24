@@ -43,15 +43,12 @@ const bookingController = () => {
   const updateSelection = async (req:Request, res:Response) => {
     try {
       const { userId, bookingId, selections } = req.body;
-      console.log('selections', selections);
-      console.log('userId', userId);
       const booking = await Booking.findById(bookingId);
       const updatedPeople = booking.people.map((person:any) => {
         return person.user.toString() === userId
           ? { ...person.toObject(), selections: selections }
           : person;
       });
-      console.log('hi i should be an array', updatedPeople);
 
       const updatedBooking = await Booking.findByIdAndUpdate(bookingId, { people: [...updatedPeople] });
       res.json(updatedBooking);
@@ -61,11 +58,24 @@ const bookingController = () => {
       res.send('There was an error updating your booking');
     }
   };
+
+  const getBooking = async (req:Request, res:Response) => {
+    try {
+      const { _id } = req.params;
+      const booking = await Booking.findById(_id);
+      res.json(booking);
+      res.status(200);
+    } catch (error) {
+      res.status(500);
+      res.send('There was an error trying to retrieve your booking');
+    }
+  };
   return {
     createNewBooking,
     deleteBooking,
     updateBooking,
-    updateSelection
+    updateSelection,
+    getBooking
   };
 };
 

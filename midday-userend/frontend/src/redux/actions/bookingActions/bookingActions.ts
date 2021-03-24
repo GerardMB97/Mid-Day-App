@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux';
 import bookingActionTypes from './bookingActionTypes';
 import axios from 'axios';
-import { findUserRoute } from '../../../constants/dataBase';
+import { findUserRoute, updateSelectionRoute } from '../../../constants/dataBase';
 
 export const saveMenuSelection = (first, second, dessert, user) => {
   return {
@@ -22,7 +22,6 @@ export const getDay = (date: string) => {
 };
 
 export const handleInvitation = (email: string, invitations, setInvitations, { people }) => {
-  console.log(people);
   return async (dispatch:Dispatch) => {
     try {
       const { data: { _id } } = await axios.get(`${findUserRoute}${email}`);
@@ -41,6 +40,20 @@ export const handleInvitation = (email: string, invitations, setInvitations, { p
       dispatch({
         type: 'hello'
       });
+    }
+  };
+};
+
+export const getBooking = (_id) => {
+  return async (dispatch:Dispatch) => {
+    try {
+      const { data } = await axios.get(`${updateSelectionRoute}/${_id}`);
+      dispatch({
+        type: bookingActionTypes.GET_BOOKING,
+        booking: data
+      });
+    } catch (error) {
+
     }
   };
 };

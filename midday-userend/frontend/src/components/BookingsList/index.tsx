@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import { deleteBooking, deleteInvitation } from '../../redux/actions/userActions/userActions';
 import { getSelectedRestaurant } from '../../redux/actions/restaurantActions/restaurantAction';
+import { getBooking } from '../../redux/actions/bookingActions/bookingActions';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -90,7 +91,7 @@ function BookingsList ({ user, actions, route, navigation }:{user:User, actions:
               <TouchableWithoutFeedback><Icon style={styles.icon} name="settings-outline"></Icon></TouchableWithoutFeedback>
             </View>
               : <View style={styles.bottomContainer}>
-                <TouchableWithoutFeedback onPress={() => { actions.getSelectedRestaurant(item.restaurant._id); navigation.navigate('RestaurantMenu', { mode: 'editting', bookingId: item._id }); }}><Icon style={styles.greenicon} name="restaurant-outline"></Icon></TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={() => { actions.getSelectedRestaurant(item.restaurant._id); actions.getBooking(item._id); navigation.navigate('RestaurantMenu', { mode: 'editting' }); }}><Icon style={styles.greenicon} name="restaurant-outline"></Icon></TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={() => { actions.deleteInvitation(user._id, item._id); }}><Icon style={styles.redicon} name="trash-outline"></Icon></TouchableWithoutFeedback>
               </View>}
 
@@ -112,6 +113,6 @@ function mapStateToProps ({ user }:{user:User}) {
   return { user };
 }
 function mapDispatchToProps (dispatch:Dispatch) {
-  return { actions: bindActionCreators({ deleteBooking, deleteInvitation, getSelectedRestaurant }, dispatch) };
+  return { actions: bindActionCreators({ deleteBooking, deleteInvitation, getSelectedRestaurant, getBooking }, dispatch) };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(BookingsList);

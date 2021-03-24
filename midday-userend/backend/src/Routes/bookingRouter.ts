@@ -15,6 +15,9 @@ const bookingRouter = ():Router => {
   router
     .route('/')
     .put(bookingController.updateSelection);
+  router
+    .route('/:_id')
+    .get(bookingController.getBooking);
 
   return router;
 };
