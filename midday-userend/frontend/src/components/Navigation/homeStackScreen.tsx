@@ -11,7 +11,7 @@ const HomeStack = createStackNavigator();
 export default function HomeStackScreen () {
   return (
     <HomeStack.Navigator initialRouteName="LandingPage">
-      <HomeStack.Screen name="LandingPage" component={CategoriesList}></HomeStack.Screen>
+      <HomeStack.Screen name="LandingPage" component={CategoriesList} options={{}}></HomeStack.Screen>
       <HomeStack.Screen name="CategoriesDetail" component={RestaurantsList}></HomeStack.Screen>
       <HomeStack.Screen name="RestaurantDetail" component={RestaurantDetail}></HomeStack.Screen>
       <HomeStack.Screen name="RestaurantMenu" component={RestaurantMenu}></HomeStack.Screen>

@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 export {};
 const Booking = require('../../Models/bookingModel');
-const User = require('../../Models/userModel');
 const userController = require('../userController');
 const bookingController = () => {
   const createNewBooking = async (req:Request, res:Response) => {

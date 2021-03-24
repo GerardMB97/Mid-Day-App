@@ -1,6 +1,5 @@
 import { AnyAction } from 'redux';
 import userActionTypes from '../actions/userActions/userActionTypes';
-import bookingActionTypes from '../actions/bookingActions/bookingActionTypes';
 import initialState from '../store/initialState';
 
 const userReducer = (state = initialState.user, action:AnyAction) => {

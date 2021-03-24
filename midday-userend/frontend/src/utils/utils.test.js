@@ -9,11 +9,9 @@ import {
   checkRepeatedPwd,
   handleModal,
   handleSignUp,
-  updateAllergiesDB,
   getMonthName,
   getDay,
   addInvitation,
-  createBooking,
   updateSelection
 } from './index';
 
@@ -131,19 +129,19 @@ describe('Given a function handleSignUp', () => {
 
   const name = 'Gerard';
   const email = 'gerard@gmail.com';
-  const pwd = 'Barcelona10';
+  const unicornio = 'Barcelona10';
   const repeatedPwd = 'Barcelona10';
 
   describe('When invoked with name:a ', () => {
     test('Then setNamemodal should be invoked setnameodal', () => {
-      handleSignUp('a', setNameModal, email, setEmailModal, pwd, setPwdModal, repeatedPwd, setRepeatedPwdModal, action, handleModal);
+      handleSignUp('a', setNameModal, email, setEmailModal, unicornio, setPwdModal, repeatedPwd, setRepeatedPwdModal, action, handleModal);
 
       expect(handleModal).toHaveBeenCalledWith(setNameModal);
     });
   });
   describe('When invoked with email:a ', () => {
     test('Then setEmailmodal should be invoked setemailmodal', () => {
-      handleSignUp(name, setNameModal, 'a', setEmailModal, pwd, setPwdModal, repeatedPwd, setRepeatedPwdModal, action, handleModal);
+      handleSignUp(name, setNameModal, 'a', setEmailModal, unicornio, setPwdModal, repeatedPwd, setRepeatedPwdModal, action, handleModal);
 
       expect(handleModal).toHaveBeenCalledWith(setEmailModal);
     });
@@ -157,29 +155,16 @@ describe('Given a function handleSignUp', () => {
   });
   describe('When invoked with repeatedpwd:a ', () => {
     test('Then setRepeatedPwdmodal should be invoked with setrepeatedpwdmodal', () => {
-      handleSignUp(name, setNameModal, email, setEmailModal, pwd, setPwdModal, 'a', setRepeatedPwdModal, action, handleModal);
+      handleSignUp(name, setNameModal, email, setEmailModal, unicornio, setPwdModal, 'a', setRepeatedPwdModal, action, handleModal);
 
       expect(handleModal).toHaveBeenCalledWith(setRepeatedPwdModal);
     });
   });
   describe('When invoked with all inputs being valid', () => {
     test('Then action should be invoked with name, email and pwd', () => {
-      handleSignUp(name, setNameModal, email, setEmailModal, pwd, setPwdModal, repeatedPwd, setRepeatedPwdModal, action, handleModal);
+      handleSignUp(name, setNameModal, email, setEmailModal, unicornio, setPwdModal, repeatedPwd, setRepeatedPwdModal, action, handleModal);
 
-      expect(action).toHaveBeenCalledWith(name, email, pwd);
-    });
-  });
-});
-describe('Given a function updateAllergiesDB', () => {
-  describe('When invoked with _id and allergies', () => {
-    test('Then it should invoke axios.put', () => {
-      axios.put = jest.fn();
-      const object = {
-        _id: '1',
-        allergies: 'none'
-      };
-      updateAllergiesDB(object);
-      expect(axios.put).toHaveBeenCalled();
+      expect(action).toHaveBeenCalledWith(name, email, unicornio);
     });
   });
 });
@@ -229,22 +214,6 @@ describe('Given a function addInvitation', () => {
       addInvitation('1', '2');
 
       expect(axios.put).toHaveBeenCalledWith('http://localhost:6000/api/midday/users/invitations', { userId: '1', bookingId: '2' });
-    });
-  });
-});
-describe('Given a function createBooking', () => {
-  describe('When invoked with the necessary data', () => {
-    test('Then it should invoke axios.post once', async () => {
-      axios.post = jest.fn().mockReturnValue({ data: { people: [{ user: 'hi' }] } });
-      await createBooking();
-      expect(axios.post).toHaveBeenCalledTimes(1);
-    });
-  });
-  describe('When invoked with the necessary data', () => {
-    test('Then it should invoke axios.put twice', async () => {
-      axios.put = jest.fn().mockReturnValue({ data: { people: [{ user: 'hi' }] } });
-      await createBooking();
-      expect(axios.post).toHaveBeenCalledTimes(2);
     });
   });
 });

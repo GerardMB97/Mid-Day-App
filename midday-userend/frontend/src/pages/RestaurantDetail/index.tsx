@@ -22,9 +22,6 @@ import TimePicker from '../../components/TimePicker';
 import { checkSelectedHour, handleConfirm, getMonthName, getDay } from '../../utils';
 import availableHours from '../../constants/availableHours';
 import CalendarIcon from '../../components/CalendarIcon';
-import Modal from '../../components/Modal';
-import modal from '../../constants/modalText';
-;
 
 const styles = StyleSheet.create({
   container: {
@@ -99,7 +96,7 @@ const styles = StyleSheet.create({
   },
   calendar: {
     position: 'absolute',
-    left: '20%',
+    left: '5%',
     top: 390,
     zIndex: 5
   },
@@ -150,7 +147,7 @@ const styles = StyleSheet.create({
   },
   confirmContainer: {
     position: 'relative',
-    top: 340,
+    top: 260,
     left: 130
   },
   hourModal: {

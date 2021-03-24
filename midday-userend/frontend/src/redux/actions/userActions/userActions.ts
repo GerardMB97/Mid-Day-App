@@ -82,10 +82,12 @@ export const deleteBooking = ({ email }: {email:string}, bookingId:string) => {
   };
 };
 
-export const deleteInvitation = (userId:string, invitationId:string) => {
+export const deleteInvitation = (userId:string, invitationId:string, mode:boolean) => {
   return async (dispatch:Dispatch) => {
     try {
-      await axios.put(updateBookingPaxRoute, { userId, bookingId: invitationId });
+      if (mode) {
+        await axios.put(updateBookingPaxRoute, { userId, bookingId: invitationId });
+      }
       const { data } = await axios.put(deleteInvitationRoute, { userId, invitationId });
       dispatch({
         type: userActionTypes.DELETE_INVITATION,
@@ -111,7 +113,7 @@ export const createBooking = (date, hour, bookingAdmin, pax, people, restaurantI
       };
       const { data } = await axios.post(newBookingRoute, booking);
 
-      data.people.forEach(async (person) => { if (bookingAdmin !== person.user) { await addInvitation(person.user, data._id); } });
+      data.people.forEach((person) => { if (bookingAdmin !== person.user) { addInvitation(person.user, data._id); } });
       const reqBody = {
         bookingId: data._id,
         restaurantId
@@ -130,5 +132,19 @@ export const createBooking = (date, hour, bookingAdmin, pax, people, restaurantI
     } catch (error) {
 
     }
+  };
+};
+
+export const addBookingToUser = (userId:string, bookingId:string) => {
+  return async (dispatch:Dispatch) => {
+    const body = {
+      userId,
+      bookingId
+    };
+    const { data } = await axios.put(bookingToUserRoute, body);
+    dispatch({
+      type: userActionTypes.CREATE_BOOKING,
+      user: data
+    });
   };
 };

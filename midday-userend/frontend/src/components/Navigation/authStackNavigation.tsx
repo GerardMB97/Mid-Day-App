@@ -4,7 +4,7 @@ import SignIn from '../../pages/SignIn';
 import SignUp from '../../pages/SignUp';
 const Stack = createStackNavigator();
 
-export default function Approutes () {
+export default function authStackNavigation () {
   return (
      <Stack.Navigator initialRouteName="SignIn">
       <Stack.Screen name="SignIn" component={SignIn} options={{ headerShown: false }}></Stack.Screen>

@@ -34,7 +34,7 @@ describe('Given a categoriesReducer', () => {
 });
 describe('Given a restaurantReducer ', () => {
   const state = {
-    allRestaurants: [{ category: { name: 'asian' } }],
+    allRestaurants: [{ category: { name: 'asian' }, _id: '1234' }],
     categoryRestaurants: [{ name: 'asian', _id: '1234' }],
     filteredRestaurants: [],
     selectedRestaurant: {

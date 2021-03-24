@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { updateAllergiesRoute, newBookingRoute, bookingToRestRoute, bookingToUserRoute, updateSelectionRoute, invitationsRoute } from '../constants/dataBase';
+import { updateSelectionRoute, invitationsRoute } from '../constants/dataBase';
 
 export const checkSelectedHour = (selectedHour:string, availableHours:string[]) => {
   return availableHours.findIndex((element) => element === selectedHour) !== -1;

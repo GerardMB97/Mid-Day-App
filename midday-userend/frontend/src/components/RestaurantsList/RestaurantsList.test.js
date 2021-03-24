@@ -7,6 +7,7 @@ import RestaurantsList from '../RestaurantsList';
 
 jest.mock('../../redux/actions/restaurantActions/restaurantAction');
 jest.mock('react-native-vector-icons/Ionicons', () => 'Icon');
+jest.mock('@react-navigation/native');
 
 describe('Given a component RestaurantsList', () => {
   const restaurants = {
@@ -17,9 +18,10 @@ describe('Given a component RestaurantsList', () => {
   jest.spyOn(actions, 'getCategoryRestaurants').mockReturnValue({ type: '' });
   const mockStore = configureStore();
   const store = mockStore({ restaurants });
+
   describe('When invoked', () => {
     test('Then it should render correctly', () => {
-      const tree = render(<Provider store={store}><RestaurantsList route={{ params: 'hi' }}></RestaurantsList></Provider>);
+      const tree = render(<Provider store={store}><RestaurantsList route={{ params: 'hi' }} navigation={{ isFocused: jest.fn() }}></RestaurantsList></Provider>);
 
       expect(tree).toMatchSnapshot();
     });

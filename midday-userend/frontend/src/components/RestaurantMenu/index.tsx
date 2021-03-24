@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text, View, StyleSheet, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -6,7 +6,10 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import colors from '../../../colors';
 import { bindActionCreators, Dispatch } from 'redux';
 import { saveMenuSelection, resetBooking } from '../../redux/actions/bookingActions/bookingActions';
+import { deleteInvitation, addBookingToUser } from '../../redux/actions/userActions/userActions';
 import { updateSelection } from '../../utils';
+import axios from 'axios';
+import { bookingToUserRoute } from '../../constants/dataBase';
 
 const styles = StyleSheet.create({
   menuContainer: {
@@ -93,29 +96,47 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: '95%',
     left: '65%'
+  },
+  selection: {
+    marginBottom: 20
+  },
+  selectionTitle: {
+    fontWeight: 'bold',
+    marginBottom: 10
   }
 
 });
 
 function RestaurantMenu ({ selectedRestaurant, user, actions, navigation, booking, route }:{selectedRestaurant: any, user:any, actions: any, navigation:any, booking:any, route: any}) {
-  const { mode, bookingId } = route.params;
-  console.log('bookingInComponent', booking);
-  let myMenu;
-  if (booking.people.length) { myMenu = booking.people.find((person) => user._id === person.user).selections; }
+  const { mode } = route.params;
+  console.log(mode);
+  const [myMenu, setMyMenu] = useState(booking.people.length && mode !== 'normal' ? booking.people.find((person) => user._id === person.user).selections : '');
 
   const [selectedType, setSelectedType] = React.useState('firstCourse');
   const [selectedTitle, setSelectedTitle] = React.useState(1);
   const [selectedFirst, setSelectedFirst] = React.useState(myMenu ? myMenu[0] : '');
   const [selectedSecond, setSelectedSecond] = React.useState(myMenu ? myMenu[1] : '');
   const [selectedDessert, setSelectedDessert] = React.useState(myMenu ? myMenu[2] : '');
+  useEffect(() => {
+    setMyMenu(booking.people.length && mode !== 'normal' ? booking.people.find((person) => user._id === person.user).selections : '');
+    setSelectedFirst(myMenu ? myMenu[0] : '');
+    setSelectedSecond(myMenu ? myMenu[1] : '');
+    setSelectedDessert(myMenu ? myMenu[2] : '');
+    console.log('hi', myMenu);
+  }, [booking, myMenu]);
 
-  const save = (modeValue:string) => {
+  const save = async (modeValue:string, userId, bookingId) => {
     if (modeValue === 'normal') {
-      actions.resetBooking();
       actions.saveMenuSelection(selectedFirst, selectedSecond, selectedDessert, user);
       navigation.goBack();
     } else {
       updateSelection([selectedFirst, selectedSecond, selectedDessert], bookingId, user._id);
+
+      if (modeValue === 'editting') {
+        actions.deleteInvitation(userId, bookingId, false);
+        actions.addBookingToUser(userId, bookingId);
+      }
+      navigation.goBack();
     }
   };
 
@@ -149,7 +170,6 @@ function RestaurantMenu ({ selectedRestaurant, user, actions, navigation, bookin
   return (
     selectedRestaurant.menus.length
       ? <View style = {styles.menuContainer}>
-     <Text>Elige tu menú.</Text>
     <View style = {styles.picker}>
 
     <View style = {selectedTitle === 1 ? styles.selectedTittle : styles.tittle}>
@@ -179,15 +199,15 @@ function RestaurantMenu ({ selectedRestaurant, user, actions, navigation, bookin
       </View>
       </TouchableWithoutFeedback>
      )}
-     <View ><Text>Primer plato:</Text></View>
-     <Text>{selectedFirst}</Text>
-      <View ><Text>Segundo plato:</Text></View>
-       <Text>{selectedSecond}</Text>
-       <View ><Text>Postre:</Text></View>
-        <Text>{selectedDessert}</Text>
+     <View ><Text style= {styles.selectionTitle}>Primer plato:</Text></View>
+     <Text style={styles.selection}>{selectedFirst}</Text>
+      <View ><Text style= {styles.selectionTitle}>Segundo plato:</Text></View>
+       <Text style={styles.selection}>{selectedSecond}</Text>
+       <View ><Text style= {styles.selectionTitle}>Postre:</Text></View>
+        <Text >{selectedDessert}</Text>
      </View>
 
-     <TouchableOpacity style = {styles.save} onPress={() => { save(mode); }}><Text>Guardar selección</Text></TouchableOpacity>
+     <TouchableOpacity style = {styles.save} onPress={() => { save(mode, user._id, booking._id); }}><Text>Guardar selección</Text></TouchableOpacity>
     </View>
       : <Text>No hemos definido un menú</Text>
   );
@@ -198,7 +218,7 @@ function mapStateToProps ({ restaurants: { selectedRestaurant }, user, booking }
 }
 
 function mapDispatchToProps (dispatch:Dispatch) {
-  return { actions: bindActionCreators({ saveMenuSelection, resetBooking }, dispatch) };
+  return { actions: bindActionCreators({ saveMenuSelection, resetBooking, deleteInvitation, addBookingToUser }, dispatch) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RestaurantMenu);

@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 const HomeStack = createStackNavigator();
 
-export default function HomeStackScreen () {
+export default function InvitationStackScreen () {
   return (
     <HomeStack.Navigator initialRouteName="BookingsList">
       <HomeStack.Screen name="BookingsList" component={BookingsList} initialParams={{ list: 'invitations' }}></HomeStack.Screen>

@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
   list: {
-    height: 400,
+    height: 300,
     overflow: 'hidden',
     flexGrow: 0
   },

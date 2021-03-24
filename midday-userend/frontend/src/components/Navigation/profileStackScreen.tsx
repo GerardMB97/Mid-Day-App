@@ -6,7 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 const HomeStack = createStackNavigator();
 
-export default function HomeStackScreen () {
+export default function ProfileStackScreen () {
   return (
     <HomeStack.Navigator initialRouteName="Profile">
       <HomeStack.Screen name="Profile" component={Profile}></HomeStack.Screen>

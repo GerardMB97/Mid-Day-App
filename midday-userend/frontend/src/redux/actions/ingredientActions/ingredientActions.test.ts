@@ -11,10 +11,10 @@ describe('Given a getIngredients function', () => {
       axios.get = jest.fn().mockReturnValueOnce(data);
       const dispatch = jest.fn();
 
-      const dispatcherfn = getIngredients();
+      const dispatcherfn = getIngredients('1234');
       await dispatcherfn(dispatch);
 
-      expect(dispatch).toHaveBeenCalledWith({ type: ingredientActionTypes.GET_INGREDIENTS, data: [] });
+      expect(dispatch).toHaveBeenCalledWith({ type: ingredientActionTypes.GET_INGREDIENTS, data: [], user: '1234' });
     });
   });
 });
