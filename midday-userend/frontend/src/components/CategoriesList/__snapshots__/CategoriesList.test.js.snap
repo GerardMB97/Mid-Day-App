@@ -81,6 +81,7 @@ exports[`Given a CategoriesList component Renders correctly 1`] = `
       data={
         Array [
           Object {
+            "_id": "1",
             "name": "asian",
           },
         ]
@@ -305,6 +306,7 @@ exports[`When inputValue has length Then it should render filteredCategories 1`]
       data={
         Array [
           Object {
+            "_id": "12",
             "name": "asian",
           },
         ]
@@ -462,6 +464,218 @@ exports[`When inputValue has length and filtered categories doesnt Then it shoul
     }
   }
 >
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "rgb(247, 199, 48)",
+        "borderRadius": 15,
+        "height": "100%",
+        "padding": 20,
+        "position": "absolute",
+        "top": 10,
+        "width": "100%",
+        "zIndex": 5,
+      }
+    }
+  >
+    <View
+      accessible={true}
+      focusable={false}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "borderColor": "black",
+          "borderRadius": 50,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "height": 25,
+          "justifyContent": "center",
+          "left": "107%",
+          "overflow": "hidden",
+          "position": "absolute",
+          "top": "-1%",
+          "width": 25,
+        }
+      }
+    >
+      <Text>
+        X
+      </Text>
+    </View>
+    <Image
+      source={
+        Object {
+          "uri": "https://trello-attachments.s3.amazonaws.com/6041f773bf2ba60154c38447/886x227/8efae64d613cb532eed56c84a302248f/logo_negro.png",
+        }
+      }
+      style={
+        Object {
+          "height": 68,
+          "marginBottom": 40,
+          "width": "80%",
+        }
+      }
+    />
+    <Text
+      style={
+        Object {
+          "marginBottom": 40,
+        }
+      }
+    >
+      Es un placer darte la bienvenida a Midday, espero que podamos compartir un sinfin de comidas, a continuación podrás informarnos de tus alergias, así nosotros nos encargaremos de que nunca tengás un despiste eligiendo el menú.
+    </Text>
+    <View>
+      <View
+        style={
+          Object {
+            "borderBottomColor": "black",
+            "borderBottomWidth": 1,
+            "marginBottom": 20,
+            "position": "relative",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontSize": 20,
+            }
+          }
+        >
+          Seleccione sus alergias
+        </Text>
+        <Icon
+          name="caret-forward-outline"
+          style={
+            Object {
+              "fontSize": 25,
+              "left": "100%",
+              "position": "absolute",
+              "transform": Array [
+                Object {
+                  "rotate": "90deg",
+                },
+              ],
+            }
+          }
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "flexGrow": 0,
+            "height": 300,
+            "overflow": "hidden",
+          }
+        }
+      >
+        <RCTScrollView
+          data={
+            Array [
+              1,
+            ]
+          }
+          disableVirtualization={false}
+          getItem={[Function]}
+          getItemCount={[Function]}
+          horizontal={false}
+          initialNumToRender={10}
+          keyExtractor={[Function]}
+          maxToRenderPerBatch={10}
+          onContentSizeChange={[Function]}
+          onEndReachedThreshold={2}
+          onLayout={[Function]}
+          onMomentumScrollEnd={[Function]}
+          onScroll={[Function]}
+          onScrollBeginDrag={[Function]}
+          onScrollEndDrag={[Function]}
+          removeClippedSubviews={false}
+          renderItem={[Function]}
+          scrollEventThrottle={50}
+          stickyHeaderIndices={Array []}
+          updateCellsBatchingPeriod={50}
+          viewabilityConfigCallbackPairs={Array []}
+          windowSize={21}
+        >
+          <View>
+            <View
+              onLayout={[Function]}
+              style={null}
+            >
+              <View
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderBottomColor": "black",
+                    "borderBottomWidth": 1,
+                    "flexDirection": "row",
+                    "height": 40,
+                    "justifyContent": "space-between",
+                  }
+                }
+              >
+                <Text />
+                <Icon
+                  name="happy-outline"
+                  style={
+                    Object {
+                      "color": "green",
+                      "fontSize": 25,
+                    }
+                  }
+                />
+              </View>
+            </View>
+          </View>
+        </RCTScrollView>
+      </View>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "rgb(191, 191, 191)",
+          "borderRadius": 10,
+          "height": 40,
+          "justifyContent": "center",
+          "marginTop": 40,
+          "opacity": 1,
+          "width": 100,
+        }
+      }
+    >
+      <Text>
+        Guardar
+      </Text>
+    </View>
+  </View>
   <View
     style={
       Object {

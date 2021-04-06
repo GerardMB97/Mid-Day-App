@@ -31,9 +31,8 @@ const userController = () => {
       const user = await User.findById(userId);
 
       const updatedUser = await User.findByIdAndUpdate(userId, { bookings: [...user.bookings, bookingId] }, { new: true })
-        .populate(['bookings', 'invitations'])
-        .populate({ path: 'invitations', populate: [{ path: 'bookingAdmin' }, { path: 'restaurant' }, { path: 'people', populate: { path: 'user' } }] })
-        .populate({ path: 'bookings', populate: [{ path: 'bookingAdmin' }, { path: 'restaurant' }, { path: 'people', populate: { path: 'user' } }] }); ;
+        .populate(['bookings', 'invitations', { path: 'invitations', populate: [{ path: 'bookingAdmin' }, { path: 'restaurant' }, { path: 'people', populate: { path: 'user' } }] }, { path: 'bookings', populate: [{ path: 'bookingAdmin' }, { path: 'restaurant' }, { path: 'people', populate: { path: 'user' } }] }])
+        ;
 
       res.json(updatedUser);
       res.status(200);
@@ -48,9 +47,7 @@ const userController = () => {
 
     try {
       const user = await User.findOne({ email })
-        .populate(['bookings', 'invitations'])
-        .populate({ path: 'invitations', populate: [{ path: 'bookingAdmin' }, { path: 'restaurant' }, { path: 'people', populate: { path: 'user' } }] })
-        .populate({ path: 'bookings', populate: [{ path: 'bookingAdmin' }, { path: 'restaurant' }, { path: 'people', populate: { path: 'user' } }] });
+        .populate(['bookings', 'invitations', { path: 'invitations', populate: [{ path: 'bookingAdmin' }, { path: 'restaurant' }, { path: 'people', populate: { path: 'user' } }] }, { path: 'bookings', populate: [{ path: 'bookingAdmin' }, { path: 'restaurant' }, { path: 'people', populate: { path: 'user' } }] }]);
       if (user === null) {
         res.status(404);
         res.json({ data: { _id: null } });
@@ -70,9 +67,7 @@ const userController = () => {
     try {
       const invitedUser = await User.findById(userId);
       const updatedUser = await User.findByIdAndUpdate(userId, { invitations: [...invitedUser.invitations, bookingId] }, { new: true })
-        .populate(['bookings', 'invitations'])
-        .populate({ path: 'invitations', populate: [{ path: 'bookingAdmin' }, { path: 'restaurant' }, { path: 'people', populate: { path: 'user' } }] })
-        .populate({ path: 'bookings', populate: [{ path: 'bookingAdmin' }, { path: 'restaurant' }, { path: 'people', populate: { path: 'user' } }] }); ;
+        .populate(['bookings', 'invitations', { path: 'invitations', populate: [{ path: 'bookingAdmin' }, { path: 'restaurant' }, { path: 'people', populate: { path: 'user' } }] }, { path: 'bookings', populate: [{ path: 'bookingAdmin' }, { path: 'restaurant' }, { path: 'people', populate: { path: 'user' } }] }]);
       res.status(200);
       res.json(updatedUser);
     } catch (error) {
@@ -85,9 +80,7 @@ const userController = () => {
     try {
       const { userId, invitationId } = req.body;
       const updatedUser = await User.findByIdAndUpdate(userId, { $pull: { invitations: invitationId } }, { new: true })
-        .populate(['bookings', 'invitations'])
-        .populate({ path: 'invitations', populate: [{ path: 'bookingAdmin' }, { path: 'restaurant' }, { path: 'people', populate: { path: 'user' } }] })
-        .populate({ path: 'bookings', populate: [{ path: 'bookingAdmin' }, { path: 'restaurant' }, { path: 'people', populate: { path: 'user' } }] }); ;
+        .populate(['bookings', 'invitations', { path: 'invitations', populate: [{ path: 'bookingAdmin' }, { path: 'restaurant' }, { path: 'people', populate: { path: 'user' } }] }, { path: 'bookings', populate: [{ path: 'bookingAdmin' }, { path: 'restaurant' }, { path: 'people', populate: { path: 'user' } }] }]);
       res.json(updatedUser);
       res.status(200);
     } catch (error) {

@@ -87,23 +87,25 @@ function BookingsList ({ user, actions, route, navigation }:{user:User, actions:
             {list === 'bookings'
               ? <View style={styles.bottomContainer}>
               {isAdmin &&
-                 <TouchableWithoutFeedback onPress={() => actions.deleteBooking(user, item._id)}><Icon style={styles.icon} name="trash-outline"></Icon></TouchableWithoutFeedback>
+                 <TouchableWithoutFeedback testID="delete" onPress={() => actions.deleteBooking(user, item._id)}><Icon style={styles.icon} name="trash-outline"></Icon></TouchableWithoutFeedback>
 
             }
               <TouchableWithoutFeedback onPress={() => {
                 actions.getBooking(item._id);
                 actions.getSelectedRestaurant(item.restaurant._id);
                 navigation.navigate('RestaurantMenu', { mode: 'edittingBook' });
-              }}><Icon style={styles.icon} name="settings-outline"></Icon></TouchableWithoutFeedback>
+              }} testID="settings"><Icon style={styles.icon} name="settings-outline"></Icon></TouchableWithoutFeedback>
             </View>
               : <View style={styles.bottomContainer}>
-                <TouchableWithoutFeedback onPress={() => {
-                  actions.getSelectedRestaurant(item.restaurant._id);
-                  actions.getBooking(item._id);
-                  navigation.navigate('RestaurantMenu', { mode: 'editting' });
-                }}>
+                <TouchableWithoutFeedback
+                  testID= "edit"
+                  onPress={() => {
+                    actions.getSelectedRestaurant(item.restaurant._id);
+                    actions.getBooking(item._id);
+                    navigation.navigate('RestaurantMenu', { mode: 'editting' });
+                  }}>
                     <Icon style={styles.greenicon} name="restaurant-outline"></Icon></TouchableWithoutFeedback>
-                <TouchableWithoutFeedback onPress={() => { actions.deleteInvitation(user._id, item._id, true); }}><Icon style={styles.redicon} name="trash-outline"></Icon></TouchableWithoutFeedback>
+                <TouchableWithoutFeedback testID="delete invitation" onPress={() => { actions.deleteInvitation(user._id, item._id, true); }}><Icon style={styles.redicon} name="trash-outline"></Icon></TouchableWithoutFeedback>
               </View>}
 
           </ImageBackground>

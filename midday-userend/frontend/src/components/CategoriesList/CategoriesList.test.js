@@ -17,7 +17,7 @@ const restaurants = {
   filteredRestaurants: []
 };
 const mockStore = configureStore([thunk]);
-const store = mockStore({ categories: { allCategories: [{ name: 'asian' }], filteredCategories: [] }, restaurants, user: {}, ingredients: [] });
+const store = mockStore({ categories: { allCategories: [{ name: 'asian', _id: '1' }], filteredCategories: [] }, restaurants, user: {}, ingredients: [] });
 
 beforeEach(() => {
   jest.spyOn(actions, 'filterSearchBar').mockReturnValueOnce({ type: '' });
@@ -50,7 +50,7 @@ describe('When inputValue has length', () => {
   test('Then it should render filteredCategories', () => {
     const realUseState = React.useState;
     const stubInitialState = 'asiatica';
-    const store1 = mockStore({ categories: { allCategories: [], filteredCategories: [{ name: 'asian' }] }, restaurants, user: {}, ingredients: [] });
+    const store1 = mockStore({ categories: { allCategories: [{ name: 'asian', _id: '123' }], filteredCategories: [{ name: 'asian', _id: '12' }] }, restaurants, user: {}, ingredients: [] });
 
     jest
       .spyOn(React, 'useState')
@@ -64,7 +64,7 @@ describe('When inputValue has length and filtered categories doesnt', () => {
   test('Then it should render Notfound component', () => {
     const realUseState = React.useState;
     const stubInitialState = 'asiatica';
-    const store2 = mockStore({ categories: { allCategories: [], filteredCategories: [] }, restaurants: { allRestaurants: [{ name: 'elpepe' }], filteredRestaurants: [], categoryRestaurants: [] }, user: {}, ingredients: [] });
+    const store2 = mockStore({ categories: { allCategories: [], filteredCategories: [] }, restaurants: { allRestaurants: [{ name: 'elpepe' }], filteredRestaurants: [], categoryRestaurants: [] }, user: { isNewUser: true }, ingredients: [1] });
 
     jest
       .spyOn(React, 'useState')
@@ -76,7 +76,7 @@ describe('When inputValue has length and filtered categories doesnt', () => {
 });
 describe('When allCategories has no length', () => {
   test('Then loadCategories should be invoked', () => {
-    const store3 = mockStore({ categories: { allCategories: [], filteredCategories: [] }, restaurants, user: {}, ingredients: [] });
+    const store3 = mockStore({ categories: { allCategories: [{ _id: '1234' }], filteredCategories: [{ _id: '12345' }] }, restaurants, user: {}, ingredients: [] });
 
     render(<Provider store={store3}><CategoriesList/></Provider>);
     expect(actions.loadCategories).toHaveBeenCalled();

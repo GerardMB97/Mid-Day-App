@@ -14,7 +14,7 @@ describe('Given a function getIngredients', () => {
   });
   describe('When invoked with arguments req and res', () => {
     test('Then it should invoke res.json if there are no errors', async () => {
-      Ingredient.find = jest.fn().mockReturnValueOnce({});
+      Ingredient.find = jest.fn().mockReturnValueOnce([1, 2]);
       await ingredientsController.getIngredients(req, res);
 
       expect(res.json).toHaveBeenCalled();

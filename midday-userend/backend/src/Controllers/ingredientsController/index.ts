@@ -2,11 +2,6 @@ import { Request, Response } from 'express';
 export {};
 const Ingredient = require('../../Models/ingredientModel');
 
-interface IngredientInterface {
-  category: string,
-  ingredient: object[]
-}
-
 const ingredientsController = () => {
   const getIngredients = async (req:Request, res:Response) => {
     try {
