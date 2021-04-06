@@ -5,15 +5,15 @@ During my last 3 weeks at Skylab Coders Academy I had to develop a full stack ap
 ## Stack
 
  - Frontend
-  · Typescript
-  · React-native
-  · Redux
+  - Typescript
+  - React-native
+  - Redux
   
  - Backend
-  · Typescript
-  · Node.js
-  · Express
-  · Mongoose
+  - Typescript
+  - Node.js
+  - Express
+  - Mongoose
 
 ## Information
 Even though I'm really proud of the final product, having a clean code and following a logic, organized process was were i put all my effort. That is why I tried to implement best practices, following SOLID principles and TDD.
