@@ -4,12 +4,12 @@ During my last 3 weeks at Skylab Coders Academy I had to develop a full stack ap
 
 ## Stack
 
- - Frontend
+ ### Frontend
   * Typescript
   * React-native
   * Redux
   
- - Backend
+ ### Backend
   * Typescript
   * Node.js
   * Express
