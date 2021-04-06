@@ -1,0 +1,365 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given a BookingsList component When rendered with params.list = bookings Then it should match its snapshot 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "padding": 10,
+    }
+  }
+>
+  <RCTScrollView
+    data={
+      Array [
+        Object {
+          "_id": "1234",
+          "people": Array [
+            1,
+            2,
+          ],
+          "restaurant": Object {
+            "_id": "1234",
+          },
+        },
+      ]
+    }
+    disableVirtualization={false}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    horizontal={false}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    onContentSizeChange={[Function]}
+    onEndReachedThreshold={2}
+    onLayout={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    stickyHeaderIndices={Array []}
+    updateCellsBatchingPeriod={50}
+    viewabilityConfigCallbackPairs={Array []}
+    windowSize={21}
+  >
+    <View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "height": 150,
+              "marginBottom": 20,
+              "position": "relative",
+              "shadowColor": "black",
+              "shadowOffset": Object {
+                "height": 0,
+                "width": 0,
+              },
+              "shadowOpacity": 1,
+              "shadowRadius": 2,
+              "width": "100%",
+            }
+          }
+        >
+          <View
+            accessibilityIgnoresInvertColors={true}
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          >
+            <Image
+              source={
+                Object {
+                  "uri": undefined,
+                }
+              }
+              style={
+                Array [
+                  Object {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  },
+                  Object {
+                    "height": "100%",
+                    "width": "100%",
+                  },
+                  Object {
+                    "opacity": 0.7,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "rgba(242, 242, 242, 0.8)",
+                  "height": 50,
+                  "justifyContent": "center",
+                  "position": "absolute",
+                  "width": "100%",
+                }
+              }
+            >
+              <Text>
+                reserva para 
+                 en 
+                 el 
+              </Text>
+            </View>
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "bottom": 0,
+                  "flexDirection": "row",
+                  "height": 50,
+                  "justifyContent": "space-around",
+                  "left": "80%",
+                  "position": "absolute",
+                  "width": 80,
+                }
+              }
+            >
+              <Icon
+                accessible={true}
+                focusable={true}
+                name="trash-outline"
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "color": "rgb(247, 199, 48)",
+                    "fontSize": 30,
+                  }
+                }
+                testID="delete"
+              />
+              <Icon
+                accessible={true}
+                focusable={true}
+                name="settings-outline"
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "color": "rgb(247, 199, 48)",
+                    "fontSize": 30,
+                  }
+                }
+                testID="settings"
+              />
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;
+
+exports[`Given a BookingsList component When rendered with params.list = invitations Then it should match its snapshot 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "padding": 10,
+    }
+  }
+>
+  <RCTScrollView
+    data={
+      Array [
+        Object {
+          "_id": "1234",
+          "people": Array [
+            1,
+            2,
+            3,
+          ],
+          "restaurant": Object {
+            "_id": "1234",
+          },
+        },
+      ]
+    }
+    disableVirtualization={false}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    horizontal={false}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    onContentSizeChange={[Function]}
+    onEndReachedThreshold={2}
+    onLayout={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    stickyHeaderIndices={Array []}
+    updateCellsBatchingPeriod={50}
+    viewabilityConfigCallbackPairs={Array []}
+    windowSize={21}
+  >
+    <View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "height": 150,
+              "marginBottom": 20,
+              "position": "relative",
+              "shadowColor": "black",
+              "shadowOffset": Object {
+                "height": 0,
+                "width": 0,
+              },
+              "shadowOpacity": 1,
+              "shadowRadius": 2,
+              "width": "100%",
+            }
+          }
+        >
+          <View
+            accessibilityIgnoresInvertColors={true}
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          >
+            <Image
+              source={
+                Object {
+                  "uri": undefined,
+                }
+              }
+              style={
+                Array [
+                  Object {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  },
+                  Object {
+                    "height": "100%",
+                    "width": "100%",
+                  },
+                  Object {
+                    "opacity": 0.7,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "rgba(242, 242, 242, 0.8)",
+                  "height": 50,
+                  "justifyContent": "center",
+                  "position": "absolute",
+                  "width": "100%",
+                }
+              }
+            >
+              <Text>
+                 
+                os ha invitado a ti y a 1 más
+                 a comer en 
+                 el 
+              </Text>
+            </View>
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "bottom": 0,
+                  "flexDirection": "row",
+                  "height": 50,
+                  "justifyContent": "space-around",
+                  "left": "80%",
+                  "position": "absolute",
+                  "width": 80,
+                }
+              }
+            >
+              <Icon
+                accessible={true}
+                focusable={true}
+                name="restaurant-outline"
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "color": "green",
+                    "fontSize": 30,
+                  }
+                }
+                testID="edit"
+              />
+              <Icon
+                accessible={true}
+                focusable={true}
+                name="trash-outline"
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "color": "red",
+                    "fontSize": 30,
+                  }
+                }
+                testID="delete invitation"
+              />
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;

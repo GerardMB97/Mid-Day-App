@@ -1,0 +1,762 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given a CategoriesList component Renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "paddingLeft": 20,
+      "paddingRight": 20,
+      "paddingTop": 20,
+      "position": "relative",
+      "width": "100%",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "width": "100%",
+      }
+    }
+  >
+    <TextInput
+      allowFontScaling={true}
+      onChangeText={[Function]}
+      placeholder="Tipo de menu o restaurante"
+      rejectResponderTermination={true}
+      style={
+        Object {
+          "backgroundColor": "rgb(135, 175, 147)",
+          "borderRadius": 10,
+          "height": 60,
+          "justifyContent": "center",
+          "marginBottom": 20,
+          "paddingLeft": 40,
+          "width": "100%",
+        }
+      }
+      testID="searchbar"
+      underlineColorAndroid="transparent"
+      value=""
+    />
+    <Icon
+      name="search-outline"
+      style={
+        Object {
+          "color": "black",
+          "fontSize": 25,
+          "left": "10%",
+          "position": "absolute",
+          "top": "20%",
+        }
+      }
+    />
+  </View>
+  <Text
+    style={
+      Object {
+        "fontSize": 20,
+        "fontWeight": "700",
+        "marginBottom": 25,
+      }
+    }
+  >
+    ¿Qué Menú te apetece hoy?
+  </Text>
+  <RCTSafeAreaView
+    emulateUnlessSupported={true}
+    style={
+      Object {
+        "flex": 1,
+        "width": "100%",
+      }
+    }
+  >
+    <RCTScrollView
+      data={
+        Array [
+          Object {
+            "_id": "1",
+            "name": "asian",
+          },
+        ]
+      }
+      disableVirtualization={false}
+      getItem={[Function]}
+      getItemCount={[Function]}
+      horizontal={false}
+      initialNumToRender={10}
+      keyExtractor={[Function]}
+      maxToRenderPerBatch={10}
+      onContentSizeChange={[Function]}
+      onEndReachedThreshold={2}
+      onLayout={[Function]}
+      onMomentumScrollEnd={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEventThrottle={50}
+      stickyHeaderIndices={Array []}
+      style={
+        Object {
+          "borderRadius": 15,
+          "flexDirection": "column",
+        }
+      }
+      updateCellsBatchingPeriod={50}
+      viewabilityConfigCallbackPairs={Array []}
+      windowSize={21}
+    >
+      <View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                },
+                Object {
+                  "justifyContent": "space-between",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 15,
+                  "borderWidth": 1,
+                  "height": 150,
+                  "marginBottom": 15,
+                  "overflow": "hidden",
+                  "width": "48%",
+                }
+              }
+            >
+              <View
+                accessibilityIgnoresInvertColors={true}
+                style={
+                  Object {
+                    "height": "100%",
+                    "position": "absolute",
+                    "top": 0,
+                    "width": "100%",
+                  }
+                }
+              >
+                <Image
+                  source={
+                    Object {
+                      "uri": undefined,
+                    }
+                  }
+                  style={
+                    Array [
+                      Object {
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                      },
+                      Object {
+                        "height": "100%",
+                        "width": "100%",
+                      },
+                      undefined,
+                    ]
+                  }
+                />
+                <View
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "height": 150,
+                      "opacity": 1,
+                      "width": "100%",
+                    }
+                  }
+                  testID="asian"
+                >
+                  <View
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "rgba(242, 242, 242, 0.8)",
+                        "borderTopLeftRadius": 15,
+                        "borderTopRightRadius": 15,
+                        "height": 40,
+                        "justifyContent": "center",
+                        "width": "100%",
+                      }
+                    }
+                  >
+                    <Text>
+                      asian
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </RCTScrollView>
+  </RCTSafeAreaView>
+</View>
+`;
+
+exports[`When inputValue has length Then it should render filteredCategories 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "paddingLeft": 20,
+      "paddingRight": 20,
+      "paddingTop": 20,
+      "position": "relative",
+      "width": "100%",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "width": "100%",
+      }
+    }
+  >
+    <TextInput
+      allowFontScaling={true}
+      onChangeText={[Function]}
+      placeholder="Tipo de menu o restaurante"
+      rejectResponderTermination={true}
+      style={
+        Object {
+          "backgroundColor": "rgb(135, 175, 147)",
+          "borderRadius": 10,
+          "height": 60,
+          "justifyContent": "center",
+          "marginBottom": 20,
+          "paddingLeft": 40,
+          "width": "100%",
+        }
+      }
+      testID="searchbar"
+      underlineColorAndroid="transparent"
+      value="asiatica"
+    />
+    <Icon
+      name="search-outline"
+      style={
+        Object {
+          "color": "black",
+          "fontSize": 25,
+          "left": "10%",
+          "position": "absolute",
+          "top": "20%",
+        }
+      }
+    />
+  </View>
+  <Text
+    style={
+      Object {
+        "fontSize": 20,
+        "fontWeight": "700",
+        "marginBottom": 25,
+      }
+    }
+  >
+    ¿Qué Menú te apetece hoy?
+  </Text>
+  <RCTSafeAreaView
+    emulateUnlessSupported={true}
+    style={
+      Object {
+        "flex": 1,
+        "width": "100%",
+      }
+    }
+  >
+    <RCTScrollView
+      data={
+        Array [
+          Object {
+            "_id": "12",
+            "name": "asian",
+          },
+        ]
+      }
+      disableVirtualization={false}
+      getItem={[Function]}
+      getItemCount={[Function]}
+      horizontal={false}
+      initialNumToRender={10}
+      keyExtractor={[Function]}
+      maxToRenderPerBatch={10}
+      onContentSizeChange={[Function]}
+      onEndReachedThreshold={2}
+      onLayout={[Function]}
+      onMomentumScrollEnd={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEventThrottle={50}
+      stickyHeaderIndices={Array []}
+      style={
+        Object {
+          "borderRadius": 15,
+          "flexDirection": "column",
+        }
+      }
+      updateCellsBatchingPeriod={50}
+      viewabilityConfigCallbackPairs={Array []}
+      windowSize={21}
+    >
+      <View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                },
+                Object {
+                  "justifyContent": "space-between",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Object {
+                  "borderColor": "black",
+                  "borderRadius": 15,
+                  "borderWidth": 1,
+                  "height": 150,
+                  "marginBottom": 15,
+                  "overflow": "hidden",
+                  "width": "48%",
+                }
+              }
+            >
+              <View
+                accessibilityIgnoresInvertColors={true}
+                style={
+                  Object {
+                    "height": "100%",
+                    "position": "absolute",
+                    "top": 0,
+                    "width": "100%",
+                  }
+                }
+              >
+                <Image
+                  source={
+                    Object {
+                      "uri": undefined,
+                    }
+                  }
+                  style={
+                    Array [
+                      Object {
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                      },
+                      Object {
+                        "height": "100%",
+                        "width": "100%",
+                      },
+                      undefined,
+                    ]
+                  }
+                />
+                <View
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "height": 150,
+                      "opacity": 1,
+                      "width": "100%",
+                    }
+                  }
+                  testID="asian"
+                >
+                  <View
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "rgba(242, 242, 242, 0.8)",
+                        "borderTopLeftRadius": 15,
+                        "borderTopRightRadius": 15,
+                        "height": 40,
+                        "justifyContent": "center",
+                        "width": "100%",
+                      }
+                    }
+                  >
+                    <Text>
+                      asian
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </RCTScrollView>
+  </RCTSafeAreaView>
+</View>
+`;
+
+exports[`When inputValue has length and filtered categories doesnt Then it should render Notfound component 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "paddingLeft": 20,
+      "paddingRight": 20,
+      "paddingTop": 20,
+      "position": "relative",
+      "width": "100%",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "rgb(247, 199, 48)",
+        "borderRadius": 15,
+        "height": "100%",
+        "padding": 20,
+        "position": "absolute",
+        "top": 10,
+        "width": "100%",
+        "zIndex": 5,
+      }
+    }
+  >
+    <View
+      accessible={true}
+      focusable={false}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "borderColor": "black",
+          "borderRadius": 50,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "height": 25,
+          "justifyContent": "center",
+          "left": "107%",
+          "overflow": "hidden",
+          "position": "absolute",
+          "top": "-1%",
+          "width": 25,
+        }
+      }
+    >
+      <Text>
+        X
+      </Text>
+    </View>
+    <Image
+      source={
+        Object {
+          "uri": "https://trello-attachments.s3.amazonaws.com/6041f773bf2ba60154c38447/886x227/8efae64d613cb532eed56c84a302248f/logo_negro.png",
+        }
+      }
+      style={
+        Object {
+          "height": 68,
+          "marginBottom": 40,
+          "width": "80%",
+        }
+      }
+    />
+    <Text
+      style={
+        Object {
+          "marginBottom": 40,
+        }
+      }
+    >
+      Es un placer darte la bienvenida a Midday, espero que podamos compartir un sinfin de comidas, a continuación podrás informarnos de tus alergias, así nosotros nos encargaremos de que nunca tengás un despiste eligiendo el menú.
+    </Text>
+    <View>
+      <View
+        style={
+          Object {
+            "borderBottomColor": "black",
+            "borderBottomWidth": 1,
+            "marginBottom": 20,
+            "position": "relative",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontSize": 20,
+            }
+          }
+        >
+          Seleccione sus alergias
+        </Text>
+        <Icon
+          name="caret-forward-outline"
+          style={
+            Object {
+              "fontSize": 25,
+              "left": "100%",
+              "position": "absolute",
+              "transform": Array [
+                Object {
+                  "rotate": "90deg",
+                },
+              ],
+            }
+          }
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "flexGrow": 0,
+            "height": 300,
+            "overflow": "hidden",
+          }
+        }
+      >
+        <RCTScrollView
+          data={
+            Array [
+              1,
+            ]
+          }
+          disableVirtualization={false}
+          getItem={[Function]}
+          getItemCount={[Function]}
+          horizontal={false}
+          initialNumToRender={10}
+          keyExtractor={[Function]}
+          maxToRenderPerBatch={10}
+          onContentSizeChange={[Function]}
+          onEndReachedThreshold={2}
+          onLayout={[Function]}
+          onMomentumScrollEnd={[Function]}
+          onScroll={[Function]}
+          onScrollBeginDrag={[Function]}
+          onScrollEndDrag={[Function]}
+          removeClippedSubviews={false}
+          renderItem={[Function]}
+          scrollEventThrottle={50}
+          stickyHeaderIndices={Array []}
+          updateCellsBatchingPeriod={50}
+          viewabilityConfigCallbackPairs={Array []}
+          windowSize={21}
+        >
+          <View>
+            <View
+              onLayout={[Function]}
+              style={null}
+            >
+              <View
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderBottomColor": "black",
+                    "borderBottomWidth": 1,
+                    "flexDirection": "row",
+                    "height": 40,
+                    "justifyContent": "space-between",
+                  }
+                }
+              >
+                <Text />
+                <Icon
+                  name="happy-outline"
+                  style={
+                    Object {
+                      "color": "green",
+                      "fontSize": 25,
+                    }
+                  }
+                />
+              </View>
+            </View>
+          </View>
+        </RCTScrollView>
+      </View>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "rgb(191, 191, 191)",
+          "borderRadius": 10,
+          "height": 40,
+          "justifyContent": "center",
+          "marginTop": 40,
+          "opacity": 1,
+          "width": 100,
+        }
+      }
+    >
+      <Text>
+        Guardar
+      </Text>
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "width": "100%",
+      }
+    }
+  >
+    <TextInput
+      allowFontScaling={true}
+      onChangeText={[Function]}
+      placeholder="Tipo de menu o restaurante"
+      rejectResponderTermination={true}
+      style={
+        Object {
+          "backgroundColor": "rgb(135, 175, 147)",
+          "borderRadius": 10,
+          "height": 60,
+          "justifyContent": "center",
+          "marginBottom": 20,
+          "paddingLeft": 40,
+          "width": "100%",
+        }
+      }
+      testID="searchbar"
+      underlineColorAndroid="transparent"
+      value="asiatica"
+    />
+    <Icon
+      name="search-outline"
+      style={
+        Object {
+          "color": "black",
+          "fontSize": 25,
+          "left": "10%",
+          "position": "absolute",
+          "top": "20%",
+        }
+      }
+    />
+  </View>
+  <Text
+    style={
+      Object {
+        "fontSize": 20,
+        "fontWeight": "700",
+        "marginBottom": 25,
+      }
+    }
+  >
+    ¿Qué Menú te apetece hoy?
+  </Text>
+  <RCTSafeAreaView
+    emulateUnlessSupported={true}
+    style={
+      Object {
+        "flex": 1,
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "borderColor": "rgb(135, 175, 147)",
+          "borderRadius": 10,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "padding": 20,
+          "width": "80%",
+        }
+      }
+    >
+      <Text>
+        No hemos encontrado tu categoria
+      </Text>
+    </View>
+  </RCTSafeAreaView>
+</View>
+`;

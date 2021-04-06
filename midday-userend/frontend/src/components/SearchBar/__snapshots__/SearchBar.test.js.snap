@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given a component SearchBar Then it should render correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "paddingLeft": 20,
+      "paddingRight": 20,
+      "width": "100%",
+    }
+  }
+>
+  <TextInput
+    allowFontScaling={true}
+    onChangeText={[Function]}
+    placeholder="hello"
+    rejectResponderTermination={true}
+    style={
+      Object {
+        "backgroundColor": "rgb(135, 175, 147)",
+        "borderRadius": 10,
+        "height": 60,
+        "justifyContent": "center",
+        "marginBottom": 20,
+        "paddingLeft": 40,
+        "width": "100%",
+      }
+    }
+    testID="searchbar"
+    underlineColorAndroid="transparent"
+    value=""
+  />
+  <Icon
+    name="search-outline"
+    style={
+      Object {
+        "color": "black",
+        "fontSize": 25,
+        "left": "10%",
+        "position": "absolute",
+        "top": "20%",
+      }
+    }
+  />
+</View>
+`;

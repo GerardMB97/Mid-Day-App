@@ -1,0 +1,170 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given an Allergies list component When rendered, Then it should match its snapshot 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "borderBottomColor": "black",
+        "borderBottomWidth": 1,
+        "marginBottom": 20,
+        "position": "relative",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontSize": 20,
+        }
+      }
+    >
+      Seleccione sus alergias
+    </Text>
+    <Icon
+      name="caret-forward-outline"
+      style={
+        Object {
+          "fontSize": 25,
+          "left": "100%",
+          "position": "absolute",
+          "transform": Array [
+            Object {
+              "rotate": "90deg",
+            },
+          ],
+        }
+      }
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "flexGrow": 0,
+        "height": 300,
+        "overflow": "hidden",
+      }
+    }
+  >
+    <RCTScrollView
+      data={
+        Array [
+          Object {
+            "ingredient": "carrot",
+            "isAllergic": false,
+          },
+          Object {
+            "ingredient": "cucumber",
+            "isAllergic": true,
+          },
+        ]
+      }
+      disableVirtualization={false}
+      getItem={[Function]}
+      getItemCount={[Function]}
+      horizontal={false}
+      initialNumToRender={10}
+      keyExtractor={[Function]}
+      maxToRenderPerBatch={10}
+      onContentSizeChange={[Function]}
+      onEndReachedThreshold={2}
+      onLayout={[Function]}
+      onMomentumScrollEnd={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEventThrottle={50}
+      stickyHeaderIndices={Array []}
+      updateCellsBatchingPeriod={50}
+      viewabilityConfigCallbackPairs={Array []}
+      windowSize={21}
+    >
+      <View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "borderBottomColor": "black",
+                "borderBottomWidth": 1,
+                "flexDirection": "row",
+                "height": 40,
+                "justifyContent": "space-between",
+              }
+            }
+            testID="carrot"
+          >
+            <Text>
+              carrot
+            </Text>
+            <Icon
+              name="happy-outline"
+              style={
+                Object {
+                  "color": "green",
+                  "fontSize": 25,
+                }
+              }
+            />
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "borderBottomColor": "black",
+                "borderBottomWidth": 1,
+                "color": "red",
+                "flexDirection": "row",
+                "height": 40,
+                "justifyContent": "space-between",
+              }
+            }
+            testID="cucumber"
+          >
+            <Text>
+              cucumber
+            </Text>
+            <Icon
+              name="sad-outline"
+              style={
+                Object {
+                  "color": "red",
+                  "fontSize": 25,
+                }
+              }
+            />
+          </View>
+        </View>
+      </View>
+    </RCTScrollView>
+  </View>
+</View>
+`;
