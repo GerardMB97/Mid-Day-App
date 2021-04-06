@@ -1,10 +1,10 @@
 export {};
 const bookingController = require('./index');
-const Restaurant = require('../../Models/restaurantModel');
+const Booking = require('../../Models/bookingModel');
 
-jest.mock('../../Models/restaurantModel');
+jest.mock('../../Models/bookingModel');
 
-describe('Given a function createBooking', () => {
+describe('Given a function createNewBooking', () => {
   let req: any;
   let res: any;
   beforeEach(() => {
@@ -17,13 +17,11 @@ describe('Given a function createBooking', () => {
       params: {}
     };
   });
-  describe('When invoked it should call res.json', () => {
-    test('Then it should call res.json', async () => {
-      Restaurant.findById = jest.fn().mockResolvedValueOnce({ name: 'hello' });
-      Restaurant.findByIdAndUpdate = jest.fn().mockResolvedValueOnce({ name: 'hello' });
-      await bookingController.createBooking(req, res);
+  describe('When invoked ', () => {
+    test('Then it should call res.status with 200 if there are no errrors', async () => {
+      await bookingController.createNewBooking(req, res);
 
-      expect(res.status).toHaveBeenCalled();
+      expect(res.status).toHaveBeenCalledWith(200);
     });
   });
 });

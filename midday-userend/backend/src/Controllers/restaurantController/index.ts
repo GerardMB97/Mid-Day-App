@@ -19,12 +19,10 @@ const restaurantController = () => {
   const getRestaurants = async (req: Request, res: Response) => {
     try {
       const restaurants = await Restaurant.find({})
-        .populate('category')
-        .populate('menus')
-        .populate({
+        .populate(['category', 'menus', {
           path: 'menus',
           populate: [{ path: 'firstCourse' }, { path: 'secondCourse' }, { path: 'dessert' }]
-        });
+        }]);
 
       res.json(restaurants);
     } catch (error) {

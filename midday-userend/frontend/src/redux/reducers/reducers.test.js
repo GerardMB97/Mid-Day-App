@@ -98,10 +98,11 @@ describe('Given a ingredient reducer', () => {
     test('Then it should return action.data', () => {
       const action = {
         type: ingredientActionTypes.GET_INGREDIENTS,
-        data: []
+        data: [{ name: 'carrot', isAllergic: false }],
+        user: { allergies: ['carrot'] }
       };
       const output = ingredientReducer(undefined, action);
-      expect(output).toEqual([]);
+      expect(output).toEqual([{ ingredient: 'carrot', isAllergic: false }]);
     });
   });
   describe('When invoked with an action of different type', () => {
@@ -113,6 +114,18 @@ describe('Given a ingredient reducer', () => {
       const state = [{ ingredient: 'Ternera' }];
       const output = ingredientReducer(state, action);
       expect(output).toEqual(state);
+    });
+  });
+  describe('When invoked with an action of type UPDATE_ALLERGY and an ingredient in action', () => {
+    test('Then it should chancge the value of the isAllergic property for that ingredient that is a boolean', () => {
+      const action = {
+        type: ingredientActionTypes.UPDATE_ALLERGY,
+        ingredient: 'carrot'
+      };
+      const state = [{ ingredient: 'carrot', isAllergic: false }, { ingredient: 'cucumber', isAllergic: false }];
+
+      const output = ingredientReducer(state, action);
+      expect(output).toEqual([{ ingredient: 'carrot', isAllergic: true }, { ingredient: 'cucumber', isAllergic: false }]);
     });
   });
 });
